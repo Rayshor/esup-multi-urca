@@ -37,20 +37,20 @@
  * termes.
  */
 
-import { AfterViewInit, ChangeDetectorRef, Component, Inject, Input, TemplateRef, ViewChild } from '@angular/core';
-import { ThemeService } from '@multi/shared';
-import { Observable } from 'rxjs';
-import { finalize, take } from 'rxjs/operators';
-import { MailCalendarEvents } from '../../calendar.repository';
-import { CalendarService } from '../../calendar.service';
-import { CALENDAR_CONFIG, CalendarModuleConfig } from '../../calendar.config';
+import {AfterViewInit, ChangeDetectorRef, Component, Inject, Input, TemplateRef, ViewChild} from '@angular/core';
+import {ThemeService} from '@multi/shared';
+import {Observable} from 'rxjs';
+import {finalize, take} from 'rxjs/operators';
+import {MailCalendarEvents} from '../../calendar.repository';
+import {CalendarService} from '../../calendar.service';
+import {CALENDAR_CONFIG, CalendarModuleConfig} from '../../calendar.config';
 
 @Component({
   selector: 'app-calendar-widget',
   templateUrl: './calendar.component.html',
   styleUrls: ['../../../../../../src/theme/app-theme/styles/calendar/calendar.component.scss'],
 })
-export class CalendarComponent implements AfterViewInit{
+export class CalendarComponent implements AfterViewInit {
 
   @Input() widgetColor: string;
   @ViewChild('list') list!: TemplateRef<any>;
@@ -60,9 +60,9 @@ export class CalendarComponent implements AfterViewInit{
   public nextEvents$: Observable<MailCalendarEvents>;
 
   constructor(private calendarService: CalendarService,
-    private themeService: ThemeService,
-    private changeDetectorRef: ChangeDetectorRef,
-    @Inject(CALENDAR_CONFIG) private config: CalendarModuleConfig) {
+              private themeService: ThemeService,
+              private changeDetectorRef: ChangeDetectorRef,
+              @Inject(CALENDAR_CONFIG) private config: CalendarModuleConfig) {
     this.nextEvents$ = this.calendarService.getNextEvents$();
   }
 
@@ -87,5 +87,28 @@ export class CalendarComponent implements AfterViewInit{
 
   getTemplateRef(): TemplateRef<any> {
     return this[this?.config.display];
+  }
+
+  downloadIcsFile(event) {
+    const escapeSpecialChars = (str: string): string => {
+      return str ? str.replace(/[,;\\]/g, '\\$&').replace(/\n/g, '\\n') : '';
+    };
+    const newEvent = {
+      title: escapeSpecialChars(event.label),
+      start: new Date(event.startDateTime),
+      end: new Date(event.endDateTime),
+      location: escapeSpecialChars(event.location),
+      description: escapeSpecialChars(event.description)
+    };
+    const icsContent = this.calendarService.generateIcsFile(newEvent);
+    const blob = new Blob([icsContent], {type: 'text/calendar'});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'event.ics';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
   }
 }
