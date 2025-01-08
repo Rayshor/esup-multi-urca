@@ -104,15 +104,22 @@
                   </ng-container>
                 </ion-row>
                 <ion-text class="app-title-5 event-label slider-font-color">{{ event.label }}</ion-text>
-                <ion-row *ngIf="event.location" class="event-additional">
+                <ion-row *ngIf="event.location" class="event-additional" id="eventLocation">
                   <ion-row class="ion-align-items-center card-labels">
                     <ion-icon class="card-labels-icons slider-font-color" name="business-outline"
                               aria-label=""></ion-icon>
                     <ion-text class="app-title-6 light slider-font-color">{{ event.location }}</ion-text>
                   </ion-row>
                 </ion-row>
+                <ion-row *ngIf="event.description" class="event-additional" id="eventDescription">
+                  <ion-row class="ion-align-items-center card-labels">
+                    <ion-icon class="card-labels-icons slider-font-color" name="reader-outline"
+                              aria-label=""></ion-icon>
+                    <ion-text class="app-title-6 light slider-font-color">{{ event.description }}</ion-text>
+                  </ion-row>
+                </ion-row>
                 <ion-button
-                  (click)="downloadIcsFile(event)"
+                  (click)="addToCalendar(event)"
                   class="app-text-button-1 link-button"
                   fill="clear"
                 >

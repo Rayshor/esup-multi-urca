@@ -54,6 +54,7 @@ export interface MailCalendarEvent {
   startDateTime: string;
   endDateTime: string;
   location: string;
+  description: string;
 }
 
 export const store = createStore({ name: STORE_NAME }, withProps<MailCalendar>({ events: null }));
