@@ -44,6 +44,8 @@ import {finalize, take} from 'rxjs/operators';
 import {MailCalendarEvents} from '../../calendar.repository';
 import {CalendarService} from '../../calendar.service';
 import {CALENDAR_CONFIG, CalendarModuleConfig} from '../../calendar.config';
+//import { Calendar } from '@ionic-native/calendar/ngx';
+import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-calendar-widget',
@@ -62,7 +64,8 @@ export class CalendarComponent implements AfterViewInit {
   constructor(private calendarService: CalendarService,
               private themeService: ThemeService,
               private changeDetectorRef: ChangeDetectorRef,
-              @Inject(CALENDAR_CONFIG) private config: CalendarModuleConfig) {
+              @Inject(CALENDAR_CONFIG) private config: CalendarModuleConfig,
+              private platform: Platform) {
     this.nextEvents$ = this.calendarService.getNextEvents$();
   }
 
@@ -89,7 +92,8 @@ export class CalendarComponent implements AfterViewInit {
     return this[this?.config.display];
   }
 
-  downloadIcsFile(event) {
+  // The function to detect platform and add event to calendar
+  async addToCalendar(event: any) {
     const escapeSpecialChars = (str: string): string => {
       return str ? str.replace(/[,;\\]/g, '\\$&').replace(/\n/g, '\\n') : '';
     };
@@ -100,7 +104,33 @@ export class CalendarComponent implements AfterViewInit {
       location: escapeSpecialChars(event.location),
       description: escapeSpecialChars(event.description)
     };
-    const icsContent = this.calendarService.generateIcsFile(newEvent);
+    // Detect the platform (iOS, Android, or Web)
+    if (this.platform.is('ios') || this.platform.is('android')) {
+      // Native platform logic (iOS/Android)
+      this.addEventToNativeCalendar(newEvent);
+    } else {
+      // Web platform logic
+      this.downloadIcsFile(newEvent);
+    }
+  }
+
+  // Method for native calendar (iOS/Android) using Capacitor Calendar plugin
+  async addEventToNativeCalendar(event: any) {
+    this.platform.ready().then(() => {
+      // this.calendar.createEventInteractively(event.title, event.location, event.description, event.start, event.end, {}).then(
+      //   (msg) => {
+      //     console.log('Event added to calendar: ' + msg);
+      //   },
+      //   (err) => {
+      //     console.error('Error adding event to calendar: ' + err);
+      //   }
+      // );
+    });
+  }
+
+  // Method for web platform: Generate and download ICS file
+  downloadIcsFile(event: any) {
+    const icsContent = this.calendarService.generateIcsFile(event);
     const blob = new Blob([icsContent], {type: 'text/calendar'});
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
