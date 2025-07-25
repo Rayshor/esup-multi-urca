@@ -65,6 +65,7 @@ import { TerminusModule } from '@nestjs/terminus';
 import { LoggerModule } from 'nestjs-pino';
 import * as process from 'process';
 import { LogsMiddleware } from './logs.middleware';
+import microserviceKnowledgeBaseConfig from "./config/microservice-knowledge-base.config";
 
 @Module({
   imports: [
@@ -185,6 +186,13 @@ import { LogsMiddleware } from './logs.middleware';
         imports: [ConfigModule.forFeature(microserviceMailCalendarConfig)],
         useFactory: (config: ConfigService) =>
           config.get('microservice-mail-calendar'),
+        inject: [ConfigService],
+      },
+      {
+        name: 'KNOWLEDGE_BASE_SERVICE',
+        imports: [ConfigModule.forFeature(microserviceKnowledgeBaseConfig)],
+        useFactory: (config: ConfigService) =>
+            config.get('microservice-knowledge-base'),
         inject: [ConfigService],
       },
     ]),

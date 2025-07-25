@@ -81,6 +81,7 @@ export class AppController {
     @Inject('RESTAURANTS_SERVICE') private restaurantsClient: ClientProxy,
     @Inject('STATISTICS_SERVICE') private statisticsClient: ClientProxy,
     @Inject('MAIL_CALENDAR_SERVICE') private mailCalendarClient: ClientProxy,
+    @Inject('KNOWLEDGE_BASE_SERVICE') private knowledgeBaseClient: ClientProxy,
   ) {}
 
   @Post('/features')
@@ -136,7 +137,7 @@ export class AppController {
         cmd: 'logout',
       },
       {
-        body,
+        ...body,
         ip: request.ip,
       },
     );
@@ -725,6 +726,17 @@ export class AppController {
         ),
       );
   }
+
+    @Get('/knowledge-base')
+    knowledgeBase(@Body() body) {
+        return this.knowledgeBaseClient
+            .send(
+                {
+                    cmd: 'getList',
+                },
+                body,
+            )
+    }
 
   @Get('/version')
   mainVersion() {
