@@ -37,54 +37,46 @@
  * termes.
  */
 
-import {createStore} from '@ngneat/elf';
-import {
-  persistState
-} from '@ngneat/elf-persist-state';
-import { localForageStore } from '@multi/shared';
-import {selectManyByPredicate, setEntities, withEntities} from "@ngneat/elf-entities";
-import {Observable} from "rxjs";
-
-export enum ChildDisplay {
-  CARD = 'card',
-  LIST = 'list',
-}
-
-export enum PageType {
-  CONTENT = 'content',
-  EXTERNAL_LINK = 'external_link',
-  INTERNAL_LINK = 'internal_link',
-}
-
-export interface KnowledgeBaseItem{
-  id:number,
-  pageType:PageType
-  parentId?:number
-  content?:string
-  title?:string,
-  link?:string
-  mail?:string,
-  phone?:string,
-  address?:string
-  childDisplay?:ChildDisplay
-}
-const STORE_NAME = 'knowledgeBase';
-
-const store = createStore(
-  { name: STORE_NAME },
-  withEntities<KnowledgeBaseItem>(),
-);
-
-export const persist = persistState(store, {
-  key: STORE_NAME,
-  storage: localForageStore,
-});
-
-export const setKnowledgeBases = (knowledgeBaseItems: KnowledgeBaseItem[]) => {
-  store.update(setEntities(knowledgeBaseItems));
-};
-
-export const knowledgeBases$ = store.pipe(selectManyByPredicate((item) => !item.parentId));
-
-export const getKnowledgeBaseByParentId = (parentId: number) : Observable<KnowledgeBaseItem[]>  =>
-  store.pipe(selectManyByPredicate((item) => item.parentId === parentId));
+module.exports.knowledgeBaseData = [
+    {
+        "title": "Première page vers enfant",
+        "id": 1,
+        "pageType": "content",
+    },
+    {
+        "title": "Première page vers lien interne map",
+        "id": 2,
+        "link": "map",
+        "pageType": "internal_link"
+    },
+    {
+        "title": "Première page vers lien externe jnesis.com",
+        "id": 3,
+        "link": "https://www.jnesis.com",
+        "pageType": "external_link"
+    },
+    {
+        "title": "Première enfant",
+        "content": "id Nunc ...",
+        "id": 4,
+        "pageType": "content",
+        "childDisplay": "card",
+        "parentId": 1
+    },
+    {
+        "title": "Page affiché au format carte",
+        "content": "id Nunc ...d",
+        "id": 5,
+        "pageType": "content",
+        "childDisplay": "card",
+        "parentId": 4
+    },
+    {
+        "title": "Autre Page affiché au format carte",
+        "content": "id Nunc dzdzdzdz zdd z dzdzf fef",
+        "id": 6,
+        "pageType": "content",
+        "childDisplay": "card",
+        "parentId": 4
+    }
+];

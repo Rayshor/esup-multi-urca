@@ -41,10 +41,6 @@ export interface KnowledgeBaseQueryDto {
   login: string;
 }
 
-
-
-
-
 export enum ChildDisplay {
   CARD = 'card',
   LIST = 'list',
@@ -56,43 +52,39 @@ export enum PageType {
   INTERNAL_LINK = 'internal_link',
 }
 
-
-export interface KnowledgeBaseItem{
-  id:number,
-  pageType:PageType
-  parentId?:number
-  content?:string
-  title?:string,
-  link?:string
-  mail?:string,
-  phone?:string,
-  address?:string
-  childrens?:KnowledgeBaseItem[];
-  childDisplay?:ChildDisplay
+export interface KnowledgeBaseItem {
+  id: number;
+  pageType: PageType;
+  parentId?: number;
+  content?: string;
+  title?: string;
+  link?: string;
+  mail?: string;
+  phone?: string;
+  address?: string;
+  childrens?: KnowledgeBaseItem[];
+  childDisplay?: ChildDisplay;
 }
 
-
-
-export interface KnowledgeBaseFirstLevel{
-  title:string
-  link?:''
-  id:number
-  children?:any[]
+export interface KnowledgeBaseFirstLevel {
+  title: string;
+  link?: string;
+  id: number;
+  children?: any[];
 }
 
-export interface KnowLedgeBasecard{
-  title:string,
-  content:string
-  type:ChildDisplay
-  link?:''
-  id:number
+export interface KnowLedgeBasecard {
+  title: string;
+  content: string;
+  type: ChildDisplay;
+  link?: string;
+  id: number;
 }
 
-export interface externalPage{
-  link:string
+export interface externalPage {
+  link: string;
 }
 
-export interface internalPage{
-  link:string
+export interface internalPage {
+  link: string;
 }
-

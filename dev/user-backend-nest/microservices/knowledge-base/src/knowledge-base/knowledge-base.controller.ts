@@ -43,14 +43,11 @@ import { ConfigService } from '@nestjs/config';
 import { MessagePattern } from '@nestjs/microservices';
 import { Cache } from 'cache-manager';
 import { firstValueFrom } from 'rxjs';
-import {
-   KnowledgeBaseItem,
-  KnowledgeBaseQueryDto,
-} from './knowledge-base.dto';
+import { KnowledgeBaseItem, KnowledgeBaseQueryDto } from './knowledge-base.dto';
 import { KnowledgeBaseService } from './knowledge-base.service';
 
 @Controller()
-export class KnowledgeBaseController{
+export class KnowledgeBaseController {
   constructor(
     private knowledgeBaseService: KnowledgeBaseService,
     private readonly configService: ConfigService,

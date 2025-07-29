@@ -45,7 +45,6 @@ import { ProjectModuleService, SharedComponentsModule, SharedPipeModule } from '
 import { KnowledgeBasePageRoutingModule } from './knowledge-base-routing.module';
 import { KnowledgeBasePage } from './knowledge-base.page';
 import { KnowledgeBaseComponent } from './widgets/knowledge-base/knowledge-base.component';
-import { KNOWLEDGE_BASE_CONFIG, KnowledgeBaseModuleConfig } from './knowledge-base.config';
 
 const initModule = (projectModuleService: ProjectModuleService) =>
   () => projectModuleService.initProjectModule({
@@ -76,15 +75,7 @@ const initModule = (projectModuleService: ProjectModuleService) =>
     multi: true
   }],
 })
-export class KnowledgeBasePageModule {
-  static routerLink = '/knowledgeBase';
 
-  static forRoot(config: KnowledgeBaseModuleConfig): ModuleWithProviders<KnowledgeBasePageModule> {
-    return {
-      ngModule: KnowledgeBasePageModule,
-      providers: [
-        { provide: KNOWLEDGE_BASE_CONFIG, useValue: config }
-      ]
-    };
-  }
+export class KnowledgeBasePageModule {
+  static routerLink = '/knowledge-base';
 }

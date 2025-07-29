@@ -1,10 +1,10 @@
 {
   "name": "knowledge-base",
-  "version": "0.0.1",
+  "version": "2.0.0",
   "description": "",
   "author": "",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "CECILL-2.1",
   "scripts": {
     "prebuild": "rimraf dist && node update-infos.js",
     "build": "nest build",
@@ -33,6 +33,7 @@
     "cache-manager-redis-yet": "^5.1.5",
     "nats": "^2.29.3",
     "reflect-metadata": "^0.2.2",
+    "rimraf": "^6.0.1",
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
@@ -78,5 +79,10 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
   }
 }

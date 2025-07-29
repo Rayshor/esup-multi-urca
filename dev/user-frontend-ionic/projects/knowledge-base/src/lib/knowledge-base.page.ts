@@ -37,16 +37,16 @@
  * termes.
  */
 
-import { Component, Inject } from '@angular/core';
-import {take} from "rxjs/operators";
+import {Component} from '@angular/core';
+import {map, take} from "rxjs/operators";
 import {KnowledgeBaseService} from "./knowledge-base.service";
 import {Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NetworkService} from "@multi/shared";
 import {
-  getKnowledgeBaseByParentId,
   KnowledgeBaseItem,
   knowledgeBases$,
+  getKnowledgeBaseByParentId,
   PageType
 } from "./knowledge-base.repository";
 import {Browser} from "@capacitor/browser";
@@ -58,11 +58,10 @@ import {Browser} from "@capacitor/browser";
 })
 export class KnowledgeBasePage {
 
-
   public isLoading = false;
-  protected parentPageId:number;
-  protected knowledgeBases$=knowledgeBases$;
-  protected displayKnowledgeBases$;
+  public parentPageId: number;
+  public knowledgeBases$: Observable<KnowledgeBaseItem[]>;
+  public knowledgeBasesIsEmpty$: Observable<boolean>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -71,36 +70,35 @@ export class KnowledgeBasePage {
     private networkService: NetworkService
   ) {
   }
+
   async ngOnInit() {
     if (!(await this.networkService.getConnectionStatus()).connected) {
       return;
     }
-    this.parentPageId = Number.parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
 
-    if(!this.parentPageId){
+    this.parentPageId = Number.parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
+    if (!this.parentPageId) {
       this.knowledgeBaseService.loadAndStoreKnowledgeBase()
-      .pipe(take(1))
-      .subscribe();
-      this.displayKnowledgeBases$=knowledgeBases$;
-    }else{
-      this.displayKnowledgeBases$ = getKnowledgeBaseByParentId(this.parentPageId);
+        .pipe(take(1))
+        .subscribe();
     }
 
+    this.knowledgeBases$ = this.parentPageId ? getKnowledgeBaseByParentId(this.parentPageId) : knowledgeBases$;
   }
 
+  ionViewWillEnter() {
+    this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
+  }
 
-
-  protected openItemLink(item:KnowledgeBaseItem) {
-    if(item.pageType===PageType.INTERNAL_LINK) {
+  protected openItemLink(item: KnowledgeBaseItem) {
+    if (item.pageType === PageType.INTERNAL_LINK) {
       this.router.navigateByUrl(item.link)
     }
-    if(item.pageType===PageType.EXTERNAL_LINK) {
+    if (item.pageType === PageType.EXTERNAL_LINK) {
       Browser.open({url: item.link});
     }
-    if(item.pageType===PageType.CONTENT){
+    if (item.pageType === PageType.CONTENT) {
       this.router.navigateByUrl(`knowledge-base/${item.id}`)
     }
   }
-
-
 }

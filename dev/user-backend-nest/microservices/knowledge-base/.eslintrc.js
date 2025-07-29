@@ -37,54 +37,28 @@
  * termes.
  */
 
-import {createStore} from '@ngneat/elf';
-import {
-  persistState
-} from '@ngneat/elf-persist-state';
-import { localForageStore } from '@multi/shared';
-import {selectManyByPredicate, setEntities, withEntities} from "@ngneat/elf-entities";
-import {Observable} from "rxjs";
-
-export enum ChildDisplay {
-  CARD = 'card',
-  LIST = 'list',
-}
-
-export enum PageType {
-  CONTENT = 'content',
-  EXTERNAL_LINK = 'external_link',
-  INTERNAL_LINK = 'internal_link',
-}
-
-export interface KnowledgeBaseItem{
-  id:number,
-  pageType:PageType
-  parentId?:number
-  content?:string
-  title?:string,
-  link?:string
-  mail?:string,
-  phone?:string,
-  address?:string
-  childDisplay?:ChildDisplay
-}
-const STORE_NAME = 'knowledgeBase';
-
-const store = createStore(
-  { name: STORE_NAME },
-  withEntities<KnowledgeBaseItem>(),
-);
-
-export const persist = persistState(store, {
-  key: STORE_NAME,
-  storage: localForageStore,
-});
-
-export const setKnowledgeBases = (knowledgeBaseItems: KnowledgeBaseItem[]) => {
-  store.update(setEntities(knowledgeBaseItems));
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    project: 'tsconfig.json',
+    tsconfigRootDir : __dirname, 
+    sourceType: 'module',
+  },
+  plugins: ['@typescript-eslint/eslint-plugin'],
+  extends: [
+    'plugin:@typescript-eslint/recommended',
+    'plugin:prettier/recommended',
+  ],
+  root: true,
+  env: {
+    node: true,
+    jest: true,
+  },
+  ignorePatterns: ['.eslintrc.js'],
+  rules: {
+    '@typescript-eslint/interface-name-prefix': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
+  },
 };
-
-export const knowledgeBases$ = store.pipe(selectManyByPredicate((item) => !item.parentId));
-
-export const getKnowledgeBaseByParentId = (parentId: number) : Observable<KnowledgeBaseItem[]>  =>
-  store.pipe(selectManyByPredicate((item) => item.parentId === parentId));

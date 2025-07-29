@@ -36,45 +36,30 @@
   ~ pris connaissance de la licence CeCILL 2.1, et que vous en avez accepté les
   ~ termes.
   -->
-
 <app-header></app-header>
-<!--<ion-progress-bar *ngIf="isLoading" type="indeterminate"></ion-progress-bar>-->
+<ion-content>
+  <ion-progress-bar *ngIf="isLoading" type="indeterminate"></ion-progress-bar>
 
-<ion-content >
-<ion-list *ngIf="!parentPageId && (knowledgeBases$ | async) as knowledgeBases">
-  <ion-card *ngFor="let item of knowledgeBases">
-    <ion-card-header>
-      <ion-card-title>{{item.title}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      {{item.content}}
-    </ion-card-content>
-    <ion-toolbar>
-      <ion-icon slot="end" name="arrow-forward" size="large" (click)="openItemLink(item)"></ion-icon>
-    </ion-toolbar>
-  </ion-card>
-</ion-list>
+  <ion-list>
+    <ion-list *ngIf="(knowledgeBases$ | async) as knowledgeBases">
+      <ion-card *ngFor="let item of knowledgeBases">
+        <ion-card-header>
+          <ion-card-title>{{item.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{item.content}}
+        </ion-card-content>
+        <ion-toolbar>
+          <ion-icon slot="end" name="arrow-forward" size="large" (click)="openItemLink(item)"></ion-icon>
+        </ion-toolbar>
+      </ion-card>
+    </ion-list>
+  </ion-list>
 
-  <ion-card *ngIf="parentPageId && (displayKnowledgeBases$ | async) as knowledgeBase" >
-    <ion-card-header>
-      <ion-card-title>{{knowledgeBase.title}}</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      {{knowledgeBase.content}}
-
-      <ion-list *ngIf="knowledgeBase.childrens">
-        <ion-card *ngFor="let item of knowledgeBase.childrens">
-          <ion-card-header>
-            <ion-card-title>{{item.title}}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            {{item.content}}
-          </ion-card-content>
-
-        </ion-card>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-
+  <ng-container *ngIf="(knowledgeBasesIsEmpty$ | async) && !isLoading">
+    <ion-row class="ion-margin ion-justify-content-center">
+      <ion-text>{{ "KNOWLEDGE-BASE.NO_DATA" | translate }}</ion-text>
+    </ion-row>
+  </ng-container>
 
 </ion-content>

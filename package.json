@@ -33,6 +33,7 @@
     "back:contacts": "cd dev/user-backend-nest/microservices/contacts && ",
     "back:features": "cd dev/user-backend-nest/microservices/features && ",
     "back:important-news": "cd dev/user-backend-nest/microservices/important-news && ",
+    "back:knowledge-base": "cd dev/user-backend-nest/microservices/knowledge-base && ",
     "back:mail-calendar": "cd dev/user-backend-nest/microservices/mail-calendar && ",
     "back:map": "cd dev/user-backend-nest/microservices/map && ",
     "back:notifications": "cd dev/user-backend-nest/microservices/notifications && ",
@@ -42,7 +43,6 @@
     "back:social-network": "cd dev/user-backend-nest/microservices/social-network && ",
     "back:static-pages": "cd dev/user-backend-nest/microservices/static-pages && ",
     "back:statistics": "cd dev/user-backend-nest/microservices/statistics && ",
-    "back:knowledge-base": "cd dev/user-backend-nest/microservices/knowledge-base && ",
     "connector:multi-cms-connector": "cd dev/connectors/multi-cms-connector && "
   },
   "devDependencies": {

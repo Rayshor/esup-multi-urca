@@ -37,12 +37,13 @@
  * termes.
  */
 
-import {Injectable, Logger} from '@nestjs/common';
-import {KnowledgeBaseProviderApi} from '../config/configuration.interface';
-import {ConfigService} from '@nestjs/config';
-import {HttpService} from '@nestjs/axios';
-import {Observable, of} from 'rxjs';
-import {ChildDisplay, KnowledgeBaseItem, KnowledgeBaseQueryDto, PageType,} from './knowledge-base.dto';
+import { Injectable, Logger } from '@nestjs/common';
+import { KnowledgeBaseProviderApi } from '../config/configuration.interface';
+import { ConfigService } from '@nestjs/config';
+import { RpcException } from '@nestjs/microservices';
+import { HttpService } from '@nestjs/axios';
+import { catchError, map, Observable } from 'rxjs';
+import { KnowledgeBaseItem, KnowledgeBaseQueryDto } from './knowledge-base.dto';
 
 @Injectable()
 export class KnowledgeBaseService {
@@ -59,66 +60,26 @@ export class KnowledgeBaseService {
       );
   }
 
-  private itemsMock:KnowledgeBaseItem[]=[
-          {
-              title:'Première page vers enfant',
-              id:1,
-              pageType:PageType.CONTENT,
-          },
-      {
-          title:'Première page vers lien interne map',
-          id:2,
-          link:'map',
-          pageType:PageType.INTERNAL_LINK,
-      },
-      {
-          title:'Première page vers lien externe jnesis.com',
-          id:3,
-          link:'https://www.jnesis.com',
-          pageType:PageType.EXTERNAL_LINK,
-      },
-      {
-          title:'Première enfant',
-          content:'id Nunc ...',
-          id:4,
-          pageType:PageType.EXTERNAL_LINK,
-          childDisplay:ChildDisplay.CARD,
-          parentId:1,
-          //todo move flat and do recursion
-          childrens:[{
-              title:'Page affiché au format carte',
-              content:'id Nunc ...d',
-              id:5,
-              pageType:PageType.CONTENT,
-              childDisplay:ChildDisplay.CARD,
-              parentId:4
-          },
-              {
-                  title:'Autre Page affiché au format carte',
-                  content:'id Nunc dzdzdzdz zdd z dzdzf fef ',
-                  id:6,
-                  pageType:PageType.CONTENT,
-                  childDisplay:ChildDisplay.CARD,
-                  parentId:4
-              }]
-      },
-
-
-
-  ];
-
   public getKnowledgeBase(
     query: KnowledgeBaseQueryDto,
   ): Observable<KnowledgeBaseItem[]> {
-
-      //Find first level of items without parentId
-      const firstPageChilds=this.itemsMock.filter(item=> !item.parentId)
-
-      //add childrens to first parent level ( TODO : RECURSION)
-      firstPageChilds.forEach(parent=>
-          parent.childrens=this.itemsMock.filter(child=>parent.id===child.parentId))
-
-
-      return of(firstPageChilds);
+    this.logger.log('*** get knowledge base data');
+    return this.httpService
+      .get<KnowledgeBaseItem[]>(this.knowledgeBaseProviderApiConfig.apiUrl, {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${this.knowledgeBaseProviderApiConfig.bearerToken}`,
+        },
+      })
+      .pipe(
+        catchError((err) => {
+          const errorMessage = `Unable to get knowledge base data`;
+          this.logger.error(errorMessage, err);
+          throw new RpcException(errorMessage);
+        }),
+        map((res) => {
+          return res.data;
+        }),
+      );
   }
 }

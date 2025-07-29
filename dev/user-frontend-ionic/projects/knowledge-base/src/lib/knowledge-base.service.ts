@@ -59,8 +59,6 @@ export class KnowledgeBaseService {
     const url = `${this.multiTenantService.getApiEndpoint()}/knowledge-base`;
 
     return this.http.get<KnowledgeBaseItem[]>(url).pipe(
-
-      tap((knowledgeBases)=>console.log(knowledgeBases)),
       tap(knowledgeBases => setKnowledgeBases(knowledgeBases)),
     );
   }
