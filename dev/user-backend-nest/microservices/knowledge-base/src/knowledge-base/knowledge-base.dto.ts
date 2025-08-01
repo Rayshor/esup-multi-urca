@@ -65,26 +65,3 @@ export interface KnowledgeBaseItem {
   childrens?: KnowledgeBaseItem[];
   childDisplay?: ChildDisplay;
 }
-
-export interface KnowledgeBaseFirstLevel {
-  title: string;
-  link?: string;
-  id: number;
-  children?: any[];
-}
-
-export interface KnowLedgeBasecard {
-  title: string;
-  content: string;
-  type: ChildDisplay;
-  link?: string;
-  id: number;
-}
-
-export interface externalPage {
-  link: string;
-}
-
-export interface internalPage {
-  link: string;
-}
