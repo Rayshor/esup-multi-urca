@@ -37,70 +37,61 @@
  * termes.
  */
 
-import { createStore } from '@ngneat/elf';
-import {
-  persistState
-} from '@ngneat/elf-persist-state';
-import { localForageStore } from '@multi/shared';
-import { selectEntityByPredicate, selectManyByPredicate, setEntities, withEntities, selectAllEntities } from "@ngneat/elf-entities";
-import { map, Observable } from 'rxjs';
+import { Component, Input } from '@angular/core';
+import { ChildDisplay, KnowledgeBaseItem, PageType } from '../knowledge-base.repository';
+import { Browser } from '@capacitor/browser';
+import { Router } from '@angular/router';
 
-export enum ChildDisplay {
-  CARD = 'card',
-  LIST = 'list',
+@Component({
+  selector: 'app-knowledge-base-card',
+  templateUrl: './knowledge-base-card.component.html',
+  styleUrls: ['../../../../../src/theme/app-theme/styles/knowledge-base/knowledge-base-card.component.scss']
+})
+
+export class KnowledgeBaseCardComponent {
+  @Input() item: KnowledgeBaseItem;
+  @Input() displayMode: ChildDisplay;
+  public isExpanded: boolean = false;
+
+  constructor(
+    private router: Router,
+  ) {}
+
+  openItemLink(item: KnowledgeBaseItem) {
+    if (item.pageType === PageType.INTERNAL_LINK) {
+      this.router.navigateByUrl(item.link)
+    }
+    if (item.pageType === PageType.EXTERNAL_LINK) {
+      Browser.open({url: item.link});
+    }
+    if (item.pageType === PageType.CONTENT) {
+      this.router.navigateByUrl(`knowledge-base/${item.id}`)
+    }
+  }
+
+  getButtonIcon(type: PageType) {
+    switch (type) {
+      case PageType.EXTERNAL_LINK: return 'open-outline';
+      case PageType.INTERNAL_LINK: return 'arrow-forward';
+      case PageType.CONTENT: return 'arrow-forward';
+    }
+  }
+
+  toggleDetails() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  handlePhone(phone: string) {
+    window.open(`tel:${phone}`);
+  }
+
+  handleEmail(email: string) {
+    window.open(`mailto:${email}`);
+  }
+
+  handleLink(link: string) {
+    Browser.open({url: link});
+  }
+
+  protected readonly ChildDisplay = ChildDisplay;
 }
-
-export enum PageType {
-  CONTENT = 'content',
-  EXTERNAL_LINK = 'external_link',
-  INTERNAL_LINK = 'internal_link',
-}
-
-export interface KnowledgeBaseItem{
-  id:number,
-  pageType:PageType
-  parentId?:number
-  content?:string
-  title?:string
-  link?:string
-  email?:string
-  phone?:string
-  address?:string
-  childDisplay?:ChildDisplay
-  isLeaf?:boolean
-}
-const STORE_NAME = 'knowledgeBase';
-
-const store = createStore(
-  { name: STORE_NAME },
-  withEntities<KnowledgeBaseItem>(),
-);
-
-export const persist = persistState(store, {
-  key: STORE_NAME,
-  storage: localForageStore,
-});
-
-export const setKnowledgeBases = (knowledgeBaseItems: KnowledgeBaseItem[]) => {
-  store.update(setEntities(knowledgeBaseItems));
-};
-
-export const knowledgeBases$ = store.pipe(selectManyByPredicate((item) => !item.parentId));
-
-export const getKnowledgeBaseByParentId = (parentId: number): Observable<KnowledgeBaseItem[]> =>
-  store.pipe(
-    selectAllEntities(),
-    map(allItems => {
-      const children = allItems.filter(item => item.parentId === parentId);
-      const parentIds = new Set(allItems.map(item => item.parentId).filter(id => id !== null));
-      return children.map(child => ({
-        ...child,
-        isLeaf: !parentIds.has(child.id)
-      }));
-    })
-  );
-
-export const getKnowledgeBaseItemById = (id: number): Observable<KnowledgeBaseItem> =>
-  store.pipe(
-    selectEntityByPredicate((item) => item.id === id)
-  );

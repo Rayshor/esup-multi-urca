@@ -39,44 +39,84 @@
 
 module.exports.knowledgeBaseData = [
     {
-        "title": "Première page vers enfant",
+        "title": "Présentation de l’université",
         "id": 1,
         "pageType": "content",
+        "content": "Fondée en 1896, l’Université Lumière accueille chaque année plus de 30 000 étudiants. Elle propose un large éventail de formations en sciences, lettres, droit, économie et gestion.",
+        "childDisplay": "list"
     },
     {
-        "title": "Première page vers lien interne map",
+        "title": "Vie étudiante et services",
+        "id": 7,
+        "pageType": "content",
+        "content": "Découvrez les services dédiés aux étudiants : accompagnement social, bibliothèques, vie associative, événements culturels et accès aux installations sportives du campus.",
+        "childDisplay": "card"
+    },
+    {
+        "title": "Plan du campus",
         "id": 2,
         "link": "map",
         "pageType": "internal_link"
     },
     {
-        "title": "Première page vers lien externe jnesis.com",
+        "title": "Portail numérique des étudiants",
         "id": 3,
-        "link": "https://www.jnesis.com",
+        "link": "https://www.esup-portail.org/wiki/spaces/ESUPMULTI/pages/1340637201/Accueil",
         "pageType": "external_link"
     },
     {
-        "title": "Première enfant",
-        "content": "id Nunc ...",
+        "title": "Facultés et départements",
+        "content": "L’Université est composée de plusieurs facultés : Lettres et Langues, Sciences, Droit, Médecine, ainsi que de nombreux laboratoires de recherche.",
         "id": 4,
         "pageType": "content",
-        "childDisplay": "card",
-        "parentId": 1
+        "parentId": 1,
+        childDisplay: "card"
     },
     {
-        "title": "Page affiché au format carte",
-        "content": "id Nunc ...d",
+        "title": "Département de Lettres Modernes",
+        "content": "Le département propose des formations en littérature française, comparée et francophonie. Il organise régulièrement des conférences ouvertes à tous.",
         "id": 5,
         "pageType": "content",
-        "childDisplay": "card",
-        "parentId": 4
+        "parentId": 4,
+        "link": "https://www.esup-portail.org",
+        "phone": "0606060606",
+        "address": "45 rue du Soleil 99999 VILLE",
+        "email": "contact@esup.com"
     },
     {
-        "title": "Autre Page affiché au format carte",
-        "content": "id Nunc dzdzdzdz zdd z dzdzf fef",
+        "title": "Département de Physique",
+        "content": "Les étudiants peuvent suivre une licence, un master ou un doctorat en physique fondamentale ou appliquée, avec de nombreux partenariats industriels.",
         "id": 6,
         "pageType": "content",
-        "childDisplay": "card",
-        "parentId": 4
+        "parentId": 4,
+        "link": "https://www.esup-portail.org",
+        "phone": "0606060606",
+        "address": "45 rue du Soleil 99999 VILLE",
+        "email": "contact@esup.com"
+    },
+    {
+        "title": "Santé, bien-être et accompagnement",
+        "content": "L’université dispose d’un service de santé étudiant, d’un soutien psychologique et d’un pôle handicap. Des permanences sont assurées chaque semaine.",
+        "id": 8,
+        "pageType": "content",
+        "parentId": 7,
+        "link": "https://www.esup-portail.org",
+        "phone": "0606060606",
+        "address": "45 rue du Soleil 99999 VILLE",
+        "email": "contact@esup.com"
+    },
+    {
+        "title": "Activités sportives et culturelles",
+        "content": "Une trentaine d’activités sportives sont proposées via le SUAPS. Des ateliers artistiques, clubs photo et musique sont ouverts toute l’année.",
+        "id": 9,
+        "pageType": "content",
+        "parentId": 7
+    },
+    {
+        "title": "Clubs et associations étudiantes",
+        "content": "Plus de 80 associations sont présentes sur le campus : BDE, clubs humanitaires, écologiques, tech ou encore débats citoyens.",
+        "id": 10,
+        "pageType": "content",
+        "parentId": 9
     }
 ];

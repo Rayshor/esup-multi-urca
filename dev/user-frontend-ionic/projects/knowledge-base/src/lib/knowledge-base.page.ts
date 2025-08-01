@@ -37,19 +37,17 @@
  * termes.
  */
 
-import {Component} from '@angular/core';
-import {map, take} from "rxjs/operators";
-import {KnowledgeBaseService} from "./knowledge-base.service";
-import {Observable} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
-import {NetworkService} from "@multi/shared";
+import { Component } from '@angular/core';
+import { map, take } from 'rxjs/operators';
+import { KnowledgeBaseService } from './knowledge-base.service';
+import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NetworkService } from '@multi/shared';
 import {
   KnowledgeBaseItem,
   knowledgeBases$,
-  getKnowledgeBaseByParentId,
-  PageType
-} from "./knowledge-base.repository";
-import {Browser} from "@capacitor/browser";
+  getKnowledgeBaseByParentId, getKnowledgeBaseItemById, ChildDisplay
+} from './knowledge-base.repository';
 
 @Component({
   selector: 'app-knowledge-base',
@@ -62,14 +60,15 @@ export class KnowledgeBasePage {
   public parentPageId: number;
   public knowledgeBases$: Observable<KnowledgeBaseItem[]>;
   public knowledgeBasesIsEmpty$: Observable<boolean>;
+  public knowledgeBaseParentItem$: Observable<KnowledgeBaseItem>;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private knowledgeBaseService: KnowledgeBaseService,
     private router: Router,
     private networkService: NetworkService
-  ) {
-  }
+  ) {}
 
   async ngOnInit() {
     if (!(await this.networkService.getConnectionStatus()).connected) {
@@ -84,21 +83,12 @@ export class KnowledgeBasePage {
     }
 
     this.knowledgeBases$ = this.parentPageId ? getKnowledgeBaseByParentId(this.parentPageId) : knowledgeBases$;
+    this.knowledgeBaseParentItem$ = getKnowledgeBaseItemById(this.parentPageId);
   }
 
   ionViewWillEnter() {
     this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
   }
 
-  protected openItemLink(item: KnowledgeBaseItem) {
-    if (item.pageType === PageType.INTERNAL_LINK) {
-      this.router.navigateByUrl(item.link)
-    }
-    if (item.pageType === PageType.EXTERNAL_LINK) {
-      Browser.open({url: item.link});
-    }
-    if (item.pageType === PageType.CONTENT) {
-      this.router.navigateByUrl(`knowledge-base/${item.id}`)
-    }
-  }
+  protected readonly ChildDisplay = ChildDisplay;
 }

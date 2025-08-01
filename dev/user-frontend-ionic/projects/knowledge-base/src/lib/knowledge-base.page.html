@@ -40,26 +40,33 @@
 <ion-content>
   <ion-progress-bar *ngIf="isLoading" type="indeterminate"></ion-progress-bar>
 
-  <ion-list>
-    <ion-list *ngIf="(knowledgeBases$ | async) as knowledgeBases">
-      <ion-card *ngFor="let item of knowledgeBases">
-        <ion-card-header>
-          <ion-card-title>{{item.title}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          {{item.content}}
-        </ion-card-content>
-        <ion-toolbar>
-          <ion-icon slot="end" name="arrow-forward" size="large" (click)="openItemLink(item)"></ion-icon>
-        </ion-toolbar>
-      </ion-card>
-    </ion-list>
-  </ion-list>
-
-  <ng-container *ngIf="(knowledgeBasesIsEmpty$ | async) && !isLoading">
-    <ion-row class="ion-margin ion-justify-content-center">
-      <ion-text>{{ "KNOWLEDGE-BASE.NO_DATA" | translate }}</ion-text>
-    </ion-row>
+  <ng-container *ngIf="(knowledgeBaseParentItem$ | async) as parentItem; else noParent">
+    <div class="parent-content">
+      <h1>{{ parentItem.title }}</h1>
+      <p>{{ parentItem.content }}</p>
+    </div>
   </ng-container>
+
+  <ng-template #noParent>
+    <ion-searchbar placeholder="Rechercher une page"></ion-searchbar>
+  </ng-template>
+
+  <ng-container *ngIf="(knowledgeBases$ | async) as knowledgeBases">
+    <ion-list *ngIf="knowledgeBases.length > 0; else noData">
+      <app-knowledge-base-card
+        *ngFor="let item of knowledgeBases"
+        [item]="item"
+        [displayMode]="(knowledgeBaseParentItem$ | async)?.childDisplay ?? ChildDisplay.LIST"
+      ></app-knowledge-base-card>
+    </ion-list>
+  </ng-container>
+
+  <ng-template #noData>
+    <ng-container *ngIf="(knowledgeBasesIsEmpty$ | async) && !isLoading">
+      <ion-row class="ion-margin ion-justify-content-center">
+        <ion-text>{{ "KNOWLEDGE-BASE.NO_DATA" | translate }}</ion-text>
+      </ion-row>
+    </ng-container>
+  </ng-template>
 
 </ion-content>
