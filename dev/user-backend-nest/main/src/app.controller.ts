@@ -137,7 +137,7 @@ export class AppController {
         cmd: 'logout',
       },
       {
-        ...body,
+        body,
         ip: request.ip,
       },
     );
