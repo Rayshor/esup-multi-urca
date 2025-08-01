@@ -355,7 +355,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Top]]></wp:meta_value>
+		<wp:meta_value><![CDATA[top]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -445,7 +445,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Top]]></wp:meta_value>
+		<wp:meta_value><![CDATA[top]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -539,7 +539,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Top]]></wp:meta_value>
+		<wp:meta_value><![CDATA[top]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -637,7 +637,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Top]]></wp:meta_value>
+		<wp:meta_value><![CDATA[top]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -739,7 +739,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Tabs]]></wp:meta_value>
+		<wp:meta_value><![CDATA[tabs]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -841,7 +841,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Tabs]]></wp:meta_value>
+		<wp:meta_value><![CDATA[tabs]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -939,7 +939,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Tabs]]></wp:meta_value>
+		<wp:meta_value><![CDATA[tabs]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -1041,7 +1041,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Tabs]]></wp:meta_value>
+		<wp:meta_value><![CDATA[tabs]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -1138,7 +1138,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Tabs]]></wp:meta_value>
+		<wp:meta_value><![CDATA[tabs]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -1236,7 +1236,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -1346,7 +1346,7 @@
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -1931,7 +1931,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2029,7 +2029,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2127,7 +2127,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2225,7 +2225,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2335,7 +2335,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2441,7 +2441,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2530,7 +2530,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2620,7 +2620,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2710,7 +2710,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2816,7 +2816,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -2926,7 +2926,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Service]]></wp:meta_value>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -3024,7 +3024,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Burger]]></wp:meta_value>
+		<wp:meta_value><![CDATA[burger]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -3118,7 +3118,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Burger]]></wp:meta_value>
+		<wp:meta_value><![CDATA[burger]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -3208,7 +3208,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Burger]]></wp:meta_value>
+		<wp:meta_value><![CDATA[burger]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
@@ -3298,7 +3298,7 @@ For any questions relating to <strong>your registration, your student card, your
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Burger]]></wp:meta_value>
+		<wp:meta_value><![CDATA[burger]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>

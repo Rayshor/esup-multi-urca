@@ -37,20 +37,22 @@
  * termes.
  */
 
-import { Injectable, Logger } from '@nestjs/common';
-import { catchError, map, Observable } from 'rxjs';
-import { FeaturesPositionHelper } from './features-position.helper';
+import {Injectable, Logger} from '@nestjs/common';
+import {catchError, map, Observable} from 'rxjs';
+import {FeaturesPositionHelper} from './features-position.helper';
 import {
-  Feature,
-  GraphQLResponse,
-  Widget,
+  AccessType,
   AppElement,
   ContentQueryResponse,
+  Feature,
+  GraphQLResponse,
+  InternalFeature,
+  Widget,
 } from './features.dto';
-import { CmsApi } from '../config/configuration.interface';
-import { ConfigService } from '@nestjs/config';
-import { HttpService } from '@nestjs/axios';
-import { RpcException } from '@nestjs/microservices';
+import {CmsApi} from '../config/configuration.interface';
+import {ConfigService} from '@nestjs/config';
+import {HttpService} from '@nestjs/axios';
+import {RpcException} from '@nestjs/microservices';
 
 @Injectable()
 export class FeaturesService {
@@ -150,12 +152,44 @@ export class FeaturesService {
           throw new RpcException(errorMessage);
         }),
         map((response) => {
-          const features = (response.data.data.features || []).map(
+          let features = (response.data.data.features || []).map(
             (f) => ({ ...f, id: `feature:${f.id}` } as Feature),
           );
           const widgets = (response.data.data.widgets || []).map(
             (w) => ({ ...w, id: `widget:${w.id}` } as Widget),
           );
+//Hack to add a feature without Wordpress or Directus
+          let knowledgeBaseFeature:Feature={
+            icon: "information",
+            authorization: null,
+            id: "feature:999",
+            iconSvgLight: null,
+            iconSvgDark: null,
+            menu: "service",
+            position: 300,
+            routerLink: "/knowledge-base",
+            settingsByRole: [],
+            statisticName: null,
+            type: AccessType.INTERNAL,
+            translations: [
+              {
+                languagesCode: "fr",
+                searchKeywords: [
+                ],
+                title: "Informations"
+              },
+              {
+                languagesCode: "en",
+                searchKeywords: [
+                ],
+                title: "Informations"
+              }
+            ],
+          };
+
+          features.push(knowledgeBaseFeature);
+
+
 
           const allElements: AppElement[] = [...features, ...widgets];
 

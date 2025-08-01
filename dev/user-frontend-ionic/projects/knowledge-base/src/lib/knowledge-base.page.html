@@ -36,52 +36,30 @@
   ~ pris connaissance de la licence CeCILL 2.1, et que vous en avez accepté les
   ~ termes.
   -->
-
 <app-header></app-header>
-<ion-progress-bar *ngIf="isLoading" type="indeterminate"></ion-progress-bar>
+<ion-content>
+  <ion-progress-bar *ngIf="isLoading" type="indeterminate"></ion-progress-bar>
 
-<ion-content *ngIf="(rssFeedIsEmpty$ | async) === false"
-  [ngClass]="{'rss-page-vertically-style': config.display === 'vertically',
-              'rss-page-horizontally-style': config.display === 'horizontally'}">
-  <ion-card *ngFor="let item of (rssFeed$ | async); let i = index">
-    <div class="border-card safe-area-margin-lr">
+  <ion-list>
+    <ion-list *ngIf="(knowledgeBases$ | async) as knowledgeBases">
+      <ion-card *ngFor="let item of knowledgeBases">
+        <ion-card-header>
+          <ion-card-title>{{item.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          {{item.content}}
+        </ion-card-content>
+        <ion-toolbar>
+          <ion-icon slot="end" name="arrow-forward" size="large" (click)="openItemLink(item)"></ion-icon>
+        </ion-toolbar>
+      </ion-card>
+    </ion-list>
+  </ion-list>
 
-      <app-rss-item-header [item]="item" [display]="config.display">
-        <ng-template appRssItemHeaderButton>
-          <ion-button (click)="openContent(i)" class="app-text-button-2 link-button" fill="clear">
-            <ion-text class="app-text-5" *ngIf="!isContentVisible[i]">{{ "RSS.SEE_MORE" | translate }}</ion-text>
-            <ion-text class="app-text-5" *ngIf="isContentVisible[i]">{{ "RSS.SEE_LESS" | translate }}</ion-text>
-            <ion-icon class="app-icon-6" [class.content-open]="!isContentVisible[i]"
-              [class.content-close]="isContentVisible[i]" name="arrow-right" aria-label=""></ion-icon>
-          </ion-button>
-        </ng-template>
-      </app-rss-item-header>
+  <ng-container *ngIf="(knowledgeBasesIsEmpty$ | async) && !isLoading">
+    <ion-row class="ion-margin ion-justify-content-center">
+      <ion-text>{{ "KNOWLEDGE-BASE.NO_DATA" | translate }}</ion-text>
+    </ion-row>
+  </ng-container>
 
-    </div>
-
-    <div class="rss-news-content safe-area-margin-lr" [ngClass]="{'visible': isContentVisible[i]}">
-      <div class="border-content">
-
-        <ion-row class="rss-news-description">
-          <ion-text class="ion-text-wrap ion-margin">
-            <div class="app-text-4" [innerHTML]="item.content"></div>
-          </ion-text>
-        </ion-row>
-        <ion-row class="ion-justify-content-end ion-padding">
-          <ion-label>{{item.pubDate | relativeTime}}</ion-label>
-        </ion-row>
-
-        <ion-row class="ion-justify-content-center">
-          <ion-button class="open-link-button ion-no-margin" (click)="onClick(item)" expand="full">
-            {{ "RSS.SEE_MORE_EXTERNAL" | translate }}
-          </ion-button>
-        </ion-row>
-      </div>
-
-    </div>
-  </ion-card>
-</ion-content>
-
-<ion-content class="ion-padding" *ngIf="(rssFeedIsEmpty$ | async)">
-  <ion-note> {{ "RSS.NO_DATA" | translate }} </ion-note>
 </ion-content>
