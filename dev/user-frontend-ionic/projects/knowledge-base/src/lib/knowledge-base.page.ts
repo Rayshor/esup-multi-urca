@@ -54,7 +54,7 @@ import {
   templateUrl: './knowledge-base.page.html',
   styleUrls: ['../../../../src/theme/app-theme/styles/knowledge-base/knowledge-base.page.scss'],
 })
-export class KnowledgeBasePage {
+export class KnowledgeBasePage implements OnInit {
 
   public isLoading = false;
   public parentPageId: number;
@@ -90,5 +90,6 @@ export class KnowledgeBasePage {
     this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
   }
 
-  protected readonly ChildDisplay = ChildDisplay;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  protected readonly ChildDisplay: ChildDisplay = ChildDisplay;
 }
