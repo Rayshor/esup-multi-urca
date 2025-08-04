@@ -2,8 +2,7 @@
  * Copyright ou © ou Copr. Université de Lorraine, (2022)
  *
  * Direction du Numérique de l'Université de Lorraine - SIED
- *  (dn-mobile-dev@univ-lorraine.fr)
- * JNESIS (contact@jnesis.com)
+ * (dn-mobile-dev@univ-lorraine.fr)
  *
  * Ce logiciel est un programme informatique servant à rendre accessible
  * sur mobile divers services universitaires aux étudiants et aux personnels
@@ -36,41 +35,18 @@
  * pris connaissance de la licence CeCILL 2.1, et que vous en avez accepté les
  * termes.
  */
+import { z } from 'zod';
+import { IdSchema } from '@common/validation/schemas/base-type.schema';
+import { KnowledgeBaseTranslationsSchema } from '@common/validation/schemas/translations.schema';
 
-import { CACHE_MANAGER } from '@nestjs/cache-manager';
-import { Controller, Inject } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { MessagePattern } from '@nestjs/microservices';
-import { Cache } from 'cache-manager';
-import { firstValueFrom } from 'rxjs';
-import { KnowledgeBaseDto } from './knowledge-base.dto';
-import { KnowledgeBaseService } from './knowledge-base.service';
-
-@Controller()
-export class KnowledgeBaseController {
-  constructor(
-    private readonly knowledgeBaseService: KnowledgeBaseService,
-    private readonly configService: ConfigService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
-  ) {}
-
-  @MessagePattern({ cmd: 'knowledgeBase' })
-  async getKnowledgeBase(): Promise<KnowledgeBaseDto[]> {
-    const cacheKey = `knowledge-base`;
-    const cachedKnowledgeBase =
-      await this.cacheManager.get<KnowledgeBaseDto[]>(cacheKey);
-
-    if (cachedKnowledgeBase !== undefined) {
-      return cachedKnowledgeBase;
-    }
-
-    const knowledgeBase = await firstValueFrom(
-      this.knowledgeBaseService.getKnowledgeBase(),
-    );
-
-    const ttl = this.configService.get<number>('cacheTtl') || 300;
-    await this.cacheManager.set(cacheKey, knowledgeBase, ttl);
-
-    return knowledgeBase;
-  }
-}
+export const KnowledgeBaseSchema = z.object({
+  id: IdSchema,
+  type: z.enum(['content', 'internal_link', 'external_link']),
+  childDisplay: z.enum(['card', 'list']),
+  link: z.string().min(1, 'Information link cannot be empty string').nullable(),
+  position: z.number().int().default(0),
+  translations: z
+    .array(KnowledgeBaseTranslationsSchema)
+    .min(1, 'At least one translation is required for Features'),
+  parentId: z.string().min(1, 'ID must be a non-empty string').nullable(),
+});

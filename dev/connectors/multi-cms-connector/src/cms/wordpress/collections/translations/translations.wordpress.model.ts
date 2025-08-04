@@ -113,3 +113,12 @@ export class WidgetsTranslationsWordpress extends BaseTranslationsWordpress {
   @Field()
   widgetTitle: string;
 }
+
+@ObjectType()
+export class KnowledgeBaseTranslationsWordpress extends BaseTranslationsWordpress {
+  @Field()
+  informationContent: string;
+
+  @Field()
+  informationTitle: string;
+}

@@ -2,8 +2,7 @@
  * Copyright ou © ou Copr. Université de Lorraine, (2022)
  *
  * Direction du Numérique de l'Université de Lorraine - SIED
- *  (dn-mobile-dev@univ-lorraine.fr)
- * JNESIS (contact@jnesis.com)
+ * (dn-mobile-dev@univ-lorraine.fr)
  *
  * Ce logiciel est un programme informatique servant à rendre accessible
  * sur mobile divers services universitaires aux étudiants et aux personnels
@@ -37,40 +36,13 @@
  * termes.
  */
 
-import { CACHE_MANAGER } from '@nestjs/cache-manager';
-import { Controller, Inject } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { MessagePattern } from '@nestjs/microservices';
-import { Cache } from 'cache-manager';
-import { firstValueFrom } from 'rxjs';
-import { KnowledgeBaseDto } from './knowledge-base.dto';
-import { KnowledgeBaseService } from './knowledge-base.service';
+import { forwardRef, Module } from '@nestjs/common';
+import { KnowledgeBaseWordpressResolver } from './knowledge-base.wordpress.resolver';
+import { KnowledgeBaseWordpressService } from './knowledge-base.wordpress.service';
+import { WordpressModule } from '@wordpress/wordpress.module';
 
-@Controller()
-export class KnowledgeBaseController {
-  constructor(
-    private readonly knowledgeBaseService: KnowledgeBaseService,
-    private readonly configService: ConfigService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
-  ) {}
-
-  @MessagePattern({ cmd: 'knowledgeBase' })
-  async getKnowledgeBase(): Promise<KnowledgeBaseDto[]> {
-    const cacheKey = `knowledge-base`;
-    const cachedKnowledgeBase =
-      await this.cacheManager.get<KnowledgeBaseDto[]>(cacheKey);
-
-    if (cachedKnowledgeBase !== undefined) {
-      return cachedKnowledgeBase;
-    }
-
-    const knowledgeBase = await firstValueFrom(
-      this.knowledgeBaseService.getKnowledgeBase(),
-    );
-
-    const ttl = this.configService.get<number>('cacheTtl') || 300;
-    await this.cacheManager.set(cacheKey, knowledgeBase, ttl);
-
-    return knowledgeBase;
-  }
-}
+@Module({
+  imports: [forwardRef(() => WordpressModule)],
+  providers: [KnowledgeBaseWordpressResolver, KnowledgeBaseWordpressService],
+})
+export class KnowledgeBaseWordpressModule {}

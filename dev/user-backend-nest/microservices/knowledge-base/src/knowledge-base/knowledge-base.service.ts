@@ -38,47 +38,85 @@
  */
 
 import { Injectable, Logger } from '@nestjs/common';
-import { KnowledgeBaseProviderApi } from '../config/configuration.interface';
+import { CmsApi } from '../config/configuration.interface';
 import { ConfigService } from '@nestjs/config';
 import { RpcException } from '@nestjs/microservices';
 import { HttpService } from '@nestjs/axios';
 import { catchError, map, Observable } from 'rxjs';
-import { KnowledgeBaseItem, KnowledgeBaseQueryDto } from './knowledge-base.dto';
+import {
+  KnowledgeBaseDto,
+  KnowledgeBaseGraphQLResponse,
+} from './knowledge-base.dto';
 
 @Injectable()
 export class KnowledgeBaseService {
   private readonly logger = new Logger(KnowledgeBaseService.name);
-  private knowledgeBaseProviderApiConfig: KnowledgeBaseProviderApi;
+  private cmsApiConfig: CmsApi;
 
   constructor(
     private readonly configService: ConfigService,
     private readonly httpService: HttpService,
   ) {
-    this.knowledgeBaseProviderApiConfig =
-      this.configService.get<KnowledgeBaseProviderApi>(
-        'knowledgeBaseProviderApi',
-      );
+    this.cmsApiConfig = this.configService.get<CmsApi>('cmsApi');
   }
 
-  public getKnowledgeBase(
-    query: KnowledgeBaseQueryDto,
-  ): Observable<KnowledgeBaseItem[]> {
-    this.logger.log('*** get knowledge base data');
+  getKnowledgeBase(): Observable<KnowledgeBaseDto[]> {
+    this.logger.log('*** get knowledge base');
+    const url = `${this.cmsApiConfig.apiUrl}/graphql`;
+
+    const graphqlQuery = {
+      query: `
+        query {
+          knowledgeBase {
+            id
+            type
+            link
+            childDisplay
+            position
+            translations {
+                languagesCode
+                content
+                title
+            },
+            parentId
+          }
+        }
+      `,
+    };
+
+    const requestConfig = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.cmsApiConfig.bearerToken}`,
+      },
+    };
+
     return this.httpService
-      .get<KnowledgeBaseItem[]>(this.knowledgeBaseProviderApiConfig.apiUrl, {
-        headers: {
-          Accept: 'application/json',
-          Authorization: `Bearer ${this.knowledgeBaseProviderApiConfig.bearerToken}`,
-        },
-      })
+      .post<
+        KnowledgeBaseGraphQLResponse<KnowledgeBaseDto[]>
+      >(url, graphqlQuery, requestConfig)
       .pipe(
-        catchError((err) => {
-          const errorMessage = `Unable to get knowledge base data`;
+        catchError((err: any) => {
+          const errorMessage = 'Unable to get knowledge base data from CMS';
           this.logger.error(errorMessage, err);
           throw new RpcException(errorMessage);
         }),
         map((res) => {
-          return res.data;
+          // Vérification des erreurs dans la réponse GraphQL
+          if (res.data.errors && res.data.errors.length > 0) {
+            const errorMessage = `GraphQL error: ${res.data.errors[0].message}`;
+            this.logger.error(errorMessage);
+            throw new RpcException(errorMessage);
+          }
+
+          const knowledgeBase = res.data.data.knowledgeBase;
+
+          // Tri par position
+          return knowledgeBase.sort((a, b) => {
+            const positionA = a.position ?? Number.MAX_SAFE_INTEGER;
+            const positionB = b.position ?? Number.MAX_SAFE_INTEGER;
+            return positionA - positionB;
+          });
         }),
       );
   }

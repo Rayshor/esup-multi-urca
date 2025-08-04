@@ -44,10 +44,9 @@ import {Observable} from "rxjs";
 import {ActivatedRoute, Router} from "@angular/router";
 import {NetworkService} from "@multi/shared";
 import {
-  KnowledgeBaseItem,
-  knowledgeBases$,
-  getKnowledgeBaseByParentId,
-  PageType
+  TranslatedKnowledgeBaseItem,
+  KnowledgeBaseRepository,
+  Type
 } from "./knowledge-base.repository";
 import {Browser} from "@capacitor/browser";
 
@@ -60,12 +59,13 @@ export class KnowledgeBasePage {
 
   public isLoading = false;
   public parentPageId: number;
-  public knowledgeBases$: Observable<KnowledgeBaseItem[]>;
+  public knowledgeBases$: Observable<TranslatedKnowledgeBaseItem[]>;
   public knowledgeBasesIsEmpty$: Observable<boolean>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private knowledgeBaseService: KnowledgeBaseService,
+    private knowledgeBasesRepository: KnowledgeBaseRepository,
     private router: Router,
     private networkService: NetworkService
   ) {
@@ -83,21 +83,21 @@ export class KnowledgeBasePage {
         .subscribe();
     }
 
-    this.knowledgeBases$ = this.parentPageId ? getKnowledgeBaseByParentId(this.parentPageId) : knowledgeBases$;
+    this.knowledgeBases$ = this.parentPageId ? this.knowledgeBasesRepository.getKnowledgeBaseByParentId(this.parentPageId) : this.knowledgeBasesRepository.translatedKnowledgeBases$;
   }
 
   ionViewWillEnter() {
     this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
   }
 
-  protected openItemLink(item: KnowledgeBaseItem) {
-    if (item.pageType === PageType.INTERNAL_LINK) {
+  protected openItemLink(item: TranslatedKnowledgeBaseItem) {
+    if (item.type === Type.INTERNAL_LINK) {
       this.router.navigateByUrl(item.link)
     }
-    if (item.pageType === PageType.EXTERNAL_LINK) {
+    if (item.type === Type.EXTERNAL_LINK) {
       Browser.open({url: item.link});
     }
-    if (item.pageType === PageType.CONTENT) {
+    if (item.type === Type.CONTENT) {
       this.router.navigateByUrl(`knowledge-base/${item.id}`)
     }
   }

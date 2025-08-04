@@ -109,3 +109,12 @@ export class WidgetsTranslations extends BaseTranslations {
   @Field({ nullable: true })
   title: string | null;
 }
+
+@ObjectType()
+export class KnowledgeBaseTranslations extends BaseTranslations {
+  @Field({ nullable: true })
+  content: string | null;
+
+  @Field()
+  title: string;
+}

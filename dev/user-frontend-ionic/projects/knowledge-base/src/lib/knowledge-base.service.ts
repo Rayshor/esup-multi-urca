@@ -42,7 +42,7 @@ import { Injectable } from '@angular/core';
 import { MultiTenantService } from '@multi/shared';
 import { Observable } from 'rxjs';
 import {tap} from "rxjs/operators";
-import { setKnowledgeBases} from "./knowledge-base.repository";
+import {KnowledgeBaseRepository} from "./knowledge-base.repository";
 import {KnowledgeBaseItem} from "./knowledge-base.repository";
 
 @Injectable({
@@ -52,6 +52,7 @@ export class KnowledgeBaseService {
 
   constructor(
     private multiTenantService: MultiTenantService,
+    private knowledgeBaseRepository: KnowledgeBaseRepository,
     private http: HttpClient,
   ) {}
 
@@ -59,7 +60,7 @@ export class KnowledgeBaseService {
     const url = `${this.multiTenantService.getApiEndpoint()}/knowledge-base`;
 
     return this.http.get<KnowledgeBaseItem[]>(url).pipe(
-      tap(knowledgeBases => setKnowledgeBases(knowledgeBases)),
+      tap(knowledgeBases => this.knowledgeBaseRepository.setKnowledgeBases(knowledgeBases)),
     );
   }
 
