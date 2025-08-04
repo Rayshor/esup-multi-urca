@@ -49,4 +49,8 @@ export const KnowledgeBaseSchema = z.object({
     .array(KnowledgeBaseTranslationsSchema)
     .min(1, 'At least one translation is required for Features'),
   parentId: z.string().min(1, 'ID must be a non-empty string').nullable(),
+  coverImage: z
+    .string()
+    .min(1, 'Information cover image cannot be empty string')
+    .nullable(),
 });

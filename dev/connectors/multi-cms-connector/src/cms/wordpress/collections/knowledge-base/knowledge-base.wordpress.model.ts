@@ -38,6 +38,7 @@
 
 import { Field, ObjectType } from '@nestjs/graphql';
 import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/translations/translations.wordpress.model';
+import { ImageWordpress } from '@wordpress/collections/system/image.wordpress.model';
 
 @ObjectType()
 class KnowledgeBaseParentWordpress {
@@ -49,6 +50,12 @@ class KnowledgeBaseParentWordpress {
 class KnowledgeBaseParentNodeWordpress {
   @Field(() => KnowledgeBaseParentWordpress)
   node: KnowledgeBaseParentWordpress;
+}
+
+@ObjectType()
+class KnowledgeBaseImageNodeWordpress {
+  @Field(() => ImageWordpress)
+  node: ImageWordpress;
 }
 
 @ObjectType()
@@ -77,6 +84,9 @@ export class KnowledgeBaseWordpress {
   @Field(() => [KnowledgeBaseTranslationsWordpress])
   translations: KnowledgeBaseTranslationsWordpress[];
 
-  @Field(() => KnowledgeBaseParentNodeWordpress)
-  informationParent: KnowledgeBaseParentNodeWordpress;
+  @Field(() => KnowledgeBaseParentNodeWordpress, { nullable: true })
+  informationParent: KnowledgeBaseParentNodeWordpress | null;
+
+  @Field(() => KnowledgeBaseImageNodeWordpress, { nullable: true })
+  informationCoverImage: KnowledgeBaseImageNodeWordpress | null;
 }

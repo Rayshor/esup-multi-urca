@@ -68,6 +68,7 @@ export interface KnowledgeBaseItem {
   address?:string,
   childDisplay?:ChildDisplay,
   translations?: Translation[],
+  coverImage?: string;
 }
 
 export interface TranslatedKnowledgeBaseItem {
@@ -81,6 +82,7 @@ export interface TranslatedKnowledgeBaseItem {
   phone?:string,
   address?:string,
   childDisplay?:ChildDisplay,
+  coverImage?: string;
 }
 
 interface Translation {

@@ -83,6 +83,9 @@ export class KnowledgeBaseWordpressService {
       translations,
       parentId:
         knowledgeBase.informationParent?.node?.databaseId?.toString() || null,
+      coverImage: normalizeEmptyStringToNull(
+        knowledgeBase.informationCoverImage?.node.mediaItemUrl.toString(),
+      ),
     };
   }
 
@@ -98,6 +101,14 @@ export class KnowledgeBaseWordpressService {
             informationChildDisplay
             informationLink
             informationPosition
+            informationCoverImage {
+             node {
+                databaseId
+                sourceUrl
+                mediaItemUrl
+                altText
+              }
+            } 
             informationParent {
               node {
                 databaseId

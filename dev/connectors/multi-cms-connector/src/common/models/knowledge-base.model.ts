@@ -39,7 +39,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { KnowledgeBaseTranslations } from '@common/models/translations.model';
 
-// Modèle pour les pages statiques attendu par le backend de Multi
 @ObjectType()
 export class KnowledgeBase {
   @Field()
@@ -62,4 +61,7 @@ export class KnowledgeBase {
 
   @Field({ nullable: true })
   parentId: string;
+
+  @Field({ nullable: true })
+  coverImage: string;
 }

@@ -89,12 +89,12 @@ export interface KnowledgeBaseItem {
   id: number;
   pageType: PageType;
   parentId?: number;
+  coverImage?: string;
   content?: string;
   title?: string;
   link?: string;
   mail?: string;
   phone?: string;
   address?: string;
-  childrens?: KnowledgeBaseItem[];
   childDisplay?: ChildDisplay;
 }

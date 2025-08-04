@@ -78,7 +78,8 @@ export class KnowledgeBaseService {
                 content
                 title
             },
-            parentId
+            parentId,
+            coverImage
           }
         }
       `,
