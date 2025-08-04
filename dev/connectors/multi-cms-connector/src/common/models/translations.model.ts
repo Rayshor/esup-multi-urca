@@ -117,4 +117,7 @@ export class KnowledgeBaseTranslations extends BaseTranslations {
 
   @Field()
   title: string;
+
+  @Field(() => [String], { nullable: true })
+  searchKeywords: string[] | null;
 }

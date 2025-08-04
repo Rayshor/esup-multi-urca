@@ -69,6 +69,7 @@ export interface KnowledgeBaseTranslation {
   languagesCode: string;
   title: string;
   content: string;
+  searchKeywords?: string[];
 }
 
 export interface KnowledgeBaseGraphQLResponse<T> {
@@ -83,18 +84,4 @@ export interface KnowledgeBaseGraphQLResponse<T> {
     }>;
     path: string[];
   }>;
-}
-
-export interface KnowledgeBaseItem {
-  id: number;
-  pageType: PageType;
-  parentId?: number;
-  coverImage?: string;
-  content?: string;
-  title?: string;
-  link?: string;
-  mail?: string;
-  phone?: string;
-  address?: string;
-  childDisplay?: ChildDisplay;
 }

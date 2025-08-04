@@ -121,4 +121,7 @@ export class KnowledgeBaseTranslationsWordpress extends BaseTranslationsWordpres
 
   @Field()
   informationTitle: string;
+
+  @Field()
+  informationSearchKeywords: string;
 }

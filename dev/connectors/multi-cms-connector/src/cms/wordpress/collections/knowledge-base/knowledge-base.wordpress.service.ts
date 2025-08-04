@@ -61,6 +61,13 @@ export class KnowledgeBaseWordpressService {
       languagesCode: FRENCH_CODE.toLowerCase(),
       title: knowledgeBase.informationTitle,
       content: knowledgeBase.informationContent,
+      searchKeywords:
+        knowledgeBase.informationSearchKeywords &&
+        knowledgeBase.informationSearchKeywords?.trim() !== ''
+          ? knowledgeBase.informationSearchKeywords
+              .split(',')
+              .filter((keyword) => keyword.trim() !== '')
+          : null,
     };
 
     const translations: KnowledgeBaseTranslations[] = [
@@ -70,6 +77,13 @@ export class KnowledgeBaseWordpressService {
           languagesCode: translation.language.code.toLowerCase(),
           title: translation.informationTitle,
           content: translation.informationContent,
+          searchKeywords:
+            translation.informationSearchKeywords &&
+            translation.informationSearchKeywords?.trim() !== ''
+              ? translation.informationSearchKeywords
+                  .split(',')
+                  .filter((keyword) => keyword.trim() !== '')
+              : null,
         }),
       ) || []),
     ];
@@ -101,6 +115,7 @@ export class KnowledgeBaseWordpressService {
             informationChildDisplay
             informationLink
             informationPosition
+            informationSearchKeywords
             informationCoverImage {
              node {
                 databaseId
@@ -125,6 +140,7 @@ export class KnowledgeBaseWordpressService {
               }
               informationTitle
               informationContent
+              informationSearchKeywords
             }
           }
         }

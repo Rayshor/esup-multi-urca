@@ -75,6 +75,7 @@ export class KnowledgeBaseService {
             position
             translations {
                 languagesCode
+                searchKeywords
                 content
                 title
             },

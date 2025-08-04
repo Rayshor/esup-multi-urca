@@ -83,12 +83,14 @@ export interface TranslatedKnowledgeBaseItem {
   address?:string,
   childDisplay?:ChildDisplay,
   coverImage?: string;
+  searchKeywords?: string[];
 }
 
 interface Translation {
   languagesCode: string;
   title: string;
   content: string;
+  searchKeywords?: string[];
 }
 
 const STORE_NAME = 'knowledgeBase';
@@ -125,6 +127,7 @@ export class KnowledgeBaseRepository {
         type: knowledgeBase.type,
         link: knowledgeBase.link,
         childDisplay: knowledgeBase.childDisplay,
+        searchKeywords: translation.searchKeywords,
       };
     }))
   );

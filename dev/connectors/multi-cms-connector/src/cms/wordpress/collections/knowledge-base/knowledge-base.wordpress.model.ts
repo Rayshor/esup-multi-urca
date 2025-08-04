@@ -70,6 +70,9 @@ export class KnowledgeBaseWordpress {
   informationContent: string;
 
   @Field()
+  informationSearchKeywords: string;
+
+  @Field()
   informationType: 'content' | 'internal_link' | 'external_link';
 
   @Field()
