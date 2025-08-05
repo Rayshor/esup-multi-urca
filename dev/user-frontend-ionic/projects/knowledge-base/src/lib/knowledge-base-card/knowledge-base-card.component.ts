@@ -37,57 +37,64 @@
  * termes.
  */
 
-import {Component, OnInit} from '@angular/core';
-import { map, take } from 'rxjs/operators';
-import { KnowledgeBaseService } from './knowledge-base.service';
-import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NetworkService } from '@multi/shared';
-import {
-  KnowledgeBaseItem,
-  knowledgeBases$,
-  getKnowledgeBaseByParentId, getKnowledgeBaseItemById, ChildDisplay
-} from './knowledge-base.repository';
+import { Component, Input } from '@angular/core';
+import { ChildDisplay, KnowledgeBaseItem, PageType } from '../knowledge-base.repository';
+import { Browser } from '@capacitor/browser';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-knowledge-base',
-  templateUrl: './knowledge-base.page.html',
-  styleUrls: ['../../../../src/theme/app-theme/styles/knowledge-base/knowledge-base.page.scss'],
+  selector: 'app-knowledge-base-card',
+  templateUrl: './knowledge-base-card.component.html',
+  styleUrls: ['../../../../../src/theme/app-theme/styles/knowledge-base/knowledge-base-card.component.scss']
 })
-export class KnowledgeBasePage implements OnInit {
 
-  public isLoading = false;
-  public parentPageId: number;
-  public knowledgeBases$: Observable<KnowledgeBaseItem[]>;
-  public knowledgeBasesIsEmpty$: Observable<boolean>;
-  public knowledgeBaseParentItem$: Observable<KnowledgeBaseItem>;
-
+export class KnowledgeBaseCardComponent {
+  @Input() item: KnowledgeBaseItem;
+  @Input() displayMode: ChildDisplay;
+  public isExpanded: boolean = false;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private knowledgeBaseService: KnowledgeBaseService,
     private router: Router,
-    private networkService: NetworkService
   ) {}
 
-  async ngOnInit() {
-    if (!(await this.networkService.getConnectionStatus()).connected) {
-      return;
-    }
+  openItemLink(item: KnowledgeBaseItem) {
+    switch (item.pageType) {
+      case PageType.internalLink:
+        this.router.navigateByUrl(item.link);
+        break;
 
-    this.parentPageId = Number.parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
-    if (!this.parentPageId) {
-      this.knowledgeBaseService.loadAndStoreKnowledgeBase()
-        .pipe(take(1))
-        .subscribe();
-    }
+      case PageType.externalLink:
+        Browser.open({ url: item.link });
+        break;
 
-    this.knowledgeBases$ = this.parentPageId ? getKnowledgeBaseByParentId(this.parentPageId) : knowledgeBases$;
-    this.knowledgeBaseParentItem$ = getKnowledgeBaseItemById(this.parentPageId);
+      case PageType.content:
+        this.router.navigateByUrl(`knowledge-base/${item.id}`);
+        break;
+    }
   }
 
-  ionViewWillEnter() {
-    this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
+  getButtonIcon(type: PageType) {
+    switch (type) {
+      case PageType.externalLink: return 'open-outline';
+      case PageType.internalLink: return 'arrow-forward';
+      case PageType.content: return 'arrow-forward';
+    }
+  }
+
+  toggleDetails() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  handlePhone(phone: string) {
+    window.open(`tel:${phone}`);
+  }
+
+  handleEmail(email: string) {
+    window.open(`mailto:${email}`);
+  }
+
+  handleLink(link: string) {
+    Browser.open({url: link});
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention

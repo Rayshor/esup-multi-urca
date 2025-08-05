@@ -37,23 +37,23 @@
  * termes.
  */
 
-import {createStore} from '@ngneat/elf';
+import { createStore } from '@ngneat/elf';
 import {
   persistState
 } from '@ngneat/elf-persist-state';
 import { localForageStore } from '@multi/shared';
-import {selectManyByPredicate, setEntities, withEntities} from "@ngneat/elf-entities";
-import {Observable} from "rxjs";
+import { selectEntityByPredicate, selectManyByPredicate, setEntities, withEntities, selectAllEntities } from "@ngneat/elf-entities";
+import { map, Observable } from 'rxjs';
 
 export enum ChildDisplay {
-  CARD = 'card',
-  LIST = 'list',
+  card = 'card',
+  list = 'list',
 }
 
 export enum PageType {
-  CONTENT = 'content',
-  EXTERNAL_LINK = 'external_link',
-  INTERNAL_LINK = 'internal_link',
+  content = 'content',
+  externalLink = 'external_link',
+  internalLink = 'internal_link',
 }
 
 export interface KnowledgeBaseItem{
@@ -61,12 +61,13 @@ export interface KnowledgeBaseItem{
   pageType:PageType
   parentId?:number
   content?:string
-  title?:string,
+  title?:string
   link?:string
-  mail?:string,
-  phone?:string,
+  email?:string
+  phone?:string
   address?:string
   childDisplay?:ChildDisplay
+  isLeaf?:boolean
 }
 const STORE_NAME = 'knowledgeBase';
 
@@ -86,5 +87,20 @@ export const setKnowledgeBases = (knowledgeBaseItems: KnowledgeBaseItem[]) => {
 
 export const knowledgeBases$ = store.pipe(selectManyByPredicate((item) => !item.parentId));
 
-export const getKnowledgeBaseByParentId = (parentId: number) : Observable<KnowledgeBaseItem[]>  =>
-  store.pipe(selectManyByPredicate((item) => item.parentId === parentId));
+export const getKnowledgeBaseByParentId = (parentId: number): Observable<KnowledgeBaseItem[]> =>
+  store.pipe(
+    selectAllEntities(),
+    map(allItems => {
+      const children = allItems.filter(item => item.parentId === parentId);
+      const parentIds = new Set(allItems.map(item => item.parentId).filter(id => id !== null));
+      return children.map(child => ({
+        ...child,
+        isLeaf: !parentIds.has(child.id)
+      }));
+    })
+  );
+
+export const getKnowledgeBaseItemById = (id: number): Observable<KnowledgeBaseItem> =>
+  store.pipe(
+    selectEntityByPredicate((item) => item.id === id)
+  );

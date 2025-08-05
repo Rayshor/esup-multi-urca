@@ -37,59 +37,47 @@
  * termes.
  */
 
-import {Component, OnInit} from '@angular/core';
-import { map, take } from 'rxjs/operators';
-import { KnowledgeBaseService } from './knowledge-base.service';
-import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NetworkService } from '@multi/shared';
-import {
-  KnowledgeBaseItem,
-  knowledgeBases$,
-  getKnowledgeBaseByParentId, getKnowledgeBaseItemById, ChildDisplay
-} from './knowledge-base.repository';
+// Karma configuration file, see link for more information
+// https://karma-runner.github.io/1.0/config/configuration-file.html
 
-@Component({
-  selector: 'app-knowledge-base',
-  templateUrl: './knowledge-base.page.html',
-  styleUrls: ['../../../../src/theme/app-theme/styles/knowledge-base/knowledge-base.page.scss'],
-})
-export class KnowledgeBasePage implements OnInit {
-
-  public isLoading = false;
-  public parentPageId: number;
-  public knowledgeBases$: Observable<KnowledgeBaseItem[]>;
-  public knowledgeBasesIsEmpty$: Observable<boolean>;
-  public knowledgeBaseParentItem$: Observable<KnowledgeBaseItem>;
-
-
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private knowledgeBaseService: KnowledgeBaseService,
-    private router: Router,
-    private networkService: NetworkService
-  ) {}
-
-  async ngOnInit() {
-    if (!(await this.networkService.getConnectionStatus()).connected) {
-      return;
-    }
-
-    this.parentPageId = Number.parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
-    if (!this.parentPageId) {
-      this.knowledgeBaseService.loadAndStoreKnowledgeBase()
-        .pipe(take(1))
-        .subscribe();
-    }
-
-    this.knowledgeBases$ = this.parentPageId ? getKnowledgeBaseByParentId(this.parentPageId) : knowledgeBases$;
-    this.knowledgeBaseParentItem$ = getKnowledgeBaseItemById(this.parentPageId);
-  }
-
-  ionViewWillEnter() {
-    this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
-  }
-
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  protected readonly ChildDisplay = ChildDisplay;
-}
+module.exports = function (config) {
+  config.set({
+    basePath: '',
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-coverage'),
+      require('@angular-devkit/build-angular/plugins/karma')
+    ],
+    client: {
+      jasmine: {
+        // you can add configuration options for Jasmine here
+        // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
+        // for example, you can disable the random execution with `random: false`
+        // or set a specific seed with `seed: 4321`
+      },
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
+    },
+    jasmineHtmlReporter: {
+      suppressAll: true // removes the duplicated traces
+    },
+    coverageReporter: {
+      dir: require('path').join(__dirname, '../../coverage/features'),
+      subdir: '.',
+      reporters: [
+        { type: 'html' },
+        { type: 'text-summary' }
+      ]
+    },
+    reporters: ['progress', 'kjhtml'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+    restartOnFileChange: true
+  });
+};
