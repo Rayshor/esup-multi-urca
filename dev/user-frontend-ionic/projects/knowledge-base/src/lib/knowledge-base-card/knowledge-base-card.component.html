@@ -49,17 +49,17 @@
         </ion-card-title>
       </ion-col>
       <ion-col size="auto" class="button-col">
-        <ion-button *ngIf="displayMode !== ChildDisplay.CARD && !item.isLeaf" fill="solid" shape="round" (click)="openItemLink(item)">
+        <ion-button *ngIf="displayMode !== ChildDisplay.card && !item.isLeaf" fill="solid" shape="round" (click)="openItemLink(item)">
           <ion-icon [name]="getButtonIcon(item.pageType)" slot="icon-only" size="large"></ion-icon>
         </ion-button>
-        <ion-button *ngIf="displayMode === ChildDisplay.CARD" shape="round"  fill="solid" (click)="toggleDetails()">
+        <ion-button *ngIf="displayMode === ChildDisplay.card" shape="round"  fill="solid" (click)="toggleDetails()">
           <ion-icon [name]="isExpanded ? 'chevron-up-outline' : 'chevron-down-outline'" slot="icon-only" size="large"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ng-container *ngIf="displayMode === ChildDisplay.CARD && isExpanded">
+  <ng-container *ngIf="displayMode === ChildDisplay.card && isExpanded">
     <div class="separator"></div>
     <ion-card-content>
       <ion-item lines="none">

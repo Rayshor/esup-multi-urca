@@ -58,22 +58,26 @@ export class KnowledgeBaseCardComponent {
   ) {}
 
   openItemLink(item: KnowledgeBaseItem) {
-    if (item.pageType === PageType.INTERNAL_LINK) {
-      this.router.navigateByUrl(item.link)
-    }
-    if (item.pageType === PageType.EXTERNAL_LINK) {
-      Browser.open({url: item.link});
-    }
-    if (item.pageType === PageType.CONTENT) {
-      this.router.navigateByUrl(`knowledge-base/${item.id}`)
+    switch (item.pageType) {
+      case PageType.internalLink:
+        this.router.navigateByUrl(item.link);
+        break;
+
+      case PageType.externalLink:
+        Browser.open({ url: item.link });
+        break;
+
+      case PageType.content:
+        this.router.navigateByUrl(`knowledge-base/${item.id}`);
+        break;
     }
   }
 
   getButtonIcon(type: PageType) {
     switch (type) {
-      case PageType.EXTERNAL_LINK: return 'open-outline';
-      case PageType.INTERNAL_LINK: return 'arrow-forward';
-      case PageType.CONTENT: return 'arrow-forward';
+      case PageType.externalLink: return 'open-outline';
+      case PageType.internalLink: return 'arrow-forward';
+      case PageType.content: return 'arrow-forward';
     }
   }
 
@@ -93,5 +97,6 @@ export class KnowledgeBaseCardComponent {
     Browser.open({url: link});
   }
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   protected readonly ChildDisplay = ChildDisplay;
 }

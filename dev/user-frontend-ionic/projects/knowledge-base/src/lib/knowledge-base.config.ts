@@ -39,12 +39,12 @@
 
 import { InjectionToken } from '@angular/core';
 
-interface knowledgeBaseWidgetConfig {
+interface KnowledgeBaseWidgetConfig {
 
 }
 
 export interface KnowledgeBaseModuleConfig {
-    latestNewsWidget: knowledgeBaseWidgetConfig;
+    latestNewsWidget: KnowledgeBaseWidgetConfig;
     display: 'vertically' | 'horizontally';
 }
 

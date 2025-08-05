@@ -46,14 +46,14 @@ import { selectEntityByPredicate, selectManyByPredicate, setEntities, withEntiti
 import { map, Observable } from 'rxjs';
 
 export enum ChildDisplay {
-  CARD = 'card',
-  LIST = 'list',
+  card = 'card',
+  list = 'list',
 }
 
 export enum PageType {
-  CONTENT = 'content',
-  EXTERNAL_LINK = 'external_link',
-  INTERNAL_LINK = 'internal_link',
+  content = 'content',
+  externalLink = 'external_link',
+  internalLink = 'internal_link',
 }
 
 export interface KnowledgeBaseItem{

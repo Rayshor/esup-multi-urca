@@ -48,7 +48,7 @@
   </ng-container>
 
   <ng-template #noParent>
-    <ion-searchbar debounce="300" (ionInput)="searchKnowledgeBase($event)" placeholder="Rechercher une page"></ion-searchbar>
+    <ion-searchbar debounce="300" (ionInput)="searchKnowledgeBase($event)" placeholder="{{ 'KNOWLEDGE-BASE.SEARCH_PAGE' | translate }}"></ion-searchbar>
   </ng-template>
 
   <ng-container *ngIf="(knowledgeBases$ | async) as knowledgeBases">
@@ -56,11 +56,10 @@
       <app-knowledge-base-card
         *ngFor="let item of knowledgeBases"
         [item]="item"
-        [displayMode]="(knowledgeBaseParentItem$ | async)?.childDisplay ?? (item.pageType===PageType.CONTENT && !item.childDisplay ? ChildDisplay.CARD : ChildDisplay.LIST)"
+        [displayMode]="(knowledgeBaseParentItem$ | async)?.childDisplay ?? (item.pageType===PageType.content && !item.childDisplay ? ChildDisplay.card : ChildDisplay.list)"
       ></app-knowledge-base-card>
     </ion-list>
   </ng-container>
-
 
   <ng-template #noData>
     <ng-container *ngIf="(knowledgeBases$ | async).length === 0 && !isLoading">
