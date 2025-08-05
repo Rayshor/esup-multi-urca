@@ -48,7 +48,16 @@
   </ng-container>
 
   <ng-template #noParent>
-    <ion-searchbar debounce="300" (ionInput)="searchKnowledgeBase($event)" placeholder="{{ 'KNOWLEDGE-BASE.SEARCH_PAGE' | translate }}"></ion-searchbar>
+    <ion-row class="searchbar-row">
+      <ion-searchbar
+        debounce="300"
+        show-clear-button="focus"
+        [placeholder]="'KNOWLEDGE-BASE.SEARCH_PAGE' | translate"
+        [attr.aria-label]="'KNOWLEDGE-BASE.SEARCH_PAGE' | translate"
+        (ionInput)="searchKnowledgeBase($event)"
+        class="safe-area-margin-lr"
+      ></ion-searchbar>
+    </ion-row>
   </ng-template>
 
   <ng-container *ngIf="(knowledgeBases$ | async) as knowledgeBases">

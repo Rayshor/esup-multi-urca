@@ -38,7 +38,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import { take } from 'rxjs/operators';
+import {take, tap} from 'rxjs/operators';
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -73,11 +73,15 @@ export class KnowledgeBasePage implements OnInit {
     if (!(await this.networkService.getConnectionStatus()).connected) {
       return;
     }
-
     this.parentPageId = Number.parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
     if (!this.parentPageId) {
+      this.isLoading = true;
       this.knowledgeBaseService.loadAndStoreKnowledgeBase()
-        .pipe(take(1))
+        .pipe(
+          take(1),
+          tap(() => {
+          this.isLoading = false;
+        }))
         .subscribe();
     }
 

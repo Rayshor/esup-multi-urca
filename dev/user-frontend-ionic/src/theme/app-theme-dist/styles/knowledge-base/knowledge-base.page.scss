@@ -40,3 +40,21 @@
 .parent-content {
   padding: 20px;
 }
+
+ion-searchbar {
+  --background: var(--app-color-component-background-primary);
+  --box-shadow: none !important;
+  --border-radius: 0.15rem !important;
+}
+
+.searchbar-row {
+  background: var(--ion-color-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+}
+
+ion-list {
+  background: transparent;
+}

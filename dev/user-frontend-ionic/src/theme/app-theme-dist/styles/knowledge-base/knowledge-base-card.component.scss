@@ -106,10 +106,6 @@ ion-grid {
     display: flex;
     align-items: flex-end;
 
-    ion-button {
-      --background: #383a78; //Use theme variable instead
-    }
-
     ion-icon {
       height: 25px
     }
@@ -118,7 +114,7 @@ ion-grid {
 
 .separator {
   height: 1px;
-  background-color: #F3F3F3; //Use theme variable instead
+  background-color: var(--app-border-color-secondary);
   margin: 16px auto;
   width: 95%;
 }
