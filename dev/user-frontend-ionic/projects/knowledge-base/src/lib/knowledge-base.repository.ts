@@ -104,3 +104,11 @@ export const getKnowledgeBaseItemById = (id: number): Observable<KnowledgeBaseIt
   store.pipe(
     selectEntityByPredicate((item) => item.id === id)
   );
+
+export const searchKnowledgeBase = (text: string): Observable<KnowledgeBaseItem[]> =>
+  store.pipe(
+    selectManyByPredicate(item =>
+      item.title.toLowerCase().includes(text) ||
+      item.content?.toLowerCase().includes(text)
+    ));
+

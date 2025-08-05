@@ -38,7 +38,7 @@
  */
 
 import { Component } from '@angular/core';
-import { map, take } from 'rxjs/operators';
+import { take } from 'rxjs/operators';
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -46,7 +46,7 @@ import { NetworkService } from '@multi/shared';
 import {
   KnowledgeBaseItem,
   knowledgeBases$,
-  getKnowledgeBaseByParentId, getKnowledgeBaseItemById, ChildDisplay
+  getKnowledgeBaseByParentId, getKnowledgeBaseItemById, ChildDisplay, searchKnowledgeBase, PageType
 } from './knowledge-base.repository';
 
 @Component({
@@ -59,8 +59,7 @@ export class KnowledgeBasePage {
   public isLoading = false;
   public parentPageId: number;
   public knowledgeBases$: Observable<KnowledgeBaseItem[]>;
-  public knowledgeBasesIsEmpty$: Observable<boolean>;
-  public knowledgeBaseParentItem$: Observable<KnowledgeBaseItem>;
+ public knowledgeBaseParentItem$: Observable<KnowledgeBaseItem>;
 
 
   constructor(
@@ -86,9 +85,16 @@ export class KnowledgeBasePage {
     this.knowledgeBaseParentItem$ = getKnowledgeBaseItemById(this.parentPageId);
   }
 
-  ionViewWillEnter() {
-    this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
+  searchKnowledgeBase(event) {
+    const query = event.target.value.toLowerCase();
+    if(!query) {
+      this.knowledgeBases$ = knowledgeBases$;
+      return;
+    }
+    this.knowledgeBases$=searchKnowledgeBase(query);
+
   }
 
   protected readonly ChildDisplay = ChildDisplay;
+  protected readonly PageType = PageType;
 }
