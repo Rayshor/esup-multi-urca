@@ -56,7 +56,7 @@
       <app-knowledge-base-card
         *ngFor="let item of knowledgeBases"
         [item]="item"
-        [displayMode]="(knowledgeBaseParentItem$ | async)?.childDisplay ?? ChildDisplay.LIST"
+        [displayMode]="(knowledgeBaseParentItem$ | async)?.childDisplay ?? ChildDisplay.list"
       ></app-knowledge-base-card>
     </ion-list>
   </ng-container>

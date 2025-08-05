@@ -37,7 +37,7 @@
  * termes.
  */
 
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { map, take } from 'rxjs/operators';
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { Observable } from 'rxjs';
