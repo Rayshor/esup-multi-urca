@@ -60,6 +60,7 @@ export interface KnowledgeBaseDto {
   mail?: string;
   phone?: string;
   address?: string;
+  email?: string;
   translations?: KnowledgeBaseTranslation[];
   childDisplay?: ChildDisplay;
   position: number;

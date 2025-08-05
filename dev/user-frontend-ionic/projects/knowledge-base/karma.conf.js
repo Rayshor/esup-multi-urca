@@ -37,46 +37,47 @@
  * termes.
  */
 
-module.exports.knowledgeBaseData = [
-    {
-        "title": "Première page vers enfant",
-        "id": 1,
-        "pageType": "content",
+// Karma configuration file, see link for more information
+// https://karma-runner.github.io/1.0/config/configuration-file.html
+
+module.exports = function (config) {
+  config.set({
+    basePath: '',
+    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    plugins: [
+      require('karma-jasmine'),
+      require('karma-chrome-launcher'),
+      require('karma-jasmine-html-reporter'),
+      require('karma-coverage'),
+      require('@angular-devkit/build-angular/plugins/karma')
+    ],
+    client: {
+      jasmine: {
+        // you can add configuration options for Jasmine here
+        // the possible options are listed at https://jasmine.github.io/api/edge/Configuration.html
+        // for example, you can disable the random execution with `random: false`
+        // or set a specific seed with `seed: 4321`
+      },
+      clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    {
-        "title": "Première page vers lien interne map",
-        "id": 2,
-        "link": "map",
-        "pageType": "internal_link"
+    jasmineHtmlReporter: {
+      suppressAll: true // removes the duplicated traces
     },
-    {
-        "title": "Première page vers lien externe jnesis.com",
-        "id": 3,
-        "link": "https://www.jnesis.com",
-        "pageType": "external_link"
+    coverageReporter: {
+      dir: require('path').join(__dirname, '../../coverage/features'),
+      subdir: '.',
+      reporters: [
+        { type: 'html' },
+        { type: 'text-summary' }
+      ]
     },
-    {
-        "title": "Première enfant",
-        "content": "id Nunc ...",
-        "id": 4,
-        "pageType": "content",
-        "childDisplay": "card",
-        "parentId": 1
-    },
-    {
-        "title": "Page affiché au format carte",
-        "content": "id Nunc ...d",
-        "id": 5,
-        "pageType": "content",
-        "childDisplay": "card",
-        "parentId": 4
-    },
-    {
-        "title": "Autre Page affiché au format carte",
-        "content": "id Nunc dzdzdzdz zdd z dzdzf fef",
-        "id": 6,
-        "pageType": "content",
-        "childDisplay": "card",
-        "parentId": 4
-    }
-];
+    reporters: ['progress', 'kjhtml'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+    restartOnFileChange: true
+  });
+};

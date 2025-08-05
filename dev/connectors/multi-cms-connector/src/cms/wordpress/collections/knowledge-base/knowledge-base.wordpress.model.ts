@@ -92,4 +92,13 @@ export class KnowledgeBaseWordpress {
 
   @Field(() => KnowledgeBaseImageNodeWordpress, { nullable: true })
   informationCoverImage: KnowledgeBaseImageNodeWordpress | null;
+
+  @Field()
+  informationPhone: string;
+
+  @Field()
+  informationAddress: string;
+
+  @Field()
+  informationEmail: string;
 }

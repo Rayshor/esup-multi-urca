@@ -37,10 +37,70 @@
  * termes.
  */
 
-const express = require('express');
-const router = express.Router();
-const { knowledgeBaseData } = require('./knowledge-base.mock');
+import {Component, Input} from '@angular/core';
+import {ChildDisplay, KnowledgeBaseItem, TranslatedKnowledgeBaseItem, Type} from '../knowledge-base.repository';
+import {Browser} from '@capacitor/browser';
+import {Router} from '@angular/router';
 
-router.get('/', (req, res) => res.json(knowledgeBaseData));
+@Component({
+  selector: 'app-knowledge-base-card',
+  templateUrl: './knowledge-base-card.component.html',
+  styleUrls: ['../../../../../src/theme/app-theme/styles/knowledge-base/knowledge-base-card.component.scss']
+})
 
-module.exports = router;
+export class KnowledgeBaseCardComponent {
+  @Input() item: TranslatedKnowledgeBaseItem;
+  @Input() displayMode: ChildDisplay;
+  public isExpanded: boolean = false;
+
+  constructor(
+    private router: Router,
+  ) {
+  }
+
+  openItemLink(item: KnowledgeBaseItem) {
+    switch (item.type) {
+      case Type.internalLink:
+        this.router.navigateByUrl(item.link);
+        break;
+
+      case Type.externalLink:
+        Browser.open({url: item.link});
+        break;
+
+      case Type.content:
+        this.router.navigateByUrl(`knowledge-base/${item.id}`);
+        break;
+    }
+  }
+
+  getButtonIcon(type: Type) {
+    switch (type) {
+      case Type.externalLink:
+        return 'open-outline';
+      case Type.internalLink:
+        return 'arrow-forward';
+      case Type.content:
+        return 'arrow-forward';
+    }
+  }
+
+  toggleDetails() {
+    this.isExpanded = !this.isExpanded;
+  }
+
+  handlePhone(phone: string) {
+    window.open(`tel:${phone}`);
+  }
+
+  handleEmail(email: string) {
+    window.open(`mailto:${email}`);
+  }
+
+  handleLink(link: string) {
+    Browser.open({url: link});
+  }
+
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  protected readonly ChildDisplay = ChildDisplay;
+}

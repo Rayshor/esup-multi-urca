@@ -42,7 +42,7 @@ import { KnowledgeBaseTranslationsSchema } from '@common/validation/schemas/tran
 export const KnowledgeBaseSchema = z.object({
   id: IdSchema,
   type: z.enum(['content', 'internal_link', 'external_link']),
-  childDisplay: z.enum(['card', 'list']),
+  childDisplay: z.enum(['card', 'list']).nullable(),
   link: z.string().min(1, 'Information link cannot be empty string').nullable(),
   position: z.number().int().default(0),
   translations: z
@@ -53,4 +53,7 @@ export const KnowledgeBaseSchema = z.object({
     .string()
     .min(1, 'Information cover image cannot be empty string')
     .nullable(),
+  phone: z.string().min(1, 'Information phone cannot be empty').nullable(),
+  address: z.string().min(1, 'Information address cannot be empty').nullable(),
+  email: z.string().min(1, 'Information email cannot be empty').nullable(),
 });

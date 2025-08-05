@@ -38,13 +38,14 @@
  */
 
 import { CommonModule } from '@angular/common';
-import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProjectModuleService, SharedComponentsModule, SharedPipeModule } from '@multi/shared';
 import { KnowledgeBasePageRoutingModule } from './knowledge-base-routing.module';
 import { KnowledgeBasePage } from './knowledge-base.page';
 import { KnowledgeBaseComponent } from './widgets/knowledge-base/knowledge-base.component';
+import { KnowledgeBaseCardComponent } from './knowledge-base-card/knowledge-base-card.component';
 
 const initModule = (projectModuleService: ProjectModuleService) =>
   () => projectModuleService.initProjectModule({
@@ -67,6 +68,7 @@ const initModule = (projectModuleService: ProjectModuleService) =>
   declarations: [
     KnowledgeBasePage,
     KnowledgeBaseComponent,
+    KnowledgeBaseCardComponent
   ],
   providers: [{
     provide: APP_INITIALIZER,

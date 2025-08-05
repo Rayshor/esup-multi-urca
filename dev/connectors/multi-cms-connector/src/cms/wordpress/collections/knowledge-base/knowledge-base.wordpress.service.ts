@@ -91,7 +91,7 @@ export class KnowledgeBaseWordpressService {
     return {
       id: knowledgeBase.databaseId.toString(),
       type: knowledgeBase.informationType,
-      childDisplay: knowledgeBase.informationChildDisplay,
+      childDisplay: knowledgeBase.informationChildDisplay || null,
       link: normalizeEmptyStringToNull(knowledgeBase.informationLink),
       position: knowledgeBase.informationPosition || 0,
       translations,
@@ -100,6 +100,9 @@ export class KnowledgeBaseWordpressService {
       coverImage: normalizeEmptyStringToNull(
         knowledgeBase.informationCoverImage?.node.mediaItemUrl.toString(),
       ),
+      phone: normalizeEmptyStringToNull(knowledgeBase.informationPhone),
+      address: normalizeEmptyStringToNull(knowledgeBase.informationAddress),
+      email: normalizeEmptyStringToNull(knowledgeBase.informationEmail),
     };
   }
 
@@ -116,6 +119,9 @@ export class KnowledgeBaseWordpressService {
             informationLink
             informationPosition
             informationSearchKeywords
+            informationPhone
+            informationAddress
+            informationEmail
             informationCoverImage {
              node {
                 databaseId

@@ -41,49 +41,55 @@ import {createStore} from '@ngneat/elf';
 import {
   persistState
 } from '@ngneat/elf-persist-state';
-import { currentLanguage$, localForageStore } from '@multi/shared';
-import {selectManyByPredicate, setEntities, withEntities} from "@ngneat/elf-entities";
+import {currentLanguage$, localForageStore} from '@multi/shared';
+import {
+  selectAllEntities,
+  setEntities,
+  withEntities
+} from "@ngneat/elf-entities";
 import {combineLatest, Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Inject, Injectable} from "@angular/core";
 
 export enum ChildDisplay {
-  CARD = 'card',
-  LIST = 'list',
+  card = 'card',
+  list = 'list',
 }
 
 export enum Type {
-  CONTENT = 'content',
-  EXTERNAL_LINK = 'external_link',
-  INTERNAL_LINK = 'internal_link',
+  content = 'content',
+  externalLink = 'external_link',
+  internalLink = 'internal_link',
 }
 
 export interface KnowledgeBaseItem {
-  id:number,
-  type:Type,
-  parentId?:number,
-  link?:string,
-  mail?:string,
-  phone?:string,
-  address?:string,
-  childDisplay?:ChildDisplay,
+  id: string,
+  type: Type,
+  parentId?: string,
+  link?: string,
+  email?: string,
+  phone?: string,
+  address?: string,
+  childDisplay?: ChildDisplay,
   translations?: Translation[],
   coverImage?: string;
+  isLeaf?: boolean
 }
 
 export interface TranslatedKnowledgeBaseItem {
-  id:number,
-  type:Type,
-  parentId?:number,
-  content?:string
-  title?:string,
-  link?:string,
-  mail?:string,
-  phone?:string,
-  address?:string,
-  childDisplay?:ChildDisplay,
+  id: string,
+  type: Type,
+  parentId?: string,
+  content?: string
+  title?: string,
+  link?: string,
+  email?: string,
+  phone?: string,
+  address?: string,
+  childDisplay?: ChildDisplay,
   coverImage?: string;
   searchKeywords?: string[];
+  isLeaf?: boolean
 }
 
 interface Translation {
@@ -96,7 +102,7 @@ interface Translation {
 const STORE_NAME = 'knowledgeBase';
 
 const store = createStore(
-  { name: STORE_NAME },
+  {name: STORE_NAME},
   withEntities<KnowledgeBaseItem>(),
 );
 
@@ -105,7 +111,7 @@ export const persist = persistState(store, {
   storage: localForageStore,
 });
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class KnowledgeBaseRepository {
 
   constructor(
@@ -113,20 +119,18 @@ export class KnowledgeBaseRepository {
     private environment: any,) {
   }
 
-  private knowledgeBases$ = store.pipe(selectManyByPredicate((item) => !item.parentId));
-
-  public translatedKnowledgeBases$ : Observable<TranslatedKnowledgeBaseItem[]> = combineLatest([this.knowledgeBases$, currentLanguage$]).pipe(
+  private translatedKnowledgeBases$: Observable<TranslatedKnowledgeBaseItem[]> = combineLatest([
+    store.pipe(selectAllEntities()),
+    currentLanguage$]
+  ).pipe(
     map(([knowledgeBases, currentLanguage]) => knowledgeBases.map(knowledgeBase => {
       const translation = knowledgeBase.translations.find((t) => t.languagesCode === currentLanguage) ||
         knowledgeBase.translations.find((t) => t.languagesCode === this.environment.defaultLanguage) ||
         knowledgeBase.translations[0];
       return {
-        id: knowledgeBase.id,
+        ...knowledgeBase,
         title: translation.title,
         content: translation.content,
-        type: knowledgeBase.type,
-        link: knowledgeBase.link,
-        childDisplay: knowledgeBase.childDisplay,
         searchKeywords: translation.searchKeywords,
       };
     }))
@@ -136,6 +140,25 @@ export class KnowledgeBaseRepository {
     store.update(setEntities(knowledgeBaseItems));
   };
 
-  public getKnowledgeBaseByParentId = (parentId: number) : Observable<KnowledgeBaseItem[]>  =>
-    store.pipe(selectManyByPredicate((item) => item.parentId === parentId));
+  public getKnowledgeBase = ():Observable<TranslatedKnowledgeBaseItem[]> =>
+    this.translatedKnowledgeBases$.pipe(
+      map(items => items.filter(item => !item.parentId))
+    );
+
+  public getKnowledgeBaseByParentId = (parentId: string): Observable<TranslatedKnowledgeBaseItem[]> =>
+    this.translatedKnowledgeBases$.pipe(
+      map(allItems => {
+        const children = allItems.filter(item => item.parentId === parentId);
+        const parentIds = new Set(allItems.map(item => item.parentId).filter(id => id !== null));
+        return children.map(child => ({
+          ...child,
+          isLeaf: !parentIds.has(child.id)
+        }));
+      })
+    );
+
+  public getKnowledgeBaseItemById = (id: string): Observable<TranslatedKnowledgeBaseItem> =>
+    this.translatedKnowledgeBases$.pipe(
+      map(items => items.find(item => item.id === id))
+    );
 }

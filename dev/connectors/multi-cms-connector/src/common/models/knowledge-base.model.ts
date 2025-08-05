@@ -47,7 +47,7 @@ export class KnowledgeBase {
   @Field()
   type: 'content' | 'internal_link' | 'external_link';
 
-  @Field()
+  @Field({ nullable: true })
   childDisplay: 'card' | 'list';
 
   @Field({ nullable: true })
@@ -64,4 +64,13 @@ export class KnowledgeBase {
 
   @Field({ nullable: true })
   coverImage: string;
+
+  @Field({ nullable: true })
+  phone: string;
+
+  @Field({ nullable: true })
+  address: string;
+
+  @Field({ nullable: true })
+  email: string;
 }

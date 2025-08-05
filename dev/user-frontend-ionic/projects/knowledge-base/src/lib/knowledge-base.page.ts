@@ -37,30 +37,30 @@
  * termes.
  */
 
-import {Component} from '@angular/core';
-import {map, take} from "rxjs/operators";
-import {KnowledgeBaseService} from "./knowledge-base.service";
-import {Observable} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
-import {NetworkService} from "@multi/shared";
+import {Component, OnInit} from '@angular/core';
+import { map, take } from 'rxjs/operators';
+import { KnowledgeBaseService } from './knowledge-base.service';
+import { Observable } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { NetworkService } from '@multi/shared';
 import {
-  TranslatedKnowledgeBaseItem,
   KnowledgeBaseRepository,
-  Type
-} from "./knowledge-base.repository";
-import {Browser} from "@capacitor/browser";
+  TranslatedKnowledgeBaseItem,
+  ChildDisplay
+} from './knowledge-base.repository';
 
 @Component({
   selector: 'app-knowledge-base',
   templateUrl: './knowledge-base.page.html',
   styleUrls: ['../../../../src/theme/app-theme/styles/knowledge-base/knowledge-base.page.scss'],
 })
-export class KnowledgeBasePage {
+export class KnowledgeBasePage implements OnInit {
 
   public isLoading = false;
-  public parentPageId: number;
+  public parentPageId: string;
   public knowledgeBases$: Observable<TranslatedKnowledgeBaseItem[]>;
   public knowledgeBasesIsEmpty$: Observable<boolean>;
+  public knowledgeBaseParentItem$: Observable<TranslatedKnowledgeBaseItem>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -68,37 +68,28 @@ export class KnowledgeBasePage {
     private knowledgeBasesRepository: KnowledgeBaseRepository,
     private router: Router,
     private networkService: NetworkService
-  ) {
-  }
+  ) {}
 
   async ngOnInit() {
     if (!(await this.networkService.getConnectionStatus()).connected) {
       return;
     }
 
-    this.parentPageId = Number.parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
+    this.parentPageId = this.activatedRoute.snapshot.paramMap.get('id');
     if (!this.parentPageId) {
       this.knowledgeBaseService.loadAndStoreKnowledgeBase()
         .pipe(take(1))
         .subscribe();
     }
 
-    this.knowledgeBases$ = this.parentPageId ? this.knowledgeBasesRepository.getKnowledgeBaseByParentId(this.parentPageId) : this.knowledgeBasesRepository.translatedKnowledgeBases$;
+    this.knowledgeBases$ = this.parentPageId ? this.knowledgeBasesRepository.getKnowledgeBaseByParentId(this.parentPageId) : this.knowledgeBasesRepository.getKnowledgeBase();
+    this.knowledgeBaseParentItem$ =  this.knowledgeBasesRepository.getKnowledgeBaseItemById(this.parentPageId);
   }
 
   ionViewWillEnter() {
     this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
   }
 
-  protected openItemLink(item: TranslatedKnowledgeBaseItem) {
-    if (item.type === Type.INTERNAL_LINK) {
-      this.router.navigateByUrl(item.link)
-    }
-    if (item.type === Type.EXTERNAL_LINK) {
-      Browser.open({url: item.link});
-    }
-    if (item.type === Type.CONTENT) {
-      this.router.navigateByUrl(`knowledge-base/${item.id}`)
-    }
-  }
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  protected readonly ChildDisplay = ChildDisplay;
 }
