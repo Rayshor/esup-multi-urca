@@ -58,14 +58,18 @@ export class KnowledgeBaseCardComponent {
   ) {}
 
   openItemLink(item: KnowledgeBaseItem) {
-    if (item.pageType === PageType.internalLink) {
-      this.router.navigateByUrl(item.link)
-    }
-    if (item.pageType === PageType.externalLink) {
-      Browser.open({url: item.link});
-    }
-    if (item.pageType === PageType.content) {
-      this.router.navigateByUrl(`knowledge-base/${item.id}`)
+    switch (item.pageType) {
+      case PageType.internalLink:
+        this.router.navigateByUrl(item.link);
+        break;
+
+      case PageType.externalLink:
+        Browser.open({ url: item.link });
+        break;
+
+      case PageType.content:
+        this.router.navigateByUrl(`knowledge-base/${item.id}`);
+        break;
     }
   }
 

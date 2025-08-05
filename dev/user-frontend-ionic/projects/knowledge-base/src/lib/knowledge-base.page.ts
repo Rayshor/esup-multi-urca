@@ -91,5 +91,5 @@ export class KnowledgeBasePage implements OnInit {
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  protected readonly ChildDisplay: ChildDisplay = ChildDisplay;
+  protected readonly ChildDisplay = ChildDisplay;
 }
