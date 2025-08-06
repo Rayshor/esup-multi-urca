@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/6.8.2" created="2025-08-05 12:52" -->
+	<!-- generator="WordPress/6.8.2" created="2025-08-06 07:48" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Mon Blog</title>
 	<link>http://localhost:9090</link>
 	<description></description>
-	<pubDate>Tue, 05 Aug 2025 12:52:06 +0000</pubDate>
+	<pubDate>Wed, 06 Aug 2025 07:48:16 +0000</pubDate>
 	<language>fr-FR</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://localhost:9090</wp:base_site_url>
@@ -1678,172 +1678,6 @@
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[Emploi du temps]]></title>
-		<link>http://localhost:9090/?post_type=features&#038;p=128</link>
-		<pubDate>Mon, 12 May 2025 13:31:46 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:9090/?post_type=features&#038;p=128</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>128</wp:post_id>
-		<wp:post_date><![CDATA[2025-05-12 13:31:46]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2025-05-12 13:31:46]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-05-12 13:31:46]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-05-12 13:31:46]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[brouillon-auto-10]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[features]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="language" nicename="fr"><![CDATA[Français]]></category>
-		<category domain="post_translations" nicename="pll_6821f854e536e"><![CDATA[pll_6821f854e536e]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_title]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Emploi du temps]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_short_title]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Cours]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[EDT]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_description]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Redirige l'utilisateur étudiant ou enseignant vers le service interne 'Emploi du temps']]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_icon]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_svg_light]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_svg_dark]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_position]]></wp:meta_key>
-		<wp:meta_value><![CDATA[100]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_router_link]]></wp:meta_key>
-		<wp:meta_value><![CDATA[/schedule]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_link_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_sso_service]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_statistic_name]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_pods_feature_roles]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:3:{i:0;i:129;i:1;i:104;i:2;i:105;}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[service]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
-		<wp:meta_value><![CDATA[ALLOW]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[internal]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
-		<wp:meta_value><![CDATA[129]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
-		<wp:meta_value><![CDATA[104]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
-		<wp:meta_value><![CDATA[105]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_description]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Redirige l'utilisateur étudiant ou enseignant vers le service interne 'Emploi du temps']]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_icon]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_position]]></wp:meta_key>
-		<wp:meta_value><![CDATA[100]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_router_link]]></wp:meta_key>
-		<wp:meta_value><![CDATA[/schedule]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_link_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_sso_service]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_statistic_name]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_pods_feature_roles]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:3:{i:0;i:129;i:1;i:104;i:2;i:105;}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
-		<wp:meta_value><![CDATA[service]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
-		<wp:meta_value><![CDATA[ALLOW]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[internal]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
-		<wp:meta_value><![CDATA[129]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
-		<wp:meta_value><![CDATA[104]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
-		<wp:meta_value><![CDATA[105]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
 		<title><![CDATA[ALERT]]></title>
 		<link>http://localhost:9090/?post_type=channels&#038;p=163</link>
 		<pubDate>Mon, 12 May 2025 14:21:47 +0000</pubDate>
@@ -2489,6 +2323,205 @@ For any questions relating to <strong>your registration, your student card, your
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
 		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:595;s:6:"height";i:630;s:4:"file";s:44:"2025/08/affiche-minimaliste-mouette-nemo.jpg";s:8:"filesize";i:51728;s:5:"sizes";a:2:{s:6:"medium";a:5:{s:4:"file";s:44:"affiche-minimaliste-mouette-nemo-283x300.jpg";s:5:"width";i:283;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:14444;}s:9:"thumbnail";a:5:{s:4:"file";s:44:"affiche-minimaliste-mouette-nemo-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:9538;}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[affiche-minimaliste-mouette-nemo]]></title>
+		<link>http://localhost:9090/?attachment_id=277</link>
+		<pubDate>Tue, 05 Aug 2025 13:01:17 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:9090/wp-content/uploads/2025/08/affiche-minimaliste-mouette-nemo-1.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>277</wp:post_id>
+		<wp:post_date><![CDATA[2025-08-05 13:01:17]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2025-08-05 13:01:17]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:01:23]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:01:23]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[affiche-minimaliste-mouette-nemo-2]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>252</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[http://localhost:9090/wp-content/uploads/2025/08/affiche-minimaliste-mouette-nemo-1.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2025/08/affiche-minimaliste-mouette-nemo-1.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:6:{s:5:"width";i:595;s:6:"height";i:630;s:4:"file";s:46:"2025/08/affiche-minimaliste-mouette-nemo-1.jpg";s:8:"filesize";i:51728;s:5:"sizes";a:2:{s:6:"medium";a:5:{s:4:"file";s:46:"affiche-minimaliste-mouette-nemo-1-283x300.jpg";s:5:"width";i:283;s:6:"height";i:300;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:14444;}s:9:"thumbnail";a:5:{s:4:"file";s:46:"affiche-minimaliste-mouette-nemo-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";s:8:"filesize";i:9538;}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Emploi du temps]]></title>
+		<link>http://localhost:9090/?post_type=features&#038;p=128</link>
+		<pubDate>Mon, 12 May 2025 13:31:46 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:9090/?post_type=features&#038;p=128</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>128</wp:post_id>
+		<wp:post_date><![CDATA[2025-05-12 13:31:46]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2025-05-12 13:31:46]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2025-05-12 13:31:46]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-05-12 13:31:46]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[brouillon-auto-10]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[features]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="language" nicename="fr"><![CDATA[Français]]></category>
+		<category domain="post_translations" nicename="pll_6821f854e536e"><![CDATA[pll_6821f854e536e]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_title]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Emploi du temps]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_short_title]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Cours]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[EDT]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_description]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Redirige l'utilisateur étudiant ou enseignant vers le service interne 'Emploi du temps']]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_icon]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_svg_light]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_svg_dark]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_position]]></wp:meta_key>
+		<wp:meta_value><![CDATA[100]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_router_link]]></wp:meta_key>
+		<wp:meta_value><![CDATA[/schedule]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_link_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_sso_service]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_statistic_name]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_feature_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:3:{i:0;i:129;i:1;i:104;i:2;i:105;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[ALLOW]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[internal]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[129]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[104]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[105]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_description]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Redirige l'utilisateur étudiant ou enseignant vers le service interne 'Emploi du temps']]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_icon]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_position]]></wp:meta_key>
+		<wp:meta_value><![CDATA[100]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_router_link]]></wp:meta_key>
+		<wp:meta_value><![CDATA[/schedule]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_link_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_sso_service]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_statistic_name]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_feature_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:3:{i:0;i:129;i:1;i:104;i:2;i:105;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_menu]]></wp:meta_key>
+		<wp:meta_value><![CDATA[service]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[ALLOW]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[internal]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[129]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[104]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[feature_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[105]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -4738,8 +4771,8 @@ For any questions relating to <strong>your registration, your student card, your
 		<wp:post_id>149</wp:post_id>
 		<wp:post_date><![CDATA[2025-05-12 13:47:57]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-05-12 13:47:57]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-04 12:58:27]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-04 12:58:27]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:29:03]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:29:03]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto]]></wp:post_name>
@@ -4798,80 +4831,6 @@ For any questions relating to <strong>your registration, your student card, your
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[important_new_access_restriction]]></wp:meta_key>
 		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[Esup-Days #39]]></title>
-		<link>http://localhost:9090/en/?post_type=important_news&#038;p=150</link>
-		<pubDate>Mon, 12 May 2025 13:49:07 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:9090/?post_type=important_news&#038;p=150</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>150</wp:post_id>
-		<wp:post_date><![CDATA[2025-05-12 13:49:07]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2025-05-12 13:49:07]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-05-12 13:49:07]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-05-12 13:49:07]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[brouillon-auto-2]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[important_news]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="language" nicename="en"><![CDATA[English]]></category>
-		<category domain="post_translations" nicename="pll_6821fc53e0ae7"><![CDATA[pll_6821fc53e0ae7]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_title]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Esup-Days #39]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_content]]></wp:meta_key>
-		<wp:meta_value><![CDATA[The next Esup-Days will take place on April 1st in Paris and in live!]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_button_label]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Register]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_position]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_access_restriction]]></wp:meta_key>
-		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_color]]></wp:meta_key>
-		<wp:meta_value><![CDATA[#3771c1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_color]]></wp:meta_key>
-		<wp:meta_value><![CDATA[#3771c1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_link_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://www.esup-portail.org/conference/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_link_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://www.esup-portail.org/conference/]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_statistic_name]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[important_new_statistic_name]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -5080,6 +5039,80 @@ For any questions relating to <strong>your registration, your student card, your
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[feature_type]]></wp:meta_key>
 		<wp:meta_value><![CDATA[internal]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Esup-Days #39]]></title>
+		<link>http://localhost:9090/en/?post_type=important_news&#038;p=150</link>
+		<pubDate>Mon, 12 May 2025 13:49:07 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:9090/?post_type=important_news&#038;p=150</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>150</wp:post_id>
+		<wp:post_date><![CDATA[2025-05-12 13:49:07]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2025-05-12 13:49:07]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2025-05-12 13:49:07]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-05-12 13:49:07]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[brouillon-auto-2]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[important_news]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="language" nicename="en"><![CDATA[English]]></category>
+		<category domain="post_translations" nicename="pll_6821fc53e0ae7"><![CDATA[pll_6821fc53e0ae7]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_title]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Esup-Days #39]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_content]]></wp:meta_key>
+		<wp:meta_value><![CDATA[The next Esup-Days will take place on April 1st in Paris and in live!]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_button_label]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Register]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_position]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_color]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#3771c1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_color]]></wp:meta_key>
+		<wp:meta_value><![CDATA[#3771c1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_link_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[https://www.esup-portail.org/conference/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_link_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[https://www.esup-portail.org/conference/]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_statistic_name]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[important_new_statistic_name]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -5479,8 +5512,8 @@ For any questions relating to <strong>your registration, your student card, your
 		<wp:post_id>252</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 10:03:41]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 10:03:41]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 12:18:23]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 12:18:23]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:42:50]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:42:50]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto]]></wp:post_name>
@@ -5517,14 +5550,6 @@ Fondée en 1896, l’Université Lumière accueille chaque année plus de 30 000
 		<wp:meta_value><![CDATA[0]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Présentation]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Université]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_phone]]></wp:meta_key>
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
@@ -5537,12 +5562,32 @@ Fondée en 1896, l’Université Lumière accueille chaque année plus de 30 000
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_information_cover_image]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;i:277;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Présentation]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Université]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
 		<wp:meta_value><![CDATA[content]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_cover_image]]></wp:meta_key>
+		<wp:meta_value><![CDATA[277]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -5615,12 +5660,24 @@ Founded in 1896, Lumière University welcomes more than 30,000 students each yea
 		<wp:meta_value><![CDATA[university]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_information_cover_image]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;i:277;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
 		<wp:meta_value><![CDATA[content]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_cover_image]]></wp:meta_key>
+		<wp:meta_value><![CDATA[277]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -5635,8 +5692,8 @@ Founded in 1896, Lumière University welcomes more than 30,000 students each yea
 		<wp:post_id>254</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 10:05:35]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 10:05:35]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 12:29:10]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 12:29:10]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:43:31]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:43:31]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto-3]]></wp:post_name>
@@ -5673,14 +5730,6 @@ Découvrez les services dédiés aux étudiants : accompagnement social, bibliot
 		<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Vie étudiante]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Services]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_phone]]></wp:meta_key>
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
@@ -5693,12 +5742,32 @@ Découvrez les services dédiés aux étudiants : accompagnement social, bibliot
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Vie étudiante]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Services]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
 		<wp:meta_value><![CDATA[content]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[card]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[ALLOW]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_information_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;i:104;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_roles]]></wp:meta_key>
+		<wp:meta_value><![CDATA[104]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -5778,6 +5847,10 @@ Discover the services dedicated to students: social support, libraries, communit
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[card]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[ALLOW]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
 		<title><![CDATA[Plan du campus]]></title>
@@ -5791,8 +5864,8 @@ Discover the services dedicated to students: social support, libraries, communit
 		<wp:post_id>256</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 10:07:16]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 10:07:16]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 10:11:36]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 10:11:36]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:42:39]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:42:39]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto-5]]></wp:post_name>
@@ -5825,6 +5898,18 @@ Discover the services dedicated to students: social support, libraries, communit
 		<wp:meta_value><![CDATA[2]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_phone]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_address]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_email]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
 		<wp:meta_value><![CDATA[Plan]]></wp:meta_value>
 		</wp:postmeta>
@@ -5839,6 +5924,10 @@ Discover the services dedicated to students: social support, libraries, communit
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -5895,12 +5984,28 @@ Discover the services dedicated to students: social support, libraries, communit
 		<wp:meta_value><![CDATA[Campus]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_phone]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_address]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_email]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
 		<wp:meta_value><![CDATA[internal_link]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -5915,8 +6020,8 @@ Discover the services dedicated to students: social support, libraries, communit
 		<wp:post_id>259</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 10:10:57]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 10:10:57]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 10:10:57]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 10:10:57]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:42:32]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:42:32]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto-7]]></wp:post_name>
@@ -5949,6 +6054,18 @@ Discover the services dedicated to students: social support, libraries, communit
 		<wp:meta_value><![CDATA[3]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_phone]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_address]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_email]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
 		<wp:meta_value><![CDATA[Portail numérique]]></wp:meta_value>
 		</wp:postmeta>
@@ -5963,6 +6080,10 @@ Discover the services dedicated to students: social support, libraries, communit
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -6019,12 +6140,28 @@ Discover the services dedicated to students: social support, libraries, communit
 		<wp:meta_value><![CDATA[Student]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_phone]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_address]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_email]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
 		<wp:meta_value><![CDATA[external_link]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -6039,8 +6176,8 @@ Discover the services dedicated to students: social support, libraries, communit
 		<wp:post_id>261</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 10:13:57]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 10:13:57]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 12:25:02]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 12:25:02]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:42:19]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:42:19]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto-10]]></wp:post_name>
@@ -6103,6 +6240,10 @@ L’Université est composée de plusieurs facultés : Lettres et Langues, Scien
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[card]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
@@ -6187,6 +6328,10 @@ The University is made up of several faculties: Letters and Languages, Sciences,
 		<wp:meta_value><![CDATA[card]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
 		<wp:meta_value><![CDATA[252]]></wp:meta_value>
 		</wp:postmeta>
@@ -6203,8 +6348,8 @@ The University is made up of several faculties: Letters and Languages, Sciences,
 		<wp:post_id>263</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 10:15:54]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 10:15:54]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 12:26:39]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 12:26:39]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:42:14]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:42:14]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto-11]]></wp:post_name>
@@ -6267,6 +6412,10 @@ Le département propose des formations en littérature française, comparée et 
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
@@ -6351,6 +6500,10 @@ The department offers courses in French literature, comparative literature, and 
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
 		<wp:meta_value><![CDATA[261]]></wp:meta_value>
 		</wp:postmeta>
@@ -6367,8 +6520,8 @@ The department offers courses in French literature, comparative literature, and 
 		<wp:post_id>268</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 11:32:49]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 11:32:49]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 12:27:04]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 12:27:04]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:42:02]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:42:02]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto-13]]></wp:post_name>
@@ -6431,6 +6584,10 @@ Les étudiants peuvent suivre une licence, un master ou un doctorat en physique 
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
@@ -6515,98 +6672,12 @@ Students can pursue a bachelor's, master's or doctorate in fundamental or applie
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
 		<wp:meta_value><![CDATA[261]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[Santé, bien-être et accompagnement]]></title>
-		<link>http://localhost:9090/knowledge-base/brouillon-auto-15/</link>
-		<pubDate>Tue, 05 Aug 2025 11:35:10 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:9090/?post_type=knowledge-base&#038;p=270</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>270</wp:post_id>
-		<wp:post_date><![CDATA[2025-08-05 11:35:10]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2025-08-05 11:35:10]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 12:31:48]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 12:31:48]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[brouillon-auto-15]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[knowledge-base]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="language" nicename="fr"><![CDATA[Français]]></category>
-		<category domain="post_translations" nicename="pll_6891ec8dea31e"><![CDATA[pll_6891ec8dea31e]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_title]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Santé, bien-être et accompagnement]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_content]]></wp:meta_key>
-		<wp:meta_value><![CDATA[<div>
-
-L’université dispose d’un service de santé étudiant, d’un soutien psychologique et d’un pôle handicap. Des permanences sont assurées chaque semaine.
-
-</div>]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_link]]></wp:meta_key>
-		<wp:meta_value><![CDATA[https://www.esup-portail.org]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_position]]></wp:meta_key>
-		<wp:meta_value><![CDATA[8]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_phone]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0606060606]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_address]]></wp:meta_key>
-		<wp:meta_value><![CDATA[45 rue du Soleil 99999 VILLE]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_email]]></wp:meta_key>
-		<wp:meta_value><![CDATA[contact@esup.com]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Santé]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Bien-être]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Accompagnement]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[content]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
-		<wp:meta_value><![CDATA[list]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_pods_information_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;i:254;}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[254]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -6679,42 +6750,6 @@ L’université dispose d’un service de santé étudiant, d’un soutien psych
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[role_description]]></wp:meta_key>
 		<wp:meta_value><![CDATA[Tous les étudiants de l'établissement]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title><![CDATA[teacher]]></title>
-		<link>http://localhost:9090/?post_type=roles&#038;p=105</link>
-		<pubDate>Tue, 08 Apr 2025 09:49:52 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:9090/?post_type=roles&#038;p=105</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>105</wp:post_id>
-		<wp:post_date><![CDATA[2025-04-08 09:49:52]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2025-04-08 09:49:52]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-04-08 09:49:52]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-04-08 09:49:52]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[brouillon-auto-2]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[roles]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-														<wp:postmeta>
-		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[role_code]]></wp:meta_key>
-		<wp:meta_value><![CDATA[teacher]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[role_description]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Tous les enseignants de l'établissement]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -7530,6 +7565,100 @@ laoreet urna ex turpis sed id lobortis, ex at volutpat hendrerit hendrerit Nunc 
 		</wp:postmeta>
 							</item>
 					<item>
+		<title><![CDATA[Santé, bien-être et accompagnement]]></title>
+		<link>http://localhost:9090/knowledge-base/brouillon-auto-15/</link>
+		<pubDate>Tue, 05 Aug 2025 11:35:10 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:9090/?post_type=knowledge-base&#038;p=270</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>270</wp:post_id>
+		<wp:post_date><![CDATA[2025-08-05 11:35:10]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2025-08-05 11:35:10]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:41:55]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:41:55]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[brouillon-auto-15]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[knowledge-base]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="language" nicename="fr"><![CDATA[Français]]></category>
+		<category domain="post_translations" nicename="pll_6891ec8dea31e"><![CDATA[pll_6891ec8dea31e]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_title]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Santé, bien-être et accompagnement]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_content]]></wp:meta_key>
+		<wp:meta_value><![CDATA[<div>
+
+L’université dispose d’un service de santé étudiant, d’un soutien psychologique et d’un pôle handicap. Des permanences sont assurées chaque semaine.
+
+</div>]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_link]]></wp:meta_key>
+		<wp:meta_value><![CDATA[https://www.esup-portail.org]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_position]]></wp:meta_key>
+		<wp:meta_value><![CDATA[8]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_phone]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0606060606]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_address]]></wp:meta_key>
+		<wp:meta_value><![CDATA[45 rue du Soleil 99999 VILLE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_email]]></wp:meta_key>
+		<wp:meta_value><![CDATA[contact@esup.com]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_information_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;i:254;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Santé]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Bien-être]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Accompagnement]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[content]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
+		<wp:meta_value><![CDATA[list]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[254]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
 		<title><![CDATA[Health, well-being and support]]></title>
 		<link>http://localhost:9090/en/knowledge-base/brouillon-auto-16/</link>
 		<pubDate>Tue, 05 Aug 2025 11:35:41 +0000</pubDate>
@@ -7603,6 +7732,10 @@ The university has a student health service, psychological support, and a disabi
 		<wp:meta_value><![CDATA[Support]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_information_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;i:254;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
 		<wp:meta_value><![CDATA[content]]></wp:meta_value>
 		</wp:postmeta>
@@ -7611,8 +7744,8 @@ The university has a student health service, psychological support, and a disabi
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[_pods_information_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;i:254;}]]></wp:meta_value>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
@@ -7631,8 +7764,8 @@ The university has a student health service, psychological support, and a disabi
 		<wp:post_id>272</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 11:36:30]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 11:36:30]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 12:32:19]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 12:32:19]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:41:49]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:41:49]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto-17]]></wp:post_name>
@@ -7681,6 +7814,10 @@ Une trentaine d’activités sportives sont proposées via le SUAPS. Des atelier
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_information_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;i:254;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_search_keywords]]></wp:meta_key>
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
@@ -7693,8 +7830,8 @@ Une trentaine d’activités sportives sont proposées via le SUAPS. Des atelier
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[_pods_information_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;i:254;}]]></wp:meta_value>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
@@ -7767,6 +7904,10 @@ Around thirty sports activities are offered through SUAPS. Art workshops, photog
 		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
+		<wp:meta_key><![CDATA[_pods_information_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;i:254;}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_type]]></wp:meta_key>
 		<wp:meta_value><![CDATA[content]]></wp:meta_value>
 		</wp:postmeta>
@@ -7775,8 +7916,8 @@ Around thirty sports activities are offered through SUAPS. Art workshops, photog
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[_pods_information_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;i:254;}]]></wp:meta_value>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
@@ -7795,8 +7936,8 @@ Around thirty sports activities are offered through SUAPS. Art workshops, photog
 		<wp:post_id>274</wp:post_id>
 		<wp:post_date><![CDATA[2025-08-05 11:37:29]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2025-08-05 11:37:29]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-08-05 12:27:57]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-08-05 12:27:57]]></wp:post_modified_gmt>
+		<wp:post_modified><![CDATA[2025-08-05 13:41:41]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-08-05 13:41:41]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[brouillon-auto-19]]></wp:post_name>
@@ -7859,6 +8000,10 @@ Plus de 80 associations sont présentes sur le campus : BDE, clubs humanitaires,
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
@@ -7941,6 +8086,10 @@ More than 80 associations are present on campus: BDE, humanitarian, ecological, 
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_child_display]]></wp:meta_key>
 		<wp:meta_value><![CDATA[list]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[information_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
 		</wp:postmeta>
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[information_parent]]></wp:meta_key>
@@ -8192,6 +8341,42 @@ More than 80 associations are present on campus: BDE, humanitarian, ecological, 
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[widget_roles]]></wp:meta_key>
 		<wp:meta_value><![CDATA[105]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[teacher]]></title>
+		<link>http://localhost:9090/?post_type=roles&#038;p=105</link>
+		<pubDate>Tue, 08 Apr 2025 09:49:52 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:9090/?post_type=roles&#038;p=105</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>105</wp:post_id>
+		<wp:post_date><![CDATA[2025-04-08 09:49:52]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2025-04-08 09:49:52]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2025-04-08 09:49:52]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-04-08 09:49:52]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[brouillon-auto-2]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[roles]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+														<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[role_code]]></wp:meta_key>
+		<wp:meta_value><![CDATA[teacher]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[role_description]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Tous les enseignants de l'établissement]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>
@@ -9139,140 +9324,6 @@ More than 80 associations are present on campus: BDE, humanitarian, ecological, 
 		</wp:postmeta>
 							</item>
 					<item>
-		<title><![CDATA[rss:latest-news]]></title>
-		<link>http://localhost:9090/?post_type=widgets&#038;p=115</link>
-		<pubDate>Mon, 12 May 2025 13:11:51 +0000</pubDate>
-		<dc:creator><![CDATA[admin]]></dc:creator>
-		<guid isPermaLink="false">http://localhost:9090/?post_type=widgets&#038;p=115</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>115</wp:post_id>
-		<wp:post_date><![CDATA[2025-05-12 13:11:51]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2025-05-12 13:11:51]]></wp:post_date_gmt>
-		<wp:post_modified><![CDATA[2025-05-12 13:11:51]]></wp:post_modified>
-		<wp:post_modified_gmt><![CDATA[2025-05-12 13:11:51]]></wp:post_modified_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[brouillon-auto-11]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[widgets]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="language" nicename="fr"><![CDATA[Français]]></category>
-		<category domain="post_translations" nicename="pll_6821f3a6f146d"><![CDATA[pll_6821f3a6f146d]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_title]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Dernière actualité]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_description]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Widget affichant la dernière actu Factuel]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_content]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_code]]></wp:meta_key>
-		<wp:meta_value><![CDATA[rss:latest-news]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_icon]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_svg_light]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_svg_dark]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_position]]></wp:meta_key>
-		<wp:meta_value><![CDATA[60]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_router_link]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_link_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_sso_service]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_color]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_statistic_name]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_access_restriction]]></wp:meta_key>
-		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[external]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_description]]></wp:meta_key>
-		<wp:meta_value><![CDATA[Widget affichant la dernière actu Factuel]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_code]]></wp:meta_key>
-		<wp:meta_value><![CDATA[rss:latest-news]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_icon]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_position]]></wp:meta_key>
-		<wp:meta_value><![CDATA[60]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_router_link]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_link_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_sso_service]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_color]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_statistic_name]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_access_restriction]]></wp:meta_key>
-		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[widget_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[external]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
 		<title><![CDATA[staff]]></title>
 		<link>http://localhost:9090/?post_type=roles&#038;p=125</link>
 		<pubDate>Mon, 12 May 2025 13:27:47 +0000</pubDate>
@@ -9833,6 +9884,140 @@ Pellentesque id pretium ligula, vitae dapibus odio. Praesent mattis quis velit a
 							<wp:postmeta>
 		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
 		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[rss:latest-news]]></title>
+		<link>http://localhost:9090/?post_type=widgets&#038;p=115</link>
+		<pubDate>Mon, 12 May 2025 13:11:51 +0000</pubDate>
+		<dc:creator><![CDATA[admin]]></dc:creator>
+		<guid isPermaLink="false">http://localhost:9090/?post_type=widgets&#038;p=115</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>115</wp:post_id>
+		<wp:post_date><![CDATA[2025-05-12 13:11:51]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2025-05-12 13:11:51]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2025-05-12 13:11:51]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2025-05-12 13:11:51]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[brouillon-auto-11]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[widgets]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="language" nicename="fr"><![CDATA[Français]]></category>
+		<category domain="post_translations" nicename="pll_6821f3a6f146d"><![CDATA[pll_6821f3a6f146d]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_title]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Dernière actualité]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_description]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Widget affichant la dernière actu Factuel]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_content]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_code]]></wp:meta_key>
+		<wp:meta_value><![CDATA[rss:latest-news]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_icon]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_svg_light]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_svg_dark]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_position]]></wp:meta_key>
+		<wp:meta_value><![CDATA[60]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_router_link]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_link_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_sso_service]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_color]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_statistic_name]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[external]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_description]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Widget affichant la dernière actu Factuel]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_code]]></wp:meta_key>
+		<wp:meta_value><![CDATA[rss:latest-news]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_icon]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_position]]></wp:meta_key>
+		<wp:meta_value><![CDATA[60]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_router_link]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_link_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_sso_service]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_color]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_statistic_name]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_access_restriction]]></wp:meta_key>
+		<wp:meta_value><![CDATA[NONE]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[widget_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[external]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 					<item>

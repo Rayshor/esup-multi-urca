@@ -38,6 +38,7 @@
 
 import { Field, ObjectType } from '@nestjs/graphql';
 import { KnowledgeBaseTranslations } from '@common/models/translations.model';
+import { Authorization } from '@common/models/authorization.model';
 
 @ObjectType()
 export class KnowledgeBase {
@@ -55,6 +56,9 @@ export class KnowledgeBase {
 
   @Field({ nullable: true })
   position: number;
+
+  @Field(() => Authorization, { nullable: true })
+  authorization: Authorization | null;
 
   @Field(() => [KnowledgeBaseTranslations], { nullable: true })
   translations: KnowledgeBaseTranslations[];

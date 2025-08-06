@@ -39,9 +39,9 @@
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MultiTenantService } from '@multi/shared';
-import { Observable } from 'rxjs';
-import {tap} from "rxjs/operators";
+import { getAuthToken, NetworkService, MultiTenantService } from '@multi/shared';
+import {from, Observable} from 'rxjs';
+import {filter, switchMap, take, tap} from "rxjs/operators";
 import {KnowledgeBaseRepository} from "./knowledge-base.repository";
 import {KnowledgeBaseItem} from "./knowledge-base.repository";
 
@@ -54,14 +54,24 @@ export class KnowledgeBaseService {
     private multiTenantService: MultiTenantService,
     private knowledgeBaseRepository: KnowledgeBaseRepository,
     private http: HttpClient,
+    private networkService: NetworkService,
   ) {}
 
   public loadAndStoreKnowledgeBase(): Observable<KnowledgeBaseItem[]> {
-    const url = `${this.multiTenantService.getApiEndpoint()}/knowledge-base`;
-
-    return this.http.get<KnowledgeBaseItem[]>(url).pipe(
+    return from(this.networkService.getConnectionStatus()).pipe(
+      filter(status => status.connected),
+      switchMap(() => getAuthToken()),
+      take(1),
+      switchMap(authToken => this.getKnowledgeBase(authToken)),
       tap(knowledgeBases => this.knowledgeBaseRepository.setKnowledgeBases(knowledgeBases)),
     );
   }
 
+  private getKnowledgeBase(authToken: string): Observable<KnowledgeBaseItem[]> {
+    const url = `${this.multiTenantService.getApiEndpoint()}/knowledge-base`;
+    const data = {
+      authToken
+    };
+    return this.http.post<KnowledgeBaseItem[]>(url, data);
+  }
 }
