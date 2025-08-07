@@ -43,7 +43,7 @@
   <ng-container *ngIf="(knowledgeBaseParentItem$ | async) as parentItem; else noParent">
     <div class="parent-content">
       <h1>{{ parentItem.title }}</h1>
-      <p>{{ parentItem.content }}</p>
+      <div [innerHTML]="parentItem.content" class="safe-area-padding-lr link-inherit-color"></div>
     </div>
   </ng-container>
 
@@ -65,7 +65,7 @@
       <app-knowledge-base-card
         *ngFor="let item of knowledgeBases"
         [item]="item"
-        [displayMode]="(knowledgeBaseParentItem$ | async)?.childDisplay ?? (item.pageType===PageType.content && !item.childDisplay ? ChildDisplay.card : ChildDisplay.list)"
+        [displayMode]="(knowledgeBaseParentItem$ | async)?.childDisplay ?? (item.type===Type.content && item.display ? item.display : Display.list)"
       ></app-knowledge-base-card>
     </ion-list>
   </ng-container>

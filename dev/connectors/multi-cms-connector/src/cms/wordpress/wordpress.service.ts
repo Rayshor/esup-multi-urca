@@ -86,17 +86,14 @@ export class WordpressService {
         ),
       );
 
-      /*console.log(query);
-      console.log(response.data);*/
-
       // Check GraphQL response for errors
-      /*if (response.data.errors && response.data.errors.length > 0) {
+      if (response.data.errors && response.data.errors.length > 0) {
         const graphqlError = response.data.errors[0];
         throw new CmsQueryError(
           `GraphQL Error: ${graphqlError.message}`,
           graphqlError,
         );
-      }*/
+      }
 
       // Vérifier si les données sont présentes
       if (!response.data.data) {

@@ -2,8 +2,7 @@
  * Copyright ou © ou Copr. Université de Lorraine, (2022)
  *
  * Direction du Numérique de l'Université de Lorraine - SIED
- *  (dn-mobile-dev@univ-lorraine.fr)
- * JNESIS (contact@jnesis.com)
+ * (dn-mobile-dev@univ-lorraine.fr)
  *
  * Ce logiciel est un programme informatique servant à rendre accessible
  * sur mobile divers services universitaires aux étudiants et aux personnels
@@ -37,40 +36,19 @@
  * termes.
  */
 
-import { CACHE_MANAGER } from '@nestjs/cache-manager';
-import { Controller, Inject } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
-import { MessagePattern } from '@nestjs/microservices';
-import { Cache } from 'cache-manager';
-import { firstValueFrom } from 'rxjs';
-import { KnowledgeBaseDto } from './knowledge-base.dto';
-import { KnowledgeBaseService } from './knowledge-base.service';
+import { Query, Resolver } from '@nestjs/graphql';
+import { KnowledgeBaseWordpressService } from './knowledge-base.wordpress.service';
+import { KnowledgeBase } from '@common/models/knowledge-base.model';
 
-@Controller()
-export class KnowledgeBaseController {
+@Resolver(() => KnowledgeBase)
+export class KnowledgeBaseWordpressResolver {
   constructor(
-    private readonly knowledgeBaseService: KnowledgeBaseService,
-    private readonly configService: ConfigService,
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    private readonly knowledgeServiceService: KnowledgeBaseWordpressService,
   ) {}
 
-  @MessagePattern({ cmd: 'knowledgeBase' })
-  async getKnowledgeBase(): Promise<KnowledgeBaseDto[]> {
-    const cacheKey = `knowledge-base`;
-    const cachedKnowledgeBase =
-      await this.cacheManager.get<KnowledgeBaseDto[]>(cacheKey);
-
-    if (cachedKnowledgeBase !== undefined) {
-      return cachedKnowledgeBase;
-    }
-
-    const knowledgeBase = await firstValueFrom(
-      this.knowledgeBaseService.getKnowledgeBase(),
-    );
-
-    const ttl = this.configService.get<number>('cacheTtl') || 300;
-    await this.cacheManager.set(cacheKey, knowledgeBase, ttl);
-
-    return knowledgeBase;
+  // Définition de la requête GraphQL qui sera exécutée depuis le backend de Multi
+  @Query(() => [KnowledgeBase], { name: 'knowledgeBase' })
+  async getKnowledgeBase(): Promise<KnowledgeBase[]> {
+    return this.knowledgeServiceService.getKnowledgeBase();
   }
 }
