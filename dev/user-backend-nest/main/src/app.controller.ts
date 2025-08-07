@@ -478,6 +478,7 @@ export class AppController {
         ),
       );
   }
+
   @Post('/notifications/register')
   registerFCMToken(@Request() request, @Body() body) {
     return this.authClient
@@ -727,16 +728,15 @@ export class AppController {
       );
   }
 
-    @Get('/knowledge-base')
-    knowledgeBase(@Body() body) {
-        return this.knowledgeBaseClient
-            .send(
-                {
-                    cmd: 'getList',
-                },
-                body,
-            )
-    }
+  @Get('/knowledge-base')
+  knowledgeBase() {
+    return this.knowledgeBaseClient.send(
+      {
+        cmd: 'knowledgeBase',
+      },
+      {},
+    );
+  }
 
   @Get('/version')
   mainVersion() {
@@ -744,6 +744,7 @@ export class AppController {
       version: infosJsonData.version,
     };
   }
+
   @Get('/app-update-infos')
   appUpdateInfos() {
     return clientInfosJson;

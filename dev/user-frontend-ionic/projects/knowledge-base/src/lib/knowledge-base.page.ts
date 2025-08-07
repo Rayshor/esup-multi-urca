@@ -38,15 +38,15 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import { take } from 'rxjs/operators';
+import {take} from 'rxjs/operators';
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NetworkService } from '@multi/shared';
 import {
-  KnowledgeBaseItem,
-  knowledgeBases$,
-  getKnowledgeBaseByParentId, getKnowledgeBaseItemById, ChildDisplay, searchKnowledgeBase, PageType
+  KnowledgeBaseRepository,
+  TranslatedKnowledgeBaseItem,
+  Display,Type
 } from './knowledge-base.repository';
 
 @Component({
@@ -57,14 +57,14 @@ import {
 export class KnowledgeBasePage implements OnInit {
 
   public isLoading = false;
-  public parentPageId: number;
-  public knowledgeBases$: Observable<KnowledgeBaseItem[]>;
- public knowledgeBaseParentItem$: Observable<KnowledgeBaseItem>;
-
+  public parentPageId: string;
+  public knowledgeBases$: Observable<TranslatedKnowledgeBaseItem[]>;
+  public knowledgeBaseParentItem$: Observable<TranslatedKnowledgeBaseItem>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private knowledgeBaseService: KnowledgeBaseService,
+    private knowledgeBasesRepository: KnowledgeBaseRepository,
     private router: Router,
     private networkService: NetworkService
   ) {}
@@ -74,28 +74,28 @@ export class KnowledgeBasePage implements OnInit {
       return;
     }
 
-    this.parentPageId = Number.parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
+    this.parentPageId = this.activatedRoute.snapshot.paramMap.get('id');
     if (!this.parentPageId) {
       this.knowledgeBaseService.loadAndStoreKnowledgeBase()
         .pipe(take(1))
         .subscribe();
     }
 
-    this.knowledgeBases$ = this.parentPageId ? getKnowledgeBaseByParentId(this.parentPageId) : knowledgeBases$;
-    this.knowledgeBaseParentItem$ = getKnowledgeBaseItemById(this.parentPageId);
+    this.knowledgeBases$ = this.parentPageId ? this.knowledgeBasesRepository.getKnowledgeBaseByParentId(this.parentPageId) : this.knowledgeBasesRepository.getKnowledgeBase();
+    this.knowledgeBaseParentItem$ =  this.knowledgeBasesRepository.getKnowledgeBaseItemById(this.parentPageId);
   }
 
   searchKnowledgeBase(event) {
     const query = event.target.value.toLowerCase();
     if(!query) {
-      this.knowledgeBases$ = knowledgeBases$;
+      this.knowledgeBases$ = this.knowledgeBasesRepository.getKnowledgeBase();
       return;
     }
-    this.knowledgeBases$=searchKnowledgeBase(query);
+    this.knowledgeBases$=this.knowledgeBasesRepository.searchKnowledgeBase(query);
 
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  protected readonly ChildDisplay = ChildDisplay;
-  protected readonly PageType = PageType;
+  protected readonly Display = Display;
+  protected readonly Type = Type;
 }

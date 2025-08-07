@@ -40,7 +40,7 @@
 import {
   KeepAliveOptions,
   RedisSocket,
-  KnowledgeBaseProviderApi,
+  CmsApi,
 } from './configuration.interface';
 
 const applyIfNotBlank = (param: string, applyFn: (value: string) => void) => {
@@ -50,7 +50,7 @@ const applyIfNotBlank = (param: string, applyFn: (value: string) => void) => {
 };
 
 export default (): {
-  knowledgeBaseProviderApi: KnowledgeBaseProviderApi;
+  cmsApi: CmsApi;
   keepAliveOptions: KeepAliveOptions;
   redisSocket: RedisSocket;
   redisPassword: string;
@@ -95,7 +95,7 @@ export default (): {
   );
 
   return {
-    knowledgeBaseProviderApi: {
+    cmsApi: {
       apiUrl: process.env.KNOWLEDGE_BASE_SERVICE_PROVIDER_API_URL,
       bearerToken: process.env.KNOWLEDGE_BASE_SERVICE_PROVIDER_API_BEARER_TOKEN,
     },

@@ -37,7 +37,7 @@
  * termes.
  */
 
-export interface KnowledgeBaseProviderApi {
+export interface CmsApi {
   apiUrl: string;
   bearerToken: string;
 }

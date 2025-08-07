@@ -2,8 +2,7 @@
  * Copyright ou © ou Copr. Université de Lorraine, (2022)
  *
  * Direction du Numérique de l'Université de Lorraine - SIED
- *  (dn-mobile-dev@univ-lorraine.fr)
- * JNESIS (contact@jnesis.com)
+ * (dn-mobile-dev@univ-lorraine.fr)
  *
  * Ce logiciel est un programme informatique servant à rendre accessible
  * sur mobile divers services universitaires aux étudiants et aux personnels
@@ -37,10 +36,69 @@
  * termes.
  */
 
-const express = require('express');
-const router = express.Router();
-const { knowledgeBaseData } = require('./knowledge-base.mock');
+import { Field, ObjectType } from '@nestjs/graphql';
+import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/translations/translations.wordpress.model';
+import { ImageWordpress } from '@wordpress/collections/system/image.wordpress.model';
 
-router.get('/', (req, res) => res.json(knowledgeBaseData));
+@ObjectType()
+class KnowledgeBaseParentWordpress {
+  @Field()
+  databaseId: number;
+}
 
-module.exports = router;
+@ObjectType()
+class KnowledgeBaseParentNodeWordpress {
+  @Field(() => KnowledgeBaseParentWordpress)
+  node: KnowledgeBaseParentWordpress;
+}
+
+@ObjectType()
+class KnowledgeBaseImageNodeWordpress {
+  @Field(() => ImageWordpress)
+  node: ImageWordpress;
+}
+
+@ObjectType()
+export class KnowledgeBaseWordpress {
+  @Field()
+  databaseId: number;
+
+  @Field()
+  informationTitle: string;
+
+  @Field()
+  informationContent: string;
+
+  @Field()
+  informationSearchKeywords: string;
+
+  @Field()
+  informationType: 'content' | 'internal_link' | 'external_link';
+
+  @Field()
+  informationChildDisplay: 'card' | 'list';
+
+  @Field()
+  informationLink: string;
+
+  @Field()
+  informationPosition: number;
+
+  @Field(() => [KnowledgeBaseTranslationsWordpress])
+  translations: KnowledgeBaseTranslationsWordpress[];
+
+  @Field(() => KnowledgeBaseParentNodeWordpress, { nullable: true })
+  informationParent: KnowledgeBaseParentNodeWordpress | null;
+
+  @Field(() => KnowledgeBaseImageNodeWordpress, { nullable: true })
+  informationCoverImage: KnowledgeBaseImageNodeWordpress | null;
+
+  @Field()
+  informationPhone: string;
+
+  @Field()
+  informationAddress: string;
+
+  @Field()
+  informationEmail: string;
+}
