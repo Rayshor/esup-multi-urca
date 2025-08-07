@@ -43,7 +43,7 @@
   <ng-container *ngIf="(knowledgeBaseParentItem$ | async) as parentItem; else noParent">
     <div class="parent-content">
       <h1>{{ parentItem.title }}</h1>
-      <p>{{ parentItem.content }}</p>
+      <div [innerHTML]="parentItem.content" class="safe-area-padding-lr link-inherit-color"></div>
     </div>
   </ng-container>
 

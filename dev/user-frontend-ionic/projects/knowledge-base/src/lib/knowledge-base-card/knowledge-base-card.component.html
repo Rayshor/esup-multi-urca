@@ -50,7 +50,7 @@
       </ion-col>
       <ion-col size="auto" class="button-col">
         <ion-button *ngIf="displayMode !== ChildDisplay.card && !item.isLeaf" fill="solid" shape="round" (click)="openItemLink(item)">
-          <ion-icon [name]="getButtonIcon(item.pageType)" slot="icon-only" size="large"></ion-icon>
+          <ion-icon [name]="getButtonIcon(item.type)" slot="icon-only" size="large"></ion-icon>
         </ion-button>
         <ion-button *ngIf="displayMode === ChildDisplay.card" shape="round"  fill="solid" (click)="toggleDetails()">
           <ion-icon [name]="isExpanded ? 'chevron-up-outline' : 'chevron-down-outline'" slot="icon-only" size="large"></ion-icon>
@@ -63,7 +63,7 @@
     <div class="separator"></div>
     <ion-card-content>
       <ion-item lines="none">
-        {{ item.content }}
+        <div [innerHTML]="item.content" class="safe-area-padding-lr link-inherit-color"></div>
       </ion-item>
 
       <ng-template #clickableItem let-icon="icon" let-value="value" let-click="click">

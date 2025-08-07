@@ -44,24 +44,24 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const natsServers = (
-      process.env.KNOWLEDGE_BASE_SERVICE_NATS_SERVERS || 'nats://localhost:4222'
+    process.env.KNOWLEDGE_BASE_SERVICE_NATS_SERVERS || 'nats://localhost:4222'
   )
-      .split(',')
-      .map((server) => server.trim());
+    .split(',')
+    .map((server) => server.trim());
   Logger.log(`Using nats servers: ${natsServers}`);
 
   const app = await NestFactory.create(AppModule, {
     logger:
-        process.env.EXTENDED_LOGS === 'true'
-            ? ['error', 'warn', 'log', 'debug', 'verbose']
-            : ['error', 'warn', 'log'],
+      process.env.EXTENDED_LOGS === 'true'
+        ? ['error', 'warn', 'log', 'debug', 'verbose']
+        : ['error', 'warn', 'log'],
   });
 
   app.connectMicroservice<MicroserviceOptions>({
     transport: Transport.NATS,
     options: {
       servers: natsServers,
-      queue: 'KNOWLEDGE_BASE',
+      queue: 'knowledge_base',
     },
   });
   await app.startAllMicroservices();
@@ -70,12 +70,12 @@ async function bootstrap() {
   const port = parseInt(process.env.KNOWLEDGE_BASE_SERVICE_PORT) || 3020;
   Logger.log(`Listening on host ${host}, port ${port}`);
   Logger.log(
-      `Cache enabled. TTL: ${
-          process.env.KNOWLEDGE_BASE_SERVICE_CACHE_TTL_MS || 300
-      }ms`,
+    `Cache enabled. TTL: ${
+      process.env.KNOWLEDGE_BASE_SERVICE_CACHE_TTL_MS || 300
+    }ms`,
   );
   Logger.log(
-      `Max cache entries: ${process.env.KNOWLEDGE_BASE_SERVICE_CACHE_MAX || 200}`,
+    `Max cache entries: ${process.env.KNOWLEDGE_BASE_SERVICE_CACHE_MAX || 200}`,
   );
   await app.listen(port, host);
 }

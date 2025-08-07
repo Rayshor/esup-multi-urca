@@ -48,6 +48,7 @@ import { LanguagesWordpressModule } from '@wordpress/collections/languages/langu
 import { LoginWordpressModule } from '@wordpress/collections/login/login.wordpress.module';
 import { StaticPagesWordpressModule } from '@wordpress/collections/static-pages/static-pages.wordpress.module';
 import { WidgetsWordpressModule } from '@wordpress/collections/widgets/widgets.wordpress.module';
+import { KnowledgeBaseWordpressModule } from '@wordpress/collections/knowledge-base/knowledge-base.wordpress.module';
 
 @Module({
   providers: [WordpressService],
@@ -62,6 +63,7 @@ import { WidgetsWordpressModule } from '@wordpress/collections/widgets/widgets.w
     StaticPagesWordpressModule,
     SocialNetworksWordpressModule,
     WidgetsWordpressModule,
+    KnowledgeBaseWordpressModule,
   ],
   exports: [
     ChannelsWordpressModule,
@@ -74,6 +76,7 @@ import { WidgetsWordpressModule } from '@wordpress/collections/widgets/widgets.w
     StaticPagesWordpressModule,
     SocialNetworksWordpressModule,
     WidgetsWordpressModule,
+    KnowledgeBaseWordpressModule,
   ],
 })
 export class WordpressModule {}

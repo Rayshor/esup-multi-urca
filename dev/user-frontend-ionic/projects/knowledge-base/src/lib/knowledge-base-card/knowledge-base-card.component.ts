@@ -37,10 +37,10 @@
  * termes.
  */
 
-import { Component, Input } from '@angular/core';
-import { ChildDisplay, KnowledgeBaseItem, PageType } from '../knowledge-base.repository';
-import { Browser } from '@capacitor/browser';
-import { Router } from '@angular/router';
+import {Component, Input} from '@angular/core';
+import {ChildDisplay, KnowledgeBaseItem, TranslatedKnowledgeBaseItem, Type} from '../knowledge-base.repository';
+import {Browser} from '@capacitor/browser';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-knowledge-base-card',
@@ -49,35 +49,39 @@ import { Router } from '@angular/router';
 })
 
 export class KnowledgeBaseCardComponent {
-  @Input() item: KnowledgeBaseItem;
+  @Input() item: TranslatedKnowledgeBaseItem;
   @Input() displayMode: ChildDisplay;
   public isExpanded: boolean = false;
 
   constructor(
     private router: Router,
-  ) {}
+  ) {
+  }
 
   openItemLink(item: KnowledgeBaseItem) {
-    switch (item.pageType) {
-      case PageType.internalLink:
+    switch (item.type) {
+      case Type.internalLink:
         this.router.navigateByUrl(item.link);
         break;
 
-      case PageType.externalLink:
-        Browser.open({ url: item.link });
+      case Type.externalLink:
+        Browser.open({url: item.link});
         break;
 
-      case PageType.content:
+      case Type.content:
         this.router.navigateByUrl(`knowledge-base/${item.id}`);
         break;
     }
   }
 
-  getButtonIcon(type: PageType) {
+  getButtonIcon(type: Type) {
     switch (type) {
-      case PageType.externalLink: return 'open-outline';
-      case PageType.internalLink: return 'arrow-forward';
-      case PageType.content: return 'arrow-forward';
+      case Type.externalLink:
+        return 'open-outline';
+      case Type.internalLink:
+        return 'arrow-forward';
+      case Type.content:
+        return 'arrow-forward';
     }
   }
 

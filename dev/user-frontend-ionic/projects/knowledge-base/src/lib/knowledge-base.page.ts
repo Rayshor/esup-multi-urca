@@ -44,9 +44,9 @@ import { Observable } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NetworkService } from '@multi/shared';
 import {
-  KnowledgeBaseItem,
-  knowledgeBases$,
-  getKnowledgeBaseByParentId, getKnowledgeBaseItemById, ChildDisplay
+  KnowledgeBaseRepository,
+  TranslatedKnowledgeBaseItem,
+  ChildDisplay
 } from './knowledge-base.repository';
 
 @Component({
@@ -57,15 +57,15 @@ import {
 export class KnowledgeBasePage implements OnInit {
 
   public isLoading = false;
-  public parentPageId: number;
-  public knowledgeBases$: Observable<KnowledgeBaseItem[]>;
+  public parentPageId: string;
+  public knowledgeBases$: Observable<TranslatedKnowledgeBaseItem[]>;
   public knowledgeBasesIsEmpty$: Observable<boolean>;
-  public knowledgeBaseParentItem$: Observable<KnowledgeBaseItem>;
-
+  public knowledgeBaseParentItem$: Observable<TranslatedKnowledgeBaseItem>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private knowledgeBaseService: KnowledgeBaseService,
+    private knowledgeBasesRepository: KnowledgeBaseRepository,
     private router: Router,
     private networkService: NetworkService
   ) {}
@@ -75,15 +75,15 @@ export class KnowledgeBasePage implements OnInit {
       return;
     }
 
-    this.parentPageId = Number.parseInt(this.activatedRoute.snapshot.paramMap.get('id'), 10);
+    this.parentPageId = this.activatedRoute.snapshot.paramMap.get('id');
     if (!this.parentPageId) {
       this.knowledgeBaseService.loadAndStoreKnowledgeBase()
         .pipe(take(1))
         .subscribe();
     }
 
-    this.knowledgeBases$ = this.parentPageId ? getKnowledgeBaseByParentId(this.parentPageId) : knowledgeBases$;
-    this.knowledgeBaseParentItem$ = getKnowledgeBaseItemById(this.parentPageId);
+    this.knowledgeBases$ = this.parentPageId ? this.knowledgeBasesRepository.getKnowledgeBaseByParentId(this.parentPageId) : this.knowledgeBasesRepository.getKnowledgeBase();
+    this.knowledgeBaseParentItem$ =  this.knowledgeBasesRepository.getKnowledgeBaseItemById(this.parentPageId);
   }
 
   ionViewWillEnter() {

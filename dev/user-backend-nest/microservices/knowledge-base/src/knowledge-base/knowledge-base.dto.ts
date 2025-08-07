@@ -52,16 +52,37 @@ export enum PageType {
   INTERNAL_LINK = 'internal_link',
 }
 
-export interface KnowledgeBaseItem {
+export interface KnowledgeBaseDto {
   id: number;
   pageType: PageType;
   parentId?: number;
-  content?: string;
-  title?: string;
   link?: string;
   mail?: string;
   phone?: string;
   address?: string;
-  childrens?: KnowledgeBaseItem[];
+  email?: string;
+  translations?: KnowledgeBaseTranslation[];
   childDisplay?: ChildDisplay;
+  position: number;
+}
+
+export interface KnowledgeBaseTranslation {
+  languagesCode: string;
+  title: string;
+  content: string;
+  searchKeywords?: string[];
+}
+
+export interface KnowledgeBaseGraphQLResponse<T> {
+  data: {
+    knowledgeBase: T;
+  };
+  errors?: Array<{
+    message: string;
+    locations: Array<{
+      line: number;
+      column: number;
+    }>;
+    path: string[];
+  }>;
 }
