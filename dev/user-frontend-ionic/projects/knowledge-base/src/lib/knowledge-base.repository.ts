@@ -51,7 +51,7 @@ import {combineLatest, Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Inject, Injectable} from "@angular/core";
 
-export enum ChildDisplay {
+export enum Display {
   card = 'card',
   list = 'list',
 }
@@ -70,7 +70,8 @@ export interface KnowledgeBaseItem {
   email?: string,
   phone?: string,
   address?: string,
-  childDisplay?: ChildDisplay,
+  childDisplay?: Display,
+  display?:Display,
   translations?: Translation[],
   coverImage?: string;
   isLeaf?: boolean
@@ -86,7 +87,8 @@ export interface TranslatedKnowledgeBaseItem {
   email?: string,
   phone?: string,
   address?: string,
-  childDisplay?: ChildDisplay,
+  childDisplay?: Display,
+  display?:Display,
   coverImage?: string;
   searchKeywords?: string[];
   isLeaf?: boolean
@@ -137,8 +139,19 @@ export class KnowledgeBaseRepository {
   );
 
   public setKnowledgeBases = (knowledgeBaseItems: KnowledgeBaseItem[]) => {
+    this.updateDisplayFromParent(knowledgeBaseItems);
     store.update(setEntities(knowledgeBaseItems));
   };
+
+  private updateDisplayFromParent(knowledgeBaseItems: KnowledgeBaseItem[]) {
+    knowledgeBaseItems.forEach(item => {
+      if (!item.parentId)
+        return
+
+      const parent = knowledgeBaseItems.find((parent) => parent.id === item.parentId);
+      item.display = parent.childDisplay;
+    })
+  }
 
   public getKnowledgeBase = ():Observable<TranslatedKnowledgeBaseItem[]> =>
     this.translatedKnowledgeBases$.pipe(
@@ -161,4 +174,15 @@ export class KnowledgeBaseRepository {
     this.translatedKnowledgeBases$.pipe(
       map(items => items.find(item => item.id === id))
     );
+
+  public searchKnowledgeBase = (text: string): Observable<TranslatedKnowledgeBaseItem[]> =>
+    this.translatedKnowledgeBases$.pipe(
+      map(items => items.filter( item =>
+        item.title.toLowerCase().includes(text) ||
+        item.content?.toLowerCase().includes(text) ||
+        item.searchKeywords?.some(key => key.toLowerCase().includes(text.toLowerCase()))
+      ))
+    );
 }
+
+
