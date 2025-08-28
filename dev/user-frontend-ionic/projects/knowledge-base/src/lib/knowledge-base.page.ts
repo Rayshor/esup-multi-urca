@@ -41,12 +41,13 @@ import {Component, OnInit} from '@angular/core';
 import {take} from 'rxjs/operators';
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NetworkService } from '@multi/shared';
 import {
   KnowledgeBaseRepository,
   TranslatedKnowledgeBaseItem,
-  Display,Type
+  Display,
+  Type
 } from './knowledge-base.repository';
 
 @Component({
@@ -65,7 +66,6 @@ export class KnowledgeBasePage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private knowledgeBaseService: KnowledgeBaseService,
     private knowledgeBasesRepository: KnowledgeBaseRepository,
-    private router: Router,
     private networkService: NetworkService
   ) {}
 
@@ -97,5 +97,6 @@ export class KnowledgeBasePage implements OnInit {
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   protected readonly Display = Display;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   protected readonly Type = Type;
 }

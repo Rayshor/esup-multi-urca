@@ -43,11 +43,11 @@ import {
 } from '@ngneat/elf-persist-state';
 import {currentLanguage$, localForageStore} from '@multi/shared';
 import {
-  selectAllEntities, selectManyByPredicate,
+  selectAllEntities,
   setEntities,
   withEntities
 } from "@ngneat/elf-entities";
-import {combineLatest, filter, Observable} from "rxjs";
+import {combineLatest, Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {Inject, Injectable} from "@angular/core";
 
