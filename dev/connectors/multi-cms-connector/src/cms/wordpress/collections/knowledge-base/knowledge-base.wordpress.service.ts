@@ -43,7 +43,10 @@ import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/trans
 import { ValidateMapping } from '@common/decorators/validate-mapping.decorator';
 import { KnowledgeBaseSchema } from '@common/validation/schemas/knowledge-base.schema';
 import { normalizeEmptyStringToNull } from '@common/utils/normalize';
-import { KnowledgeBaseWordpress } from '@wordpress/collections/knowledge-base/knowledge-base.wordpress.model';
+import {
+  KnowledgeBaseParentWordpress,
+  KnowledgeBaseWordpress,
+} from '@wordpress/collections/knowledge-base/knowledge-base.wordpress.model';
 import { KnowledgeBase } from '@common/models/knowledge-base.model';
 import { Authorization } from '@common/models/authorization.model';
 
@@ -112,14 +115,19 @@ export class KnowledgeBaseWordpressService {
   private createAuthorization(
     knowledgeBase: KnowledgeBaseWordpress,
   ): Authorization | null {
-    const rolesNodes =
-      knowledgeBase.informationParent?.node?.informationRoles?.nodes ||
-      knowledgeBase.informationRoles?.nodes ||
+    const parentAuthorisation = this.getAuthorization(
+      knowledgeBase.informationParent?.node,
+    );
+    return parentAuthorisation ?? this.getAuthorization(knowledgeBase);
+  }
+
+  private getAuthorization(
+    knowledgeBase?: KnowledgeBaseWordpress | KnowledgeBaseParentWordpress,
+  ): Authorization | null {
+    const roles =
+      knowledgeBase?.informationRoles?.nodes?.map((role) => role.roleCode) ||
       [];
-    const roles = rolesNodes.map((role) => role.roleCode) || [];
-    const type =
-      knowledgeBase.informationParent?.node?.informationAccessRestriction ||
-      knowledgeBase.informationAccessRestriction;
+    const type = knowledgeBase?.informationAccessRestriction;
     return type && type !== 'NONE' ? { type, roles } : null;
   }
 

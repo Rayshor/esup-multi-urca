@@ -48,7 +48,7 @@ class KnowledgeBaseRolesWordpress {
 }
 
 @ObjectType()
-class KnowledgeBaseParentWordpress {
+export class KnowledgeBaseParentWordpress {
   @Field()
   databaseId: number;
 
