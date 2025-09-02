@@ -38,15 +38,16 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import { map, take } from 'rxjs/operators';
+import {take, tap} from 'rxjs/operators';
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NetworkService } from '@multi/shared';
 import {
   KnowledgeBaseRepository,
   TranslatedKnowledgeBaseItem,
-  ChildDisplay
+  Display,
+  Type
 } from './knowledge-base.repository';
 
 @Component({
@@ -59,14 +60,12 @@ export class KnowledgeBasePage implements OnInit {
   public isLoading = false;
   public parentPageId: string;
   public knowledgeBases$: Observable<TranslatedKnowledgeBaseItem[]>;
-  public knowledgeBasesIsEmpty$: Observable<boolean>;
   public knowledgeBaseParentItem$: Observable<TranslatedKnowledgeBaseItem>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private knowledgeBaseService: KnowledgeBaseService,
     private knowledgeBasesRepository: KnowledgeBaseRepository,
-    private router: Router,
     private networkService: NetworkService
   ) {}
 
@@ -77,8 +76,12 @@ export class KnowledgeBasePage implements OnInit {
 
     this.parentPageId = this.activatedRoute.snapshot.paramMap.get('id');
     if (!this.parentPageId) {
+      this.isLoading = true;
       this.knowledgeBaseService.loadAndStoreKnowledgeBase()
-        .pipe(take(1))
+        .pipe(
+          take(1),
+          tap(() => this.isLoading = false)
+        )
         .subscribe();
     }
 
@@ -86,10 +89,18 @@ export class KnowledgeBasePage implements OnInit {
     this.knowledgeBaseParentItem$ =  this.knowledgeBasesRepository.getKnowledgeBaseItemById(this.parentPageId);
   }
 
-  ionViewWillEnter() {
-    this.knowledgeBasesIsEmpty$ = this.knowledgeBases$.pipe(map(knowledgeBases => knowledgeBases.length === 0));
+  searchKnowledgeBase(event) {
+    const query = event.target.value.toLowerCase();
+    if(!query) {
+      this.knowledgeBases$ = this.knowledgeBasesRepository.getKnowledgeBase();
+      return;
+    }
+    this.knowledgeBases$=this.knowledgeBasesRepository.searchKnowledgeBase(query);
+
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  protected readonly ChildDisplay = ChildDisplay;
+  protected readonly Display = Display;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  protected readonly Type = Type;
 }

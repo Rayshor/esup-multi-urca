@@ -41,7 +41,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size="auto">
-        <img class="thumbnail" alt="" src="https://ionicframework.com/docs/img/demos/card-media.png">
+        <img *ngIf="item.coverImage" class="thumbnail" alt="" [src]="item.coverImage">
       </ion-col>
       <ion-col class="title-col">
         <ion-card-title>
@@ -49,17 +49,17 @@
         </ion-card-title>
       </ion-col>
       <ion-col size="auto" class="button-col">
-        <ion-button *ngIf="displayMode !== ChildDisplay.card && !item.isLeaf" fill="solid" shape="round" (click)="openItemLink(item)">
+        <ion-button *ngIf="displayMode !== Display.card && !item.isLeaf" fill="solid" shape="round" class="app-round-button-1" (click)="openItemLink(item)" >
           <ion-icon [name]="getButtonIcon(item.type)" slot="icon-only" size="large"></ion-icon>
         </ion-button>
-        <ion-button *ngIf="displayMode === ChildDisplay.card" shape="round"  fill="solid" (click)="toggleDetails()">
+        <ion-button *ngIf="displayMode === Display.card" shape="round"  fill="solid" class="app-round-button-1" (click)="toggleDetails()" >
           <ion-icon [name]="isExpanded ? 'chevron-up-outline' : 'chevron-down-outline'" slot="icon-only" size="large"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
 
-  <ng-container *ngIf="displayMode === ChildDisplay.card && isExpanded">
+  <ng-container *ngIf="displayMode === Display.card && isExpanded">
     <div class="separator"></div>
     <ion-card-content>
       <ion-item lines="none">

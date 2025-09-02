@@ -44,17 +44,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ProjectModuleService, SharedComponentsModule, SharedPipeModule } from '@multi/shared';
 import { KnowledgeBasePageRoutingModule } from './knowledge-base-routing.module';
 import { KnowledgeBasePage } from './knowledge-base.page';
-import { KnowledgeBaseComponent } from './widgets/knowledge-base/knowledge-base.component';
 import { KnowledgeBaseCardComponent } from './knowledge-base-card/knowledge-base-card.component';
 
 const initModule = (projectModuleService: ProjectModuleService) =>
   () => projectModuleService.initProjectModule({
     name: 'knowledge-base',
-    translation: true,
-    widgets: [{
-      id: 'knowledge-base',
-      component: KnowledgeBaseComponent
-    }]
+    translation: true
   });
 @NgModule({
   imports: [
@@ -67,7 +62,6 @@ const initModule = (projectModuleService: ProjectModuleService) =>
   ],
   declarations: [
     KnowledgeBasePage,
-    KnowledgeBaseComponent,
     KnowledgeBaseCardComponent
   ],
   providers: [{

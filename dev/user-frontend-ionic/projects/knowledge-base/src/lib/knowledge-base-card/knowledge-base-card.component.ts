@@ -38,7 +38,7 @@
  */
 
 import {Component, Input} from '@angular/core';
-import {ChildDisplay, KnowledgeBaseItem, TranslatedKnowledgeBaseItem, Type} from '../knowledge-base.repository';
+import {Display, KnowledgeBaseItem, TranslatedKnowledgeBaseItem, Type} from '../knowledge-base.repository';
 import {Browser} from '@capacitor/browser';
 import {Router} from '@angular/router';
 
@@ -50,7 +50,7 @@ import {Router} from '@angular/router';
 
 export class KnowledgeBaseCardComponent {
   @Input() item: TranslatedKnowledgeBaseItem;
-  @Input() displayMode: ChildDisplay;
+  @Input() displayMode: Display;
   public isExpanded: boolean = false;
 
   constructor(
@@ -102,5 +102,5 @@ export class KnowledgeBaseCardComponent {
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  protected readonly ChildDisplay = ChildDisplay;
+  protected readonly Display = Display;
 }
