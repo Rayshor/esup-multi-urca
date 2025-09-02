@@ -145,7 +145,10 @@ export class KnowledgeBaseRepository {
 
   private updateDisplayFromParent(knowledgeBaseItems: KnowledgeBaseItem[]) {
     knowledgeBaseItems.forEach(item => {
-      if (!item.parentId)
+      const children = knowledgeBaseItems.filter(child => child.parentId === item.id);
+      item.display = (item.type===Type.content && children.length === 0) ? Display.card : undefined;
+
+      if (!item.parentId || item.display)
         return
 
       const parent = knowledgeBaseItems.find((parent) => parent.id === item.parentId);

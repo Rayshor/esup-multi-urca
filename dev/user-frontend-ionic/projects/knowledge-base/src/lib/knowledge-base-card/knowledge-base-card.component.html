@@ -41,7 +41,7 @@
   <ion-grid>
     <ion-row>
       <ion-col size="auto">
-        <img class="thumbnail" alt="" src="https://ionicframework.com/docs/img/demos/card-media.png">
+        <img *ngIf="item.coverImage" class="thumbnail" alt="" [src]="item.coverImage">
       </ion-col>
       <ion-col class="title-col">
         <ion-card-title>
