@@ -73,6 +73,10 @@ export class KnowledgeBaseService {
             link
             childDisplay
             position
+            authorization {
+                type
+                roles
+            }
             translations {
                 languagesCode
                 searchKeywords

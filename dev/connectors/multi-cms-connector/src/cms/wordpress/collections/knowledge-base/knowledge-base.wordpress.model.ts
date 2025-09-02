@@ -39,11 +39,24 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/translations/translations.wordpress.model';
 import { ImageWordpress } from '@wordpress/collections/system/image.wordpress.model';
+import { RolesWordpress } from '@wordpress/collections/roles/roles.wordpress.model';
 
 @ObjectType()
-class KnowledgeBaseParentWordpress {
+class KnowledgeBaseRolesWordpress {
+  @Field(() => [RolesWordpress])
+  nodes: RolesWordpress[];
+}
+
+@ObjectType()
+export class KnowledgeBaseParentWordpress {
   @Field()
   databaseId: number;
+
+  @Field()
+  informationAccessRestriction: 'ALLOW' | 'DISALLOW' | 'NONE';
+
+  @Field(() => KnowledgeBaseRolesWordpress)
+  informationRoles: KnowledgeBaseRolesWordpress;
 }
 
 @ObjectType()
@@ -83,6 +96,12 @@ export class KnowledgeBaseWordpress {
 
   @Field()
   informationPosition: number;
+
+  @Field()
+  informationAccessRestriction: 'ALLOW' | 'DISALLOW' | 'NONE';
+
+  @Field(() => KnowledgeBaseRolesWordpress)
+  informationRoles: KnowledgeBaseRolesWordpress;
 
   @Field(() => [KnowledgeBaseTranslationsWordpress])
   translations: KnowledgeBaseTranslationsWordpress[];

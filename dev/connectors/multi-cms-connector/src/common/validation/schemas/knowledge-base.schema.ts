@@ -38,6 +38,7 @@
 import { z } from 'zod';
 import { IdSchema } from '@common/validation/schemas/base-type.schema';
 import { KnowledgeBaseTranslationsSchema } from '@common/validation/schemas/translations.schema';
+import { AuthorizationSchema } from '@common/validation/schemas/authorization.schema';
 
 export const KnowledgeBaseSchema = z.object({
   id: IdSchema,
@@ -45,6 +46,7 @@ export const KnowledgeBaseSchema = z.object({
   childDisplay: z.enum(['card', 'list']).nullable(),
   link: z.string().min(1, 'Information link cannot be empty string').nullable(),
   position: z.number().int().default(0),
+  authorization: AuthorizationSchema.nullable(),
   translations: z
     .array(KnowledgeBaseTranslationsSchema)
     .min(1, 'At least one translation is required for Features'),

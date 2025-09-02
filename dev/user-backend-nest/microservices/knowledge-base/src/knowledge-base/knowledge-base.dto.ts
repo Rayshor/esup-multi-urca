@@ -37,6 +37,11 @@
  * termes.
  */
 
+export interface Authorization {
+  type: 'ALLOW' | 'DISALLOW';
+  roles: string[];
+}
+
 export interface KnowledgeBaseQueryDto {
   login: string;
 }
@@ -64,6 +69,7 @@ export interface KnowledgeBaseDto {
   translations?: KnowledgeBaseTranslation[];
   childDisplay?: ChildDisplay;
   position: number;
+  authorization?: Authorization;
 }
 
 export interface KnowledgeBaseTranslation {

@@ -728,14 +728,32 @@ export class AppController {
       );
   }
 
-  @Get('/knowledge-base')
-  knowledgeBase() {
-    return this.knowledgeBaseClient.send(
-      {
-        cmd: 'knowledgeBase',
-      },
-      {},
-    );
+  @Post('/knowledge-base')
+  knowledgeBase(@Body() body) {
+    return this.authClient
+      .send(
+        {
+          cmd: 'getUser',
+        },
+        body,
+      )
+      .pipe(
+        concatMap((user) => {
+          const roles = user ? user.roles : ['anonymous'];
+          return this.knowledgeBaseClient
+            .send(
+              {
+                cmd: 'knowledgeBase',
+              },
+              roles,
+            )
+            .pipe(
+              map((knowledgeBase) => {
+                return new AuthorizationHelper(roles).filter(knowledgeBase);
+              }),
+            );
+        }),
+      );
   }
 
   @Get('/version')

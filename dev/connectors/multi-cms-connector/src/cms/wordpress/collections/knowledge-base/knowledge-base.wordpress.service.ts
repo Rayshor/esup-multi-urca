@@ -43,8 +43,12 @@ import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/trans
 import { ValidateMapping } from '@common/decorators/validate-mapping.decorator';
 import { KnowledgeBaseSchema } from '@common/validation/schemas/knowledge-base.schema';
 import { normalizeEmptyStringToNull } from '@common/utils/normalize';
-import { KnowledgeBaseWordpress } from '@wordpress/collections/knowledge-base/knowledge-base.wordpress.model';
+import {
+  KnowledgeBaseParentWordpress,
+  KnowledgeBaseWordpress,
+} from '@wordpress/collections/knowledge-base/knowledge-base.wordpress.model';
 import { KnowledgeBase } from '@common/models/knowledge-base.model';
+import { Authorization } from '@common/models/authorization.model';
 
 // TODO: Move FRENCH_CODE to .env and rename it to DEFAULT_LANGUAGE_CODE
 const FRENCH_CODE = 'FR';
@@ -94,6 +98,7 @@ export class KnowledgeBaseWordpressService {
       childDisplay: knowledgeBase.informationChildDisplay || null,
       link: normalizeEmptyStringToNull(knowledgeBase.informationLink),
       position: knowledgeBase.informationPosition || 0,
+      authorization: this.createAuthorization(knowledgeBase),
       translations,
       parentId:
         knowledgeBase.informationParent?.node?.databaseId?.toString() || null,
@@ -104,6 +109,26 @@ export class KnowledgeBaseWordpressService {
       address: normalizeEmptyStringToNull(knowledgeBase.informationAddress),
       email: normalizeEmptyStringToNull(knowledgeBase.informationEmail),
     };
+  }
+
+  // creation of authorizations based on the parents' rights if they exist, otherwise classic creation
+  private createAuthorization(
+    knowledgeBase: KnowledgeBaseWordpress,
+  ): Authorization | null {
+    const parentAuthorisation = this.getAuthorization(
+      knowledgeBase.informationParent?.node,
+    );
+    return parentAuthorisation ?? this.getAuthorization(knowledgeBase);
+  }
+
+  private getAuthorization(
+    knowledgeBase?: KnowledgeBaseWordpress | KnowledgeBaseParentWordpress,
+  ): Authorization | null {
+    const roles =
+      knowledgeBase?.informationRoles?.nodes?.map((role) => role.roleCode) ||
+      [];
+    const type = knowledgeBase?.informationAccessRestriction;
+    return type && type !== 'NONE' ? { type, roles } : null;
   }
 
   async getKnowledgeBase(): Promise<KnowledgeBase[]> {
@@ -118,6 +143,14 @@ export class KnowledgeBaseWordpressService {
             informationChildDisplay
             informationLink
             informationPosition
+            informationAccessRestriction
+            informationRoles(first: 100) {
+              nodes {
+                databaseId
+                roleCode
+                roleDescription
+              }
+            }
             informationSearchKeywords
             informationPhone
             informationAddress
@@ -133,8 +166,14 @@ export class KnowledgeBaseWordpressService {
             informationParent {
               node {
                 databaseId
-                informationTitle
-                informationContent
+                informationAccessRestriction
+                informationRoles(first: 100) {
+                  nodes {
+                    databaseId
+                    roleCode
+                    roleDescription
+                  }
+                }
               }              
             }
             translations {
@@ -152,6 +191,6 @@ export class KnowledgeBaseWordpressService {
         }
       }
     `);
-    return data.knowledgeBases.nodes.map(this.mapToMultiModel);
+    return data.knowledgeBases.nodes.map(this.mapToMultiModel.bind(this));
   }
 }
