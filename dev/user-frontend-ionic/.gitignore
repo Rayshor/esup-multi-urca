@@ -49,6 +49,7 @@ npm-debug.log*
 
 # Theme
 /src/theme/*
+!/src/theme/app-theme
 !/src/theme/theme.scss.dist
 !/src/theme/app-theme-dist
 /icons/*
