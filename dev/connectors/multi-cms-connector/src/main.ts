@@ -51,12 +51,13 @@ async function bootstrap() {
     logger: logLevels,
   });
 
+  const host = process.env.CONNECTOR_SERVICE_HOST || '127.0.0.1';
   const port = process.env.PORT || 4000;
 
   const reflector = app.get(Reflector);
   app.useGlobalGuards(new JwtAuthGuard(reflector));
 
   Logger.log(`App listening on the port ${port}`);
-  await app.listen(port);
+  await app.listen(port, host);
 }
 bootstrap();
