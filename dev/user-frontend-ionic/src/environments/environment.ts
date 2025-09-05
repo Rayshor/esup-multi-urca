@@ -77,7 +77,7 @@ export const environment: any = {
   defaultLogo: 'assets/logos/white-logo.svg',
   tenants: [
     {
-      apiEndpoint: 'https://reims-multi-development.jnesis.com/main',
+      apiEndpoint: 'https://reims-multi-development.jnesis.com/api',
       modulesConfigurations: {
         chatbot: {
           logoRegex: /_chacha5/i
