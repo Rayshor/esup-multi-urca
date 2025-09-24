@@ -43,12 +43,8 @@ import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/trans
 import { ValidateMapping } from '@common/decorators/validate-mapping.decorator';
 import { KnowledgeBaseSchema } from '@common/validation/schemas/knowledge-base.schema';
 import { normalizeEmptyStringToNull } from '@common/utils/normalize';
-import {
-  KnowledgeBaseParentWordpress,
-  KnowledgeBaseWordpress,
-} from '@wordpress/collections/knowledge-base/knowledge-base.wordpress.model';
+import { KnowledgeBaseWordpress } from '@wordpress/collections/knowledge-base/knowledge-base.wordpress.model';
 import { KnowledgeBase } from '@common/models/knowledge-base.model';
-import { Authorization } from '@common/models/authorization.model';
 
 // TODO: Move FRENCH_CODE to .env and rename it to DEFAULT_LANGUAGE_CODE
 const FRENCH_CODE = 'FR';
@@ -92,13 +88,25 @@ export class KnowledgeBaseWordpressService {
       ) || []),
     ];
 
+    const roles =
+      knowledgeBase.informationRoles?.nodes.length > 0
+        ? knowledgeBase.informationRoles.nodes.map((role) => role.roleCode)
+        : [];
+
     return {
       id: knowledgeBase.databaseId.toString(),
       type: knowledgeBase.informationType,
       childDisplay: knowledgeBase.informationChildDisplay || null,
       link: normalizeEmptyStringToNull(knowledgeBase.informationLink),
       position: knowledgeBase.informationPosition || 0,
-      authorization: this.createAuthorization(knowledgeBase),
+      authorization:
+        knowledgeBase.informationAccessRestriction &&
+        knowledgeBase.informationAccessRestriction !== 'NONE'
+          ? {
+              type: knowledgeBase.informationAccessRestriction,
+              roles,
+            }
+          : null,
       translations,
       parentId:
         knowledgeBase.informationParent?.node?.databaseId?.toString() || null,
@@ -109,26 +117,6 @@ export class KnowledgeBaseWordpressService {
       address: normalizeEmptyStringToNull(knowledgeBase.informationAddress),
       email: normalizeEmptyStringToNull(knowledgeBase.informationEmail),
     };
-  }
-
-  // creation of authorizations based on the parents' rights if they exist, otherwise classic creation
-  private createAuthorization(
-    knowledgeBase: KnowledgeBaseWordpress,
-  ): Authorization | null {
-    const parentAuthorisation = this.getAuthorization(
-      knowledgeBase.informationParent?.node,
-    );
-    return parentAuthorisation ?? this.getAuthorization(knowledgeBase);
-  }
-
-  private getAuthorization(
-    knowledgeBase?: KnowledgeBaseWordpress | KnowledgeBaseParentWordpress,
-  ): Authorization | null {
-    const roles =
-      knowledgeBase?.informationRoles?.nodes?.map((role) => role.roleCode) ||
-      [];
-    const type = knowledgeBase?.informationAccessRestriction;
-    return type && type !== 'NONE' ? { type, roles } : null;
   }
 
   async getKnowledgeBase(): Promise<KnowledgeBase[]> {

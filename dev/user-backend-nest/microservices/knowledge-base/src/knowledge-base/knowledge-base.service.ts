@@ -61,7 +61,6 @@ export class KnowledgeBaseService {
   }
 
   getKnowledgeBase(): Observable<KnowledgeBaseDto[]> {
-
     const url = `${this.cmsApiConfig.apiUrl}/graphql`;
 
     const graphqlQuery = {

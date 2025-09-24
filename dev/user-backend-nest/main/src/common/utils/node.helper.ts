@@ -2,7 +2,8 @@
  * Copyright ou © ou Copr. Université de Lorraine, (2022)
  *
  * Direction du Numérique de l'Université de Lorraine - SIED
- * (dn-mobile-dev@univ-lorraine.fr)
+ *  (dn-mobile-dev@univ-lorraine.fr)
+ * JNESIS (contact@jnesis.com)
  *
  * Ce logiciel est un programme informatique servant à rendre accessible
  * sur mobile divers services universitaires aux étudiants et aux personnels
@@ -36,82 +37,28 @@
  * termes.
  */
 
-import { Field, ObjectType } from '@nestjs/graphql';
-import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/translations/translations.wordpress.model';
-import { ImageWordpress } from '@wordpress/collections/system/image.wordpress.model';
-import { RolesWordpress } from '@wordpress/collections/roles/roles.wordpress.model';
-
-@ObjectType()
-class KnowledgeBaseRolesWordpress {
-  @Field(() => [RolesWordpress])
-  nodes: RolesWordpress[];
+export interface NodeInterface {
+  id: string;
+  parentId: string;
 }
 
-@ObjectType()
-export class KnowledgeBaseParentWordpress {
-  @Field()
-  databaseId: number;
-}
+export class NodeHelper<N extends NodeInterface> {
+  private existingIds: Set<string>;
 
-@ObjectType()
-class KnowledgeBaseParentNodeWordpress {
-  @Field(() => KnowledgeBaseParentWordpress)
-  node: KnowledgeBaseParentWordpress;
-}
+  constructor(private nodes: N[]) {
+    this.existingIds = new Set(nodes.map((node) => node.id));
+  }
 
-@ObjectType()
-class KnowledgeBaseImageNodeWordpress {
-  @Field(() => ImageWordpress)
-  node: ImageWordpress;
-}
+  public removeOrphans(): N[] {
+    return this.nodes.filter((node) => this.hasValidParent(node));
+  }
 
-@ObjectType()
-export class KnowledgeBaseWordpress {
-  @Field()
-  databaseId: number;
-
-  @Field()
-  informationTitle: string;
-
-  @Field()
-  informationContent: string;
-
-  @Field()
-  informationSearchKeywords: string;
-
-  @Field()
-  informationType: 'content' | 'internal_link' | 'external_link';
-
-  @Field()
-  informationChildDisplay: 'card' | 'list';
-
-  @Field()
-  informationLink: string;
-
-  @Field()
-  informationPosition: number;
-
-  @Field()
-  informationAccessRestriction: 'ALLOW' | 'DISALLOW' | 'NONE';
-
-  @Field(() => KnowledgeBaseRolesWordpress)
-  informationRoles: KnowledgeBaseRolesWordpress;
-
-  @Field(() => [KnowledgeBaseTranslationsWordpress])
-  translations: KnowledgeBaseTranslationsWordpress[];
-
-  @Field(() => KnowledgeBaseParentNodeWordpress, { nullable: true })
-  informationParent: KnowledgeBaseParentNodeWordpress | null;
-
-  @Field(() => KnowledgeBaseImageNodeWordpress, { nullable: true })
-  informationCoverImage: KnowledgeBaseImageNodeWordpress | null;
-
-  @Field()
-  informationPhone: string;
-
-  @Field()
-  informationAddress: string;
-
-  @Field()
-  informationEmail: string;
+  private hasValidParent(currentNode: N, visited = new Set<string>()): boolean {
+    if (currentNode.parentId == null) return true; // racine valide
+    if (!this.existingIds.has(currentNode.parentId)) return false; // parent inexistant
+    if (visited.has(currentNode.parentId)) return false; // boucle éventuelle
+    visited.add(currentNode.parentId);
+    const parent = this.nodes.find((node) => node.id === currentNode.parentId);
+    return parent ? this.hasValidParent(parent, visited) : false;
+  }
 }

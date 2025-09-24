@@ -96,8 +96,9 @@ export default (): {
 
   return {
     cmsApi: {
-      apiUrl: process.env.KNOWLEDGE_BASE_SERVICE_PROVIDER_API_URL,
-      bearerToken: process.env.KNOWLEDGE_BASE_SERVICE_PROVIDER_API_BEARER_TOKEN,
+      apiUrl: process.env.KNOWLEDGE_BASE_SERVICE_CMS_CONNECTOR_API_URL,
+      bearerToken:
+        process.env.KNOWLEDGE_BASE_SERVICE_CMS_CONNECTOR_API_BEARER_TOKEN,
     },
     keepAliveOptions,
     redisSocket: {

@@ -2,7 +2,8 @@
  * Copyright ou © ou Copr. Université de Lorraine, (2022)
  *
  * Direction du Numérique de l'Université de Lorraine - SIED
- * (dn-mobile-dev@univ-lorraine.fr)
+ *  (dn-mobile-dev@univ-lorraine.fr)
+ * JNESIS (contact@jnesis.com)
  *
  * Ce logiciel est un programme informatique servant à rendre accessible
  * sur mobile divers services universitaires aux étudiants et aux personnels
@@ -36,82 +37,36 @@
  * termes.
  */
 
-import { Field, ObjectType } from '@nestjs/graphql';
-import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/translations/translations.wordpress.model';
-import { ImageWordpress } from '@wordpress/collections/system/image.wordpress.model';
-import { RolesWordpress } from '@wordpress/collections/roles/roles.wordpress.model';
+import { NodeInterface, NodeHelper } from './node.helper';
 
-@ObjectType()
-class KnowledgeBaseRolesWordpress {
-  @Field(() => [RolesWordpress])
-  nodes: RolesWordpress[];
+interface Stuff extends NodeInterface {
+  name: string;
 }
 
-@ObjectType()
-export class KnowledgeBaseParentWordpress {
-  @Field()
-  databaseId: number;
-}
+describe('NodeHelper', () => {
+  it('should remove the orphans', () => {
+    const nodes: Stuff[] = [
+      { id: '1', parentId: null, name: 'Root A' },
+      { id: '2', parentId: '1', name: 'Child A1' },
+      { id: '3', parentId: '99', name: 'Orphelin' },
+      { id: '4', parentId: '2', name: 'Child A1-1' },
+    ];
+    const helper: NodeHelper<Stuff> = new NodeHelper(nodes);
+    const nodesWithoutOrphans = helper.removeOrphans().map((n) => n.name);
+    expect(nodesWithoutOrphans).toEqual(['Root A', 'Child A1', 'Child A1-1']);
+  });
 
-@ObjectType()
-class KnowledgeBaseParentNodeWordpress {
-  @Field(() => KnowledgeBaseParentWordpress)
-  node: KnowledgeBaseParentWordpress;
-}
-
-@ObjectType()
-class KnowledgeBaseImageNodeWordpress {
-  @Field(() => ImageWordpress)
-  node: ImageWordpress;
-}
-
-@ObjectType()
-export class KnowledgeBaseWordpress {
-  @Field()
-  databaseId: number;
-
-  @Field()
-  informationTitle: string;
-
-  @Field()
-  informationContent: string;
-
-  @Field()
-  informationSearchKeywords: string;
-
-  @Field()
-  informationType: 'content' | 'internal_link' | 'external_link';
-
-  @Field()
-  informationChildDisplay: 'card' | 'list';
-
-  @Field()
-  informationLink: string;
-
-  @Field()
-  informationPosition: number;
-
-  @Field()
-  informationAccessRestriction: 'ALLOW' | 'DISALLOW' | 'NONE';
-
-  @Field(() => KnowledgeBaseRolesWordpress)
-  informationRoles: KnowledgeBaseRolesWordpress;
-
-  @Field(() => [KnowledgeBaseTranslationsWordpress])
-  translations: KnowledgeBaseTranslationsWordpress[];
-
-  @Field(() => KnowledgeBaseParentNodeWordpress, { nullable: true })
-  informationParent: KnowledgeBaseParentNodeWordpress | null;
-
-  @Field(() => KnowledgeBaseImageNodeWordpress, { nullable: true })
-  informationCoverImage: KnowledgeBaseImageNodeWordpress | null;
-
-  @Field()
-  informationPhone: string;
-
-  @Field()
-  informationAddress: string;
-
-  @Field()
-  informationEmail: string;
-}
+  it('should remove the orphans in chains (e.g. a child whose parent is itself an orphan)', () => {
+    const nodes: Stuff[] = [
+      { id: '11', parentId: '5', name: 'Another child Orphelin' },
+      { id: '1', parentId: null, name: 'Root A' },
+      { id: '2', parentId: '1', name: 'Child A1' },
+      { id: '3', parentId: '99', name: 'Orphelin' },
+      { id: '4', parentId: '2', name: 'Child A1-1' },
+      { id: '5', parentId: '3', name: 'Child Orphelin' },
+    ];
+    const helper: NodeHelper<Stuff> = new NodeHelper(nodes);
+    const nodesWithoutOrphans = helper.removeOrphans().map((n) => n.name);
+    expect(nodesWithoutOrphans).toEqual(['Root A', 'Child A1', 'Child A1-1']);
+  });
+});

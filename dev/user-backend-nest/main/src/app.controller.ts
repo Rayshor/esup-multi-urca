@@ -59,6 +59,7 @@ import * as infosJsonData from './infos.json';
 import * as clientInfosJson from './client-infos.json';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { AuthorizationHelper } from './security/authorization.helper';
+import { NodeHelper } from './common/utils/node.helper';
 
 @UseInterceptors(new ErrorsInterceptor())
 @Controller()
@@ -748,9 +749,12 @@ export class AppController {
               roles,
             )
             .pipe(
-              map((knowledgeBase) => {
-                return new AuthorizationHelper(roles).filter(knowledgeBase);
-              }),
+              map((knowledgeBase: any) =>
+                new AuthorizationHelper(roles).filter(knowledgeBase),
+              ),
+              map((knowledgeBase: any) =>
+                new NodeHelper(knowledgeBase).removeOrphans(),
+              ),
             );
         }),
       );
