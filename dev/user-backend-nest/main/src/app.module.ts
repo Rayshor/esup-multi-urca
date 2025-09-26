@@ -60,12 +60,12 @@ import microserviceContactUsConfig from './config/microservice-contact-us.config
 import microserviceRestaurantsConfig from './config/microservice-restaurants.config';
 import microserviceStatisticsConfig from './config/microservice-statistics.config';
 import microserviceMailCalendarConfig from './config/microservice-mail-calendar.config';
+import microserviceKnowledgeBaseConfig from './config/microservice-knowledge-base.config';
 import { AuthJwtStrategy } from './security/auth-jwt.strategy';
 import { TerminusModule } from '@nestjs/terminus';
 import { LoggerModule } from 'nestjs-pino';
 import * as process from 'process';
 import { LogsMiddleware } from './logs.middleware';
-import microserviceKnowledgeBaseConfig from "./config/microservice-knowledge-base.config";
 
 @Module({
   imports: [
@@ -192,7 +192,7 @@ import microserviceKnowledgeBaseConfig from "./config/microservice-knowledge-bas
         name: 'KNOWLEDGE_BASE_SERVICE',
         imports: [ConfigModule.forFeature(microserviceKnowledgeBaseConfig)],
         useFactory: (config: ConfigService) =>
-            config.get('microservice-knowledge-base'),
+          config.get('microservice-knowledge-base'),
         inject: [ConfigService],
       },
     ]),
