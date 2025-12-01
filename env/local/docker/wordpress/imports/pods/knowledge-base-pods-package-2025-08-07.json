@@ -30,11 +30,11 @@
         {
             "name": "knowledge-base",
             "id": 195,
-            "label": "Informations",
+            "label": "Base de connaissance",
             "description": "Base de connaissance de l'application Multi",
             "type": "post_type",
             "storage": "meta",
-            "label_singular": "Information",
+            "label_singular": "Base de connaissance",
             "public": "1",
             "show_ui": "1",
             "publicly_queryable": "0",
@@ -46,7 +46,7 @@
             "label_add_new_item": "Nouvelle information",
             "show_in_menu": "1",
             "show_in_admin_bar": "1",
-            "title_field": "information_title",
+            "title_field": "knowledge_base_title",
             "supports_quick_edit": "0",
             "exclude_from_search": "1",
             "can_export": "1",
@@ -56,7 +56,7 @@
             "wpgraphql_plural_name": "knowledge_bases",
             "groups": [
                 {
-                    "name": "informations_fields",
+                    "name": "knowledge_base_fields",
                     "id": 196,
                     "label": "Champs Informations",
                     "description": "",
@@ -70,7 +70,7 @@
                     "restrict_capability": "0",
                     "fields": [
                         {
-                            "name": "information_title",
+                            "name": "knowledge_base_title",
                             "id": 197,
                             "label": "Titre",
                             "description": "Titre de l'information",
@@ -101,7 +101,7 @@
                             "is_translatable": "1"
                         },
                         {
-                            "name": "information_content",
+                            "name": "knowledge_base_content",
                             "id": 198,
                             "label": "Contenu",
                             "description": "Contenu de l'information",
@@ -142,7 +142,7 @@
                             "read_only": "0"
                         },
                         {
-                            "name": "information_type",
+                            "name": "knowledge_base_type",
                             "id": 199,
                             "label": "Type",
                             "description": "",
@@ -189,7 +189,7 @@
                             "default_value": "content"
                         },
                         {
-                            "name": "information_child_display",
+                            "name": "knowledge_base_child_display",
                             "id": 200,
                             "label": "Affichage des enfants",
                             "description": "Affichage des enfants",
@@ -238,12 +238,12 @@
                                 "logic": "any",
                                 "rules": [
                                     {
-                                        "field": "information_type",
+                                        "field": "knowledge_base_type",
                                         "compare": "=",
                                         "value": "internal_link"
                                     },
                                     {
-                                        "field": "information_type",
+                                        "field": "knowledge_base_type",
                                         "compare": "=",
                                         "value": "external_link"
                                     }
@@ -251,7 +251,7 @@
                             }
                         },
                         {
-                            "name": "information_access_restriction",
+                            "name": "knowledge_base_access_restriction",
                             "id": 279,
                             "label": "Acc\u00e8s",
                             "description": "Qui a acc\u00e8s \u00e0 l'information ?",
@@ -298,7 +298,7 @@
                             "default_value": "NONE"
                         },
                         {
-                            "name": "information_roles",
+                            "name": "knowledge_base_roles",
                             "id": 280,
                             "label": "R\u00f4les",
                             "description": "R\u00f4les autoris\u00e9s ou interdits d'acc\u00e8s \u00e0 l'information.",
@@ -347,7 +347,7 @@
                                 "logic": "all",
                                 "rules": [
                                     {
-                                        "field": "information_acces_restriction",
+                                        "field": "knowledge_base_acces_restriction",
                                         "compare": "=",
                                         "value": "NONE"
                                     }
@@ -355,7 +355,7 @@
                             }
                         },
                         {
-                            "name": "information_parent",
+                            "name": "knowledge_base_parent",
                             "id": 215,
                             "label": "Identifiant information parent",
                             "description": "Identifiant de la page d'information parent",
@@ -401,42 +401,36 @@
                             "read_only": "0"
                         },
                         {
-                            "name": "information_position",
+                            "name": "knowledge_base_position",
                             "id": 213,
                             "label": "Ordre d'affichage",
                             "description": "Position lors de l'affichage",
-                            "weight": 7,
-                            "type": "number",
-                            "number_format_type": "number",
-                            "number_format": "i18n",
-                            "number_decimals": "0",
-                            "number_format_soft": "0",
-                            "number_step": "1",
-                            "number_max_length": "12",
-                            "number_html5": "0",
-                            "repeatable": "0",
-                            "repeatable_format": "default",
-                            "default_evaluate_tags": "0",
-                            "default_empty_fields": "0",
-                            "roles_allowed": "administrator",
-                            "revisions_revision_field": "0",
-                            "enable_conditional_logic": "0",
-                            "rest_pick_response": "array",
-                            "rest_pick_depth": "1",
-                            "wpgraphql_enabled": "1",
-                            "wpgraphql_pick_format": "connection",
-                            "wpgraphql_file_format": "connection",
-                            "required": "0",
-                            "is_translatable": "0",
-                            "logged_in_only": "0",
-                            "admin_only": "0",
-                            "restrict_role": "0",
-                            "restrict_capability": "0",
-                            "hidden": "0",
-                            "read_only": "0"
+                          "weight": 7,
+                          "type": "number",
+                          "number_format_type": "number",
+                          "number_format": "i18n",
+                          "number_decimals": "0",
+                          "number_format_soft": "0",
+                          "number_decimal_handling": "none",
+                          "number_step": "1",
+                          "number_max_length": "12",
+                          "number_html5": "0",
+                          "repeatable": "0",
+                          "repeatable_format": "default",
+                          "default_evaluate_tags": "0",
+                          "default_empty_fields": "0",
+                          "roles_allowed": "administrator",
+                          "revisions_revision_field": "0",
+                          "enable_conditional_logic": "0",
+                          "rest_pick_response": "array",
+                          "rest_pick_depth": "1",
+                          "wpgraphql_enabled": "1",
+                          "wpgraphql_pick_format": "connection",
+                          "wpgraphql_file_format": "connection",
+                          "required": "0"
                         },
                         {
-                            "name": "information_cover_image",
+                            "name": "knowledge_base_cover_image",
                             "id": 249,
                             "label": "Image de couverture",
                             "description": "Image de couverture illustrant une information",
@@ -482,7 +476,7 @@
                             "read_only": "0"
                         },
                         {
-                            "name": "information_link",
+                            "name": "knowledge_base_link",
                             "id": 208,
                             "label": "Lien",
                             "description": "Lien vers une page ou redirection si la page est de type lien externe",
@@ -522,7 +516,7 @@
                                 "logic": "any",
                                 "rules": [
                                     {
-                                        "field": "information_type",
+                                        "field": "knowledge_base_type",
                                         "compare": "=",
                                         "value": "content"
                                     }
@@ -530,7 +524,7 @@
                             }
                         },
                         {
-                            "name": "information_phone",
+                            "name": "knowledge_base_phone",
                             "id": 265,
                             "label": "T\u00e9l\u00e9phone",
                             "description": "Num\u00e9ro de t\u00e9l\u00e9phone associ\u00e9 \u00e0 l'information",
@@ -562,7 +556,7 @@
                             "read_only": "0"
                         },
                         {
-                            "name": "information_address",
+                            "name": "knowledge_base_address",
                             "id": 266,
                             "label": "Adresse",
                             "description": "L'adresse associ\u00e9e \u00e0 l'information",
@@ -599,7 +593,7 @@
                             "read_only": "0"
                         },
                         {
-                            "name": "information_email",
+                            "name": "knowledge_base_email",
                             "id": 267,
                             "label": "Email",
                             "description": "L'adresse email associ\u00e9e \u00e0 l'information",
@@ -629,7 +623,7 @@
                             "read_only": "0"
                         },
                         {
-                            "name": "information_search_keywords",
+                            "name": "knowledge_base_search_keywords",
                             "id": 251,
                             "label": "Mots cl\u00e9s de recherche",
                             "description": "Tags qui serviront pour la recherche dans les informations",
