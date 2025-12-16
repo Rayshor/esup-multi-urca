@@ -100,7 +100,7 @@ export class KnowledgeBaseCardComponent {
   }
 
   handleLink(link: string) {
-    Browser.open({url: link});
+    Browser.open({url: this.sanitizer.sanitize(SecurityContext.URL, link)});
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
