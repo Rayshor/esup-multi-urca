@@ -36,7 +36,7 @@
  * termes.
  */
 
-import { Injectable } from '@nestjs/common';
+import {Injectable, Logger} from '@nestjs/common';
 import { WordpressService } from '@wordpress/wordpress.service';
 import { KnowledgeBaseTranslations } from '@common/models/translations.model';
 import { KnowledgeBaseTranslationsWordpress } from '@wordpress/collections/translations/translations.wordpress.model';
@@ -45,13 +45,39 @@ import { KnowledgeBaseSchema } from '@common/validation/schemas/knowledge-base.s
 import { normalizeEmptyStringToNull } from '@common/utils/normalize';
 import { KnowledgeBaseWordpress } from '@wordpress/collections/knowledge-base/knowledge-base.wordpress.model';
 import { KnowledgeBase } from '@common/models/knowledge-base.model';
+import {CacheCollection} from "@cache/cache.config";
+import {CacheService} from "@cache/cache.service";
+import {OnEvent} from "@nestjs/event-emitter";
 
 // TODO: Move FRENCH_CODE to .env and rename it to DEFAULT_LANGUAGE_CODE
 const FRENCH_CODE = 'FR';
 
 @Injectable()
 export class KnowledgeBaseWordpressService {
-  constructor(private readonly wordpressService: WordpressService) {}
+    private readonly logger = new Logger(KnowledgeBaseWordpressService.name);
+  constructor(
+      private readonly wordpressService: WordpressService,
+      private readonly cacheService: CacheService
+  ) {}
+
+    @OnEvent('wordpress.knowledge-base.cache.cleared')
+    async handleCacheCleared() {
+        this.logger.log('Received cache cleared event - preloading data...');
+        try {
+            await this.preloadData();
+        } catch (error) {
+            this.logger.error(
+                'Failed to preload knowledge-base after cache clear:',
+                error.message,
+            );
+        }
+    }
+
+    public async preloadData() {
+        this.logger.log('Preloading knowledge-base...');
+        await this.getKnowledgeBase();
+        this.logger.log('knowledge-base preloaded successfully');
+    }
 
   @ValidateMapping({ schema: KnowledgeBaseSchema })
   private mapToMultiModel(
@@ -59,12 +85,12 @@ export class KnowledgeBaseWordpressService {
   ): KnowledgeBase {
     const frTranslation: KnowledgeBaseTranslations = {
       languagesCode: FRENCH_CODE.toLowerCase(),
-      title: knowledgeBase.informationTitle,
-      content: knowledgeBase.informationContent,
+      title: knowledgeBase.knowledgeBaseTitle,
+      content: knowledgeBase.knowledgeBaseContent,
       searchKeywords:
-        knowledgeBase.informationSearchKeywords &&
-        knowledgeBase.informationSearchKeywords?.trim() !== ''
-          ? knowledgeBase.informationSearchKeywords
+        knowledgeBase.knowledgeBaseSearchKeywords &&
+        knowledgeBase.knowledgeBaseSearchKeywords?.trim() !== ''
+          ? knowledgeBase.knowledgeBaseSearchKeywords
               .split(',')
               .filter((keyword) => keyword.trim() !== '')
           : null,
@@ -75,12 +101,12 @@ export class KnowledgeBaseWordpressService {
       ...(knowledgeBase.translations?.map(
         (translation: KnowledgeBaseTranslationsWordpress) => ({
           languagesCode: translation.language.code.toLowerCase(),
-          title: translation.informationTitle,
-          content: translation.informationContent,
+          title: translation.knowledgeBaseTitle,
+          content: translation.knowledgeBaseContent,
           searchKeywords:
-            translation.informationSearchKeywords &&
-            translation.informationSearchKeywords?.trim() !== ''
-              ? translation.informationSearchKeywords
+            translation.knowledgeBaseSearchKeywords &&
+            translation.knowledgeBaseSearchKeywords?.trim() !== ''
+              ? translation.knowledgeBaseSearchKeywords
                   .split(',')
                   .filter((keyword) => keyword.trim() !== '')
               : null,
@@ -89,61 +115,69 @@ export class KnowledgeBaseWordpressService {
     ];
 
     const roles =
-      knowledgeBase.informationRoles?.nodes.length > 0
-        ? knowledgeBase.informationRoles.nodes.map((role) => role.roleCode)
+      knowledgeBase.knowledgeBaseRoles?.nodes.length > 0
+        ? knowledgeBase.knowledgeBaseRoles.nodes.map((role) => role.roleCode)
         : [];
 
     return {
       id: knowledgeBase.databaseId.toString(),
-      type: knowledgeBase.informationType,
-      childDisplay: knowledgeBase.informationChildDisplay || null,
-      link: normalizeEmptyStringToNull(knowledgeBase.informationLink),
-      position: knowledgeBase.informationPosition || 0,
+      type: knowledgeBase.knowledgeBaseType,
+      childDisplay: knowledgeBase.knowledgeBaseChildDisplay || null,
+      link: normalizeEmptyStringToNull(knowledgeBase.knowledgeBaseLink),
+      position: knowledgeBase.knowledgeBasePosition || 0,
       authorization:
-        knowledgeBase.informationAccessRestriction &&
-        knowledgeBase.informationAccessRestriction !== 'NONE'
+        knowledgeBase.knowledgeBaseAccessRestriction &&
+        knowledgeBase.knowledgeBaseAccessRestriction !== 'NONE'
           ? {
-              type: knowledgeBase.informationAccessRestriction,
+              type: knowledgeBase.knowledgeBaseAccessRestriction,
               roles,
             }
           : null,
       translations,
       parentId:
-        knowledgeBase.informationParent?.node?.databaseId?.toString() || null,
+        knowledgeBase.knowledgeBaseParent?.node?.databaseId?.toString() || null,
       coverImage: normalizeEmptyStringToNull(
-        knowledgeBase.informationCoverImage?.node.mediaItemUrl.toString(),
+        knowledgeBase.knowledgeBaseCoverImage?.node.mediaItemUrl.toString(),
       ),
-      phone: normalizeEmptyStringToNull(knowledgeBase.informationPhone),
-      address: normalizeEmptyStringToNull(knowledgeBase.informationAddress),
-      email: normalizeEmptyStringToNull(knowledgeBase.informationEmail),
+      phone: normalizeEmptyStringToNull(knowledgeBase.knowledgeBasePhone),
+      address: normalizeEmptyStringToNull(knowledgeBase.knowledgeBaseAddress),
+      email: normalizeEmptyStringToNull(knowledgeBase.knowledgeBaseEmail),
     };
   }
 
-  async getKnowledgeBase(): Promise<KnowledgeBase[]> {
+    async getKnowledgeBase(): Promise<KnowledgeBase[]> {
+        return this.cacheService.getOrFetchWithLock(
+            CacheCollection.KNOWLEDGE_BASE,
+            () => this.loadKnowledgeBaseFromWordPress(),
+        );
+    }
+
+  private async loadKnowledgeBaseFromWordPress(): Promise<KnowledgeBase[]> {
+    this.logger.debug('Loading knowledge-base from WordPress...');
     const data = await this.wordpressService.executeGraphQLQuery(`
       query {
         knowledgeBases(first: 100, where: {language: ${FRENCH_CODE}}) {
           nodes {
             databaseId
-            informationTitle
-            informationContent
-            informationType
-            informationChildDisplay
-            informationLink
-            informationPosition
-            informationAccessRestriction
-            informationRoles(first: 100) {
+            knowledgeBaseTitle
+            knowledgeBaseContent
+            knowledgeBaseType
+            knowledgeBaseChildDisplay
+            knowledgeBaseLink
+            knowledgeBasePosition
+            knowledgeBaseAccessRestriction
+            knowledgeBaseRoles(first: 100) {
               nodes {
                 databaseId
                 roleCode
                 roleDescription
               }
             }
-            informationSearchKeywords
-            informationPhone
-            informationAddress
-            informationEmail
-            informationCoverImage {
+            knowledgeBaseSearchKeywords
+            knowledgeBasePhone
+            knowledgeBaseAddress
+            knowledgeBaseEmail
+            knowledgeBaseCoverImage {
              node {
                 databaseId
                 sourceUrl
@@ -151,11 +185,11 @@ export class KnowledgeBaseWordpressService {
                 altText
               }
             } 
-            informationParent {
+            knowledgeBaseParent {
               node {
                 databaseId
-                informationAccessRestriction
-                informationRoles(first: 100) {
+                knowledgeBaseAccessRestriction
+                knowledgeBaseRoles(first: 100) {
                   nodes {
                     databaseId
                     roleCode
@@ -171,9 +205,9 @@ export class KnowledgeBaseWordpressService {
                 name
                 locale
               }
-              informationTitle
-              informationContent
-              informationSearchKeywords
+              knowledgeBaseTitle
+              knowledgeBaseContent
+              knowledgeBaseSearchKeywords
             }
           }
         }
