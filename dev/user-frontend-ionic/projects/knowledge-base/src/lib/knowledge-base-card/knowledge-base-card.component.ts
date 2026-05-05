@@ -66,7 +66,9 @@ export class KnowledgeBaseCardComponent {
   openItemLink(item: KnowledgeBaseItem) {
     switch (item.type) {
       case Type.internalLink:
-        this.openInternalLink(item.routerLink);
+        if (this.isSafeInternalPath(item.routerLink)) {
+          this.openInternalLink(item.routerLink);
+        }
         break;
 
       case Type.externalLink:
@@ -81,6 +83,20 @@ export class KnowledgeBaseCardComponent {
 
   openInternalLink(link: string) {
     this.router.navigateByUrl(link);
+  }
+
+  // fonction permettant de vérifier que le lien fourni dans Wordpress est bien un lien de type interne Angular
+  private isSafeInternalPath(link: string | undefined): boolean {
+    if (!link) {
+      return false;
+    }
+    if (/^[/\\]{2}/.test(link)) {
+      return false;
+    }
+    if (/^[a-z][a-z0-9+.-]*:/i.test(link)) {
+      return false;
+    }
+    return true;
   }
 
   openExternalLink(item: KnowledgeBaseItem) {
