@@ -63,7 +63,7 @@
     <div class="separator"></div>
     <ion-card-content>
       <ion-item lines="none">
-        <div [innerHTML]="item.content" class="safe-area-padding-lr link-inherit-color"></div>
+        <div [innerHTML]="item.content | sanitizeHtml" class="safe-area-padding-lr link-inherit-color"></div>
       </ion-item>
 
       <ng-template #clickableItem let-icon="icon" let-value="value" let-click="click">

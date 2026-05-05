@@ -37,39 +37,31 @@
  * termes.
  */
 
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
-import { TranslateModule } from '@ngx-translate/core';
-import { CompleteLocalDatePipe } from './complete-local-date-pipe';
-import { RelativeTimePipe } from './relative-time-pipe';
-import { TruncatePipe } from './truncate-pipe';
-import { LocalHourPipe } from './local-hour.pipe';
-import { SanitizeSvgPipe } from './sanitize-svg-pipe';
-import { SanitizeHtmlPipe } from './sanitize-html-pipe';
+import { Pipe, PipeTransform } from "@angular/core";
+import DOMPurify from "dompurify";
 
-@NgModule({
-  declarations: [
-    RelativeTimePipe,
-    TruncatePipe,
-    CompleteLocalDatePipe,
-    LocalHourPipe,
-    SanitizeSvgPipe,
-    SanitizeHtmlPipe
-  ],
-  exports: [
-    RelativeTimePipe,
-    TruncatePipe,
-    CompleteLocalDatePipe,
-    LocalHourPipe,
-    SanitizeSvgPipe,
-    SanitizeHtmlPipe
-  ],
-  imports: [
-    CommonModule,
-    IonicModule,
-    TranslateModule,
-  ],
-})
-export class SharedPipeModule {
+@Pipe({ name: "sanitizeHtml" })
+export class SanitizeHtmlPipe implements PipeTransform {
+  transform(value: string | null | undefined): string {
+    if (!value) {
+      return "";
+    }
+    return DOMPurify.sanitize(value, {
+      // Liste des tags et attributs utilisés par l'éditeur Wysiwyg de Wordpress
+      // A faire évoluer selon les besoins
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      ALLOWED_TAGS: [
+        "a",
+        "b", "strong",
+        "i", "em",
+        "ul", "ol", "li",
+        "code", "pre",
+        "blockquote",
+        "h1", "h2", "h3", "h4", "h5", "h6",
+        "p", "br",
+      ],
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      ALLOWED_ATTR: ["href", "target", "rel", "style"],
+    });
+  }
 }
