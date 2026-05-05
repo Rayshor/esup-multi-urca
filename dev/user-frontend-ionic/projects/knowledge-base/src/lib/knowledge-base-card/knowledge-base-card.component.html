@@ -49,10 +49,23 @@
         </ion-card-title>
       </ion-col>
       <ion-col size="auto" class="button-col">
-        <ion-button *ngIf="displayMode !== Display.card && !item.isLeaf" fill="solid" shape="round" class="app-round-button-1" (click)="openItemLink(item)" >
+        <ion-button
+          *ngIf="displayMode !== Display.card && !item.isLeaf"
+          fill="solid"
+          shape="round"
+          class="app-round-button-1"
+          (click)="openItemLink(item)"
+          [attr.aria-label]="'KNOWLEDGE-BASE.OPEN_ITEM' | translate: {title: item.title}">
           <ion-icon [name]="getButtonIcon(item.type)" slot="icon-only" size="large"></ion-icon>
         </ion-button>
-        <ion-button *ngIf="displayMode === Display.card" shape="round"  fill="solid" class="app-round-button-1" (click)="toggleDetails()" >
+        <ion-button
+          *ngIf="displayMode === Display.card"
+          shape="round"
+          fill="solid"
+          class="app-round-button-1"
+          (click)="toggleDetails()"
+          [attr.aria-expanded]="isExpanded"
+          [attr.aria-label]="'KNOWLEDGE-BASE.TOGGLE_DETAILS' | translate: {title: item.title}">
           <ion-icon [name]="isExpanded ? 'chevron-up-outline' : 'chevron-down-outline'" slot="icon-only" size="large"></ion-icon>
         </ion-button>
       </ion-col>
