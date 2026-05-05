@@ -71,7 +71,7 @@
   </ng-container>
 
   <ng-template #noData>
-    <ng-container *ngIf="(knowledgeBases$ | async).length === 0 && !isLoading">
+    <ng-container *ngIf="(knowledgeBases$ | async)?.length === 0 && !isLoading">
       <ion-row class="ion-margin ion-justify-content-center">
         <ion-text>{{ "KNOWLEDGE-BASE.NO_DATA" | translate }}</ion-text>
       </ion-row>

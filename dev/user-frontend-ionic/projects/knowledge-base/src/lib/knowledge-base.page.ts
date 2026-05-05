@@ -38,7 +38,7 @@
  */
 
 import {Component, OnInit} from '@angular/core';
-import {take, tap} from 'rxjs/operators';
+import { finalize, take } from 'rxjs/operators';
 import { KnowledgeBaseService } from './knowledge-base.service';
 import { Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
@@ -70,23 +70,25 @@ export class KnowledgeBasePage implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.parentPageId = this.activatedRoute.snapshot.paramMap.get('id');
+    this.knowledgeBases$ = this.parentPageId
+      ? this.knowledgeBasesRepository.getKnowledgeBaseByParentId(this.parentPageId)
+      : this.knowledgeBasesRepository.getKnowledgeBase();
+    this.knowledgeBaseParentItem$ = this.knowledgeBasesRepository.getKnowledgeBaseItemById(this.parentPageId);
+
     if (!(await this.networkService.getConnectionStatus()).connected) {
       return;
     }
 
-    this.parentPageId = this.activatedRoute.snapshot.paramMap.get('id');
     if (!this.parentPageId) {
       this.isLoading = true;
       this.knowledgeBaseService.loadAndStoreKnowledgeBase()
         .pipe(
           take(1),
-          tap(() => this.isLoading = false)
+          finalize(() => this.isLoading = false)
         )
         .subscribe();
     }
-
-    this.knowledgeBases$ = this.parentPageId ? this.knowledgeBasesRepository.getKnowledgeBaseByParentId(this.parentPageId) : this.knowledgeBasesRepository.getKnowledgeBase();
-    this.knowledgeBaseParentItem$ =  this.knowledgeBasesRepository.getKnowledgeBaseItemById(this.parentPageId);
   }
 
   searchKnowledgeBase(event) {
