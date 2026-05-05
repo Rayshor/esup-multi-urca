@@ -131,10 +131,18 @@ export class KnowledgeBaseCardComponent {
   }
 
   handlePhone(phone: string) {
+    if (!/^[+\d\s().-]{3,30}$/.test(phone)) {
+      return;
+    }
     window.open(`tel:${phone}`);
   }
 
   handleEmail(email: string) {
+    // Format de base : pas de `?`, `&`, espaces, etc. pour empêcher l'injection
+    // d'en-têtes mailto (subject/body/bcc).
+    if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email)) {
+      return;
+    }
     window.open(`mailto:${email}`);
   }
 
