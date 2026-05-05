@@ -69,8 +69,8 @@
       <ng-template #clickableItem let-icon="icon" let-value="value" let-click="click">
         <ion-item
           *ngIf="value"
-          button
-          detail="false"
+          [button]="true"
+          [detail]="false"
           lines="none"
           (click)="click(value)"
         >
