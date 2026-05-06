@@ -37,12 +37,12 @@
  * termes.
  */
 
-import {Component, Input, SecurityContext} from '@angular/core';
-import {Display, KnowledgeBaseItem, TranslatedKnowledgeBaseItem, Type} from '../knowledge-base.repository';
-import {Browser} from '@capacitor/browser';
-import {Router} from '@angular/router';
-import {DomSanitizer} from "@angular/platform-browser";
-import {NavigationService, SsoService} from "@multi/shared";
+import { Component, Input, SecurityContext } from '@angular/core';
+import { Display, KnowledgeBaseItem, TranslatedKnowledgeBaseItem, Type } from '../knowledge-base.repository';
+import { Browser } from '@capacitor/browser';
+import { Router } from '@angular/router';
+import { DomSanitizer } from "@angular/platform-browser";
+import { NavigationService, SsoService } from "@multi/shared";
 
 @Component({
   selector: 'app-knowledge-base-card',
@@ -146,9 +146,9 @@ export class KnowledgeBaseCardComponent {
     window.open(`mailto:${email}`);
   }
 
-  handleLink(link: string) {
+  handleLink = (link: string) => {
     Browser.open({url: this.sanitizer.sanitize(SecurityContext.URL, link)});
-  }
+  };
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   protected readonly Display = Display;
