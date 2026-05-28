@@ -61,11 +61,13 @@ import microserviceContactUsConfig from './config/microservice-contact-us.config
 import microserviceRestaurantsConfig from './config/microservice-restaurants.config';
 import microserviceStatisticsConfig from './config/microservice-statistics.config';
 import microserviceMailCalendarConfig from './config/microservice-mail-calendar.config';
+import microserviceKnowledgeBaseConfig from './config/microservice-knowledge-base.config';
 import { AuthJwtStrategy } from './security/auth-jwt.strategy';
 import { TerminusModule } from '@nestjs/terminus';
 import { LoggerModule } from 'nestjs-pino';
 import * as process from 'process';
 import { LogsMiddleware } from './logs.middleware';
+import { AuthBearerStrategy } from './security/auth-bearer.strategy';
 
 @Module({
   imports: [
@@ -195,6 +197,13 @@ import { LogsMiddleware } from './logs.middleware';
           config.get('microservice-mail-calendar'),
         inject: [ConfigService],
       },
+      {
+        name: 'KNOWLEDGE_BASE_SERVICE',
+        imports: [ConfigModule.forFeature(microserviceKnowledgeBaseConfig)],
+        useFactory: (config: ConfigService) =>
+          config.get('microservice-knowledge-base'),
+        inject: [ConfigService],
+      },
     ]),
     PassportModule,
     TerminusModule,
@@ -216,7 +225,7 @@ import { LogsMiddleware } from './logs.middleware';
       : []),
   ],
   controllers: [AppController],
-  providers: [AuthJwtStrategy],
+  providers: [AuthJwtStrategy, AuthBearerStrategy],
 })
 export class AppModule {
   // Track HTTP requests with short log

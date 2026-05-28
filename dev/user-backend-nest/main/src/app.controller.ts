@@ -44,6 +44,7 @@ import {
   Get,
   Inject,
   NotFoundException,
+  Param,
   Patch,
   Post,
   Query,
@@ -59,6 +60,7 @@ import * as infosJsonData from './infos.json';
 import { ErrorsInterceptor } from './interceptors/errors.interceptor';
 import { AuthorizationHelper } from './security/authorization.helper';
 import { ConfigService } from '@nestjs/config';
+import { NodeHelper } from './common/utils/node.helper';
 
 @UseInterceptors(new ErrorsInterceptor())
 @Controller()
@@ -83,6 +85,7 @@ export class AppController {
     @Inject('RESTAURANTS_SERVICE') private restaurantsClient: ClientProxy,
     @Inject('STATISTICS_SERVICE') private statisticsClient: ClientProxy,
     @Inject('MAIL_CALENDAR_SERVICE') private mailCalendarClient: ClientProxy,
+    @Inject('KNOWLEDGE_BASE_SERVICE') private knowledgeBaseClient: ClientProxy,
   ) {}
 
   @Post('/features')
@@ -226,6 +229,17 @@ export class AppController {
         cmd: 'loginPageContent',
       },
       {},
+    );
+  }
+
+  @Get('/auth/force-logout/:username')
+  @UseGuards(AuthGuard('auth-bearer'))
+  forceLogout(@Param('username') username: string) {
+    return this.authClient.send(
+      {
+        cmd: 'forceLogout',
+      },
+      { username },
     );
   }
 
@@ -772,6 +786,37 @@ export class AppController {
             },
           ),
         ),
+      );
+  }
+
+  @Post('/knowledge-base')
+  knowledgeBase(@Body() body) {
+    return this.authClient
+      .send(
+        {
+          cmd: 'getUser',
+        },
+        body,
+      )
+      .pipe(
+        concatMap((user) => {
+          const roles = user ? user.roles : ['anonymous'];
+          return this.knowledgeBaseClient
+            .send(
+              {
+                cmd: 'knowledgeBase',
+              },
+              roles,
+            )
+            .pipe(
+              map((knowledgeBase: any) =>
+                new AuthorizationHelper(roles).filter(knowledgeBase),
+              ),
+              map((knowledgeBase: any) =>
+                new NodeHelper(knowledgeBase).removeOrphans(),
+              ),
+            );
+        }),
       );
   }
 
