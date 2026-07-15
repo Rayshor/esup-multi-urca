@@ -42,5 +42,6 @@ import { SecurityConfiguration } from './configuration.interface';
 export default (): { security: SecurityConfiguration } => ({
   security: {
     authJwtSecret: process.env.AUTH_SERVICE_JWT_SECRET,
+    bearerTokenForceLogout: process.env.AUTH_SERVICE_BEARER_TOKEN_FORCE_LOGOUT,
   },
 });
